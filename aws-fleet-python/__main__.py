@@ -51,7 +51,10 @@ route_table = aws.ec2.RouteTable(route_table_name,
         aws.ec2.RouteTableRouteArgs(cidr_block="0.0.0.0/0", gateway_id=igw.id),
         aws.ec2.RouteTableRouteArgs(cidr_block=vpc.cidr_block, gateway_id="local"),
     ],
-    )
+    tags={
+        "name": route_table_name,
+        "project": project_name,
+    })
 
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
