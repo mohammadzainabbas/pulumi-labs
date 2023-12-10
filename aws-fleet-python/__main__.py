@@ -84,6 +84,7 @@ with open("user_data.sh", "r") as f:
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
-pulumi.export("ip", server.public_ip)
-pulumi.export("hostname", server.public_dns)
-pulumi.export("url", server.public_dns.apply(lambda public_dns: f"http://{public_dns}"))
+pulumi.export("instance_types", instance_types)
+# pulumi.export("ip", server.public_ip)
+# pulumi.export("hostname", server.public_dns)
+# pulumi.export("url", server.public_dns.apply(lambda public_dns: f"http://{public_dns}"))
