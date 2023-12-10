@@ -19,6 +19,7 @@ ami = aws.ec2.get_ami(
     owners=["amazon"],
     most_recent=True).id
 
+# Get all availability zones
 azs = aws.get_availability_zones(state="available")
 
 vpc_name = f"{project_name}-vpc"
