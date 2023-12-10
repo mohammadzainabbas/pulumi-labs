@@ -73,8 +73,8 @@ public_subnet = aws.ec2.Subnet(public_subnet_name,
 # echo "Hello, World from Pulumi!" > index.html
 # nohup python -m SimpleHTTPServer 80 &
 # """
-with open("user_data.sh", "r") as f:
-    user_data = f.read()
+# with open("user_data.sh", "r") as f:
+#     user_data = f.read()
 
 # # Create VPC.
 # vpc = aws.ec2.Vpc("vpc",
@@ -136,7 +136,9 @@ with open("user_data.sh", "r") as f:
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
-pulumi.export("instance_types", instance_types)
+# pulumi.export("instance_types", instance_types)
+pulumi.export("vpc", vpc_name)
+
 # pulumi.export("ip", server.public_ip)
 # pulumi.export("hostname", server.public_dns)
 # pulumi.export("url", server.public_dns.apply(lambda public_dns: f"http://{public_dns}"))
