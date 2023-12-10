@@ -1,5 +1,6 @@
 import pulumi
 import pulumi_aws as aws
+import pulumi_awsx as awsx
 from datetime import datetime
 
 # Get some configuration values or set default values.
