@@ -1,5 +1,6 @@
 import pulumi
 import pulumi_aws as aws
+from datetime import datetime
 
 # Get some configuration values or set default values.
 config = pulumi.Config()
