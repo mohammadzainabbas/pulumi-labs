@@ -47,10 +47,10 @@ igw = aws.ec2.InternetGateway(igw_name,
 route_table_name = f"{project_name}-route-table"
 route_table = aws.ec2.RouteTable(route_table_name,
     vpc_id=vpc.id,
-    routes=[aws.ec2.RouteTableRouteArgs(
-        cidr_block="0.0.0.0/0",
-        gateway_id=igw.id,
-    )])
+    routes=[
+        aws.ec2.RouteTableRouteArgs(cidr_block="0.0.0.0/0", gateway_id=igw.id)
+        ]
+    )
 
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
