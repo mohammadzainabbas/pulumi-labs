@@ -20,12 +20,14 @@ ami = aws.ec2.get_ami(
 
 azs = aws.get_availability_zones(state="available")
 
-vpc = aws.ec2.Vpc(f"{project_name}-vpc",
+vpc_name = f"{project_name}-vpc"
+vpc = aws.ec2.Vpc(vpc_name,
     cidr_block=vpc_network_cidr,
     enable_dns_hostnames=True,
     enable_dns_support=True,
     tags={
-        "Name": f"{project_name}-vpc",
+        "name": vpc_name,
+        "project": project_name,
     })
 
 # User data to start a HTTP server in the EC2 instance
