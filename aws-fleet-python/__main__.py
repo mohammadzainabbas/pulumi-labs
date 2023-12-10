@@ -23,7 +23,7 @@ ami = aws.ec2.get_ami(
 # Get all availability zones
 azs = aws.get_availability_zones(state="available")
 
-# Create a vpc
+# Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
 vpc_name = f"{project_name}-vpc"
 vpc = awsx.ec2.Vpc(vpc_name,
     cidr_block=vpc_network_cidr,
