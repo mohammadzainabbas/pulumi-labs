@@ -25,7 +25,7 @@ azs = aws.get_availability_zones(state="available")
 
 # Create a vpc
 vpc_name = f"{project_name}-vpc"
-vpc = aws.ec2.Vpc(vpc_name,
+vpc = awsx.ec2.Vpc(vpc_name,
     cidr_block=vpc_network_cidr,
     enable_dns_hostnames=True,
     enable_dns_support=True,
@@ -34,6 +34,17 @@ vpc = aws.ec2.Vpc(vpc_name,
         "Name": vpc_name,
         "Project": project_name,
     })
+
+
+# vpc = aws.ec2.Vpc(vpc_name,
+#     cidr_block=vpc_network_cidr,
+#     enable_dns_hostnames=True,
+#     enable_dns_support=True,
+#     instance_tenancy="default",
+#     tags={
+#         "Name": vpc_name,
+#         "Project": project_name,
+#     })
 
 # Create an internet gateway.
 igw_name = f"{project_name}-igw"
