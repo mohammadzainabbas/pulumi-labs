@@ -17,6 +17,16 @@ ami = aws.ec2.get_ami(
     owners=["amazon"],
     most_recent=True).id
 
+azs = aws.get_availability_zones(state="available")
+
+vpc = aws.ec2.Vpc("vpc",
+    cidr_block=vpc_network_cidr,
+    enable_dns_hostnames=True,
+    enable_dns_support=True,
+    tags={
+        "Name": "vpc",
+    })
+
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
 # echo "Hello, World from Pulumi!" > index.html
