@@ -41,6 +41,7 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
         number_of_nat_gateways=1,
         allocation_strategy=awsx.ec2.NatGatewayStrategy.SINGLE,
     ),
+    subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
     tags={
         "Name": vpc_name,
         "Project": project_name,
