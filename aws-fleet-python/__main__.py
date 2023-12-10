@@ -26,10 +26,10 @@ with open("user_data.sh", "r") as f:
     user_data = f.read()
 
 # Create VPC.
-vpc = aws.ec2.Vpc("vpc",
-    cidr_block=vpc_network_cidr,
-    enable_dns_hostnames=True,
-    enable_dns_support=True)
+# vpc = aws.ec2.Vpc("vpc",
+#     cidr_block=vpc_network_cidr,
+#     enable_dns_hostnames=True,
+#     enable_dns_support=True)
 
 # Create an internet gateway.
 gateway = aws.ec2.InternetGateway("gateway", vpc_id=vpc.id)
