@@ -28,6 +28,7 @@ vpc_name = f"{project_name}-vpc"
 vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
     enable_dns_support=True,
     number_of_availability_zones=len(azs.names),
+    instance_tenancy="default",
     subnet_specs=[
         awsx.ec2.SubnetSpecArgs(
             type=awsx.ec2.SubnetType.PUBLIC,
