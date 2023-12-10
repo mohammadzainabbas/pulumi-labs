@@ -38,7 +38,7 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
         ),
     ],
     nat_gateways=awsx.ec2.NatGatewayConfigurationArgs(
-        strategy=awsx.ec2.NatGatewayStrategy.SINGLE,
+        strategy=awsx.ec2.NatGatewayStrategy.NONE,
     ),
     subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
     tags={
