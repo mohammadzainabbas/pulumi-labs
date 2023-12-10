@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
-project_name = dir_name.split("/")[-1]
+project_name = "aws-graphstorm"
 config = pulumi.Config()
 instance_types = config.get("instanceTypes") if config.get("instanceTypes") is not None else ['t3.micro', 't4g.small']
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
