@@ -16,22 +16,6 @@ ami = aws.ec2.get_ami(
     owners=["amazon"],
     most_recent=True).id
 
-# If you want to look for multiple AMIs, use `get_ami_ids` instead like below:
-# amis = aws.ec2.get_ami_ids(
-#     filters=[
-#         aws.ec2.GetAmiIdsFilterArgs(
-#             name="name",
-#             values=["AWS Deep Learning*AMI GPU CUDA*"],
-#         ),
-#         aws.ec2.GetAmiIdsFilterArgs(
-#             name="owner-alias",
-#             values=["amazon"],
-#         ),
-#     ],
-#     include_deprecated=False,
-#     owners=["amazon"],
-#     sort_ascending=False).ids
-
 # User data to start a HTTP server in the EC2 instance
 user_data = """#!/bin/bash
 echo "Hello, World from Pulumi!" > index.html
@@ -96,26 +80,7 @@ server = aws.ec2.Instance("server",
     })
 
 # Export the instance's publicly accessible IP address and hostname.
-# pulumi.export("amis", amis)
 pulumi.export("ami", ami)
 pulumi.export("ip", server.public_ip)
 pulumi.export("hostname", server.public_dns)
 pulumi.export("url", server.public_dns.apply(lambda public_dns: f"http://{public_dns}"))
-
-
-# import pulumi
-# import pulumi_aws as aws
-
-# # Fetching the latest NVIDIA AMI
-# nvidia_ami = aws.ec2.get_ami(
-#     filters=[
-#         aws.ec2.GetAmiFilterArgs(
-#             name="name",
-#             values=["amzn2-ami-hvm-*-gpu*"],  # This pattern can be updated to match the naming convention of NVIDIA AMIs
-#         )
-#     ],
-#     owners=["amazon"],
-#     most_recent=True
-# )
-
-# pulumi.export("nvidia_ami_id", nvidia_ami.id)
