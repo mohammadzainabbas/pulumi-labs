@@ -18,10 +18,10 @@ ami = aws.ec2.get_ami(
     most_recent=True).id
 
 # User data to start a HTTP server in the EC2 instance
-user_data = """#!/bin/bash
-echo "Hello, World from Pulumi!" > index.html
-nohup python -m SimpleHTTPServer 80 &
-"""
+# user_data = """#!/bin/bash
+# echo "Hello, World from Pulumi!" > index.html
+# nohup python -m SimpleHTTPServer 80 &
+# """
 
 # Create VPC.
 vpc = aws.ec2.Vpc("vpc",
