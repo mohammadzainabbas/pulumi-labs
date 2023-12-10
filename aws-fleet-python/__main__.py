@@ -36,6 +36,7 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
         ),
         awsx.ec2.SubnetSpecArgs(
             type=awsx.ec2.SubnetType.PRIVATE,
+            name=f"{vpc_name}-private",
         ),
     ],
     tags={
