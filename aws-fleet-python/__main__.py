@@ -27,16 +27,16 @@ azs = aws.get_availability_zones(state="available")
 vpc_name = f"{project_name}-vpc"
 vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
     # enable_dns_support=True,
-    number_of_availability_zones=len(azs.names),
+    # number_of_availability_zones=len(azs.names),
     # instance_tenancy="default",
     subnet_specs=[
         awsx.ec2.SubnetSpecArgs(
             type=awsx.ec2.SubnetType.PUBLIC,
-            name=f"{vpc_name}-public",
+            # name=f"{vpc_name}-public",
         ),
         awsx.ec2.SubnetSpecArgs(
             type=awsx.ec2.SubnetType.PRIVATE,
-            name=f"{vpc_name}-private",
+            # name=f"{vpc_name}-private",
         ),
     ],
     tags={
