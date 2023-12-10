@@ -1,0 +1,6 @@
+name: aws-fleet-python
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A Python program to deploy a VM on Amazon EC2 using spot fleet (via spot request)
