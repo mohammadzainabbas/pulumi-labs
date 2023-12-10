@@ -33,13 +33,13 @@ vpc = awsx.ec2.Vpc(vpc_name,
     subnet_specs=[
         awsx.ec2.SubnetSpec(
             name=f"{project_name}-public-subnet",
+            type=
             cidr_mask=24,
             availability_zone=azs.names[0],
             tags={
                 "Name": f"{project_name}-public-subnet",
                 "Project": project_name,
             },
-            map_public_ip_on_launch=True,
         ),
         awsx.ec2.SubnetSpec(
             name=f"{project_name}-private-subnet",
