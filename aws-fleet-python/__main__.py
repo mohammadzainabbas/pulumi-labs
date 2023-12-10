@@ -35,6 +35,13 @@ vpc = aws.ec2.Vpc(vpc_name,
     })
 
 # Create an internet gateway.
+igw_name = f"{project_name}-igw"
+igw = aws.ec2.InternetGateway(igw_name,
+    vpc_id=vpc.id,
+    tags={
+        "name": igw_name,
+        "project": project_name,
+    })
 
 
 # User data to start a HTTP server in the EC2 instance
