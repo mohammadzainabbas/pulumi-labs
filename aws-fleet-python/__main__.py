@@ -30,6 +30,28 @@ vpc = awsx.ec2.Vpc(vpc_name,
     enable_dns_hostnames=True,
     enable_dns_support=True,
     instance_tenancy="default",
+    subnet_specs=[
+        awsx.ec2.SubnetSpec(
+            name=f"{project_name}-public-subnet",
+            cidr_mask=24,
+            availability_zone=azs.names[0],
+            tags={
+                "Name": f"{project_name}-public-subnet",
+                "Project": project_name,
+            },
+            map_public_ip_on_launch=True,
+        ),
+        awsx.ec2.SubnetSpec(
+            name=f"{project_name}-private-subnet",
+            cidr_mask=24,
+            availability_zone=azs.names[0],
+            tags={
+                "Name": f"{project_name}-private-subnet",
+                "Project": project_name,
+            },
+            map_public_ip_on_launch=False,
+        ),
+    ],
     tags={
         "Name": vpc_name,
         "Project": project_name,
