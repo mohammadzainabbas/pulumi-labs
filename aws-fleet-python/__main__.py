@@ -37,6 +37,10 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
             cidr_mask=22,
         ),
     ],
+    nat_gateways=awsx.ec2.NatGatewayArgs(
+        number_of_nat_gateways=1,
+        allocation_strategy=awsx.ec2.NatGatewayAllocationStrategy.SINGLE,
+    ),
     tags={
         "Name": vpc_name,
         "Project": project_name,
