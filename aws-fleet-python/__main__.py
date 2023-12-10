@@ -30,8 +30,8 @@ vpc = aws.ec2.Vpc(vpc_name,
     enable_dns_support=True,
     instance_tenancy="default",
     tags={
-        "name": vpc_name,
-        "project": project_name,
+        "Name": vpc_name,
+        "Project": project_name,
     })
 
 # Create an internet gateway.
@@ -39,8 +39,8 @@ igw_name = f"{project_name}-igw"
 igw = aws.ec2.InternetGateway(igw_name,
     vpc_id=vpc.id,
     tags={
-        "name": igw_name,
-        "project": project_name,
+        "Name": igw_name,
+        "Project": project_name,
     })
 
 # Create a route table.
@@ -52,8 +52,8 @@ route_table = aws.ec2.RouteTable(route_table_name,
         aws.ec2.RouteTableRouteArgs(cidr_block=vpc.cidr_block, gateway_id="local"),
     ],
     tags={
-        "name": route_table_name,
-        "project": project_name,
+        "Name": route_table_name,
+        "Project": project_name,
     })
 
 # Create a subnet that automatically assigns new instances a public IP address.
@@ -64,8 +64,8 @@ public_subnet = aws.ec2.Subnet(public_subnet_name,
     map_public_ip_on_launch=True,
     availability_zone=azs.names[0],
     tags={
-        "name": public_subnet_name,
-        "project": project_name,
+        "Name": public_subnet_name,
+        "Project": project_name,
     })
 
 # User data to start a HTTP server in the EC2 instance
