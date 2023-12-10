@@ -25,7 +25,7 @@ vpc = aws.ec2.Vpc(f"{project_name}-vpc",
     enable_dns_hostnames=True,
     enable_dns_support=True,
     tags={
-        "Name": "vpc",
+        "Name": f"{project_name}-vpc",
     })
 
 # User data to start a HTTP server in the EC2 instance
