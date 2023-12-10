@@ -82,7 +82,6 @@ with open("user_data.sh", "r") as f:
 #         "Name": "webserver",
 #     })
 
-print(user_data)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
