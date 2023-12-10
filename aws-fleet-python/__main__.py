@@ -29,11 +29,13 @@ vpc = aws.ec2.Vpc(vpc_name,
     enable_dns_hostnames=True,
     enable_dns_support=True,
     instance_tenancy="default",
-    
     tags={
         "name": vpc_name,
         "project": project_name,
     })
+
+# Create an internet gateway.
+
 
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
