@@ -56,6 +56,12 @@ route_table = aws.ec2.RouteTable(route_table_name,
         "project": project_name,
     })
 
+# Create a subnet that automatically assigns new instances a public IP address.
+public_subnet_name = f"{project_name}-public-subnet"
+public_subnet = aws.ec2.Subnet(public_subnet_name,
+    vpc_id=vpc.id,
+    cidr_block="
+
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
 # echo "Hello, World from Pulumi!" > index.html
