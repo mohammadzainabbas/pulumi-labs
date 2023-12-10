@@ -1,5 +1,5 @@
 config:
-  aws-fleet-python:instanceTypes: t3.micro
+  aws-fleet-python:instanceTypes: ['t3.micro', 't4g.small']
   aws-fleet-python:vpcNetworkCidr: 10.0.0.0/16
   aws:region: eu-west-3
 environment:
