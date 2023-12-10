@@ -44,52 +44,6 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
     }
 ))
 
-
-
-# vpc = aws.ec2.Vpc(vpc_name,
-#     cidr_block=vpc_network_cidr,
-#     enable_dns_hostnames=True,
-#     enable_dns_support=True,
-#     instance_tenancy="default",
-#     tags={
-#         "Name": vpc_name,
-#         "Project": project_name,
-#     })
-
-# Create an internet gateway.
-igw_name = f"{project_name}-igw"
-igw = aws.ec2.InternetGateway(igw_name,
-    vpc_id=vpc.id,
-    tags={
-        "Name": igw_name,
-        "Project": project_name,
-    })
-
-# Create a route table.
-route_table_name = f"{project_name}-route-table"
-route_table = aws.ec2.RouteTable(route_table_name,
-    vpc_id=vpc.id,
-    routes=[
-        aws.ec2.RouteTableRouteArgs(cidr_block="0.0.0.0/0", gateway_id=igw.id),
-        aws.ec2.RouteTableRouteArgs(cidr_block=vpc.cidr_block, gateway_id="local"),
-    ],
-    tags={
-        "Name": route_table_name,
-        "Project": project_name,
-    })
-
-# Create a subnet that automatically assigns new instances a public IP address.
-public_subnet_name = f"{project_name}-public-subnet"
-public_subnet = aws.ec2.Subnet(public_subnet_name,
-    vpc_id=vpc.id,
-    cidr_block=vpc_network_cidr.split('/')[0] + "/24",
-    map_public_ip_on_launch=True,
-    availability_zone=azs.names[0],
-    tags={
-        "Name": public_subnet_name,
-        "Project": project_name,
-    })
-
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
 # echo "Hello, World from Pulumi!" > index.html
