@@ -4,7 +4,7 @@ from datetime import datetime
 
 # Get some configuration values or set default values.
 config = pulumi.Config()
-instance_type = config.get("instanceType") if config.get("instanceType") is not None else "t3.micro"
+instance_type = config.get("instanceTypes") if config.get("instanceTypes") is not None else "t3.micro"
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
