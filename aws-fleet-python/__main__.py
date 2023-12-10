@@ -60,7 +60,13 @@ route_table = aws.ec2.RouteTable(route_table_name,
 public_subnet_name = f"{project_name}-public-subnet"
 public_subnet = aws.ec2.Subnet(public_subnet_name,
     vpc_id=vpc.id,
-    cidr_block="
+    cidr_block=vpc_network_cidr.split('/')[0] + "/24",
+    map_public_ip_on_launch=True,
+    availability_zone=azs.names[0],
+    tags={
+        "name": public_subnet_name,
+        "project": project_name,
+    })
 
 # User data to start a HTTP server in the EC2 instance
 # user_data = """#!/bin/bash
