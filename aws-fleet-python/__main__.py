@@ -22,6 +22,8 @@ ami = aws.ec2.get_ami(
 # echo "Hello, World from Pulumi!" > index.html
 # nohup python -m SimpleHTTPServer 80 &
 # """
+with open("user_data.sh", "r") as f:
+    user_data = f.read()
 
 # Create VPC.
 vpc = aws.ec2.Vpc("vpc",
