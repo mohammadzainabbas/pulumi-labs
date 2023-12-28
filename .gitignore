@@ -2,6 +2,3 @@
 venv/
 .env
 .DS_Store
-
-commit.sh
-update_git.py
