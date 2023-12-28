@@ -139,7 +139,6 @@ def process_user_data(path: str, aws_region: str, eip_association_id: str):
         userdata = f.read()
     userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_association_id)
     return base64.b64encode(userdata.encode()).decode()
-    
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
