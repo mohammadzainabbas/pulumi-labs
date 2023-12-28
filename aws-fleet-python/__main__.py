@@ -133,6 +133,13 @@ launch_template = aws.ec2.LaunchTemplate(
     key_name=keypair,
     instance_market_options=aws.ec2.LaunchTemplateInstanceMarketOptionsArgs(
         market_type="spot",
+        spot_options=aws.ec2.LaunchTemplateInstanceMarketOptionsSpotOptionsArgs(
+            block_duration_minutes=60,
+            instance_interruption_behavior="terminate",
+            max_price="0.05",
+            spot_instance_type="one-time",
+            valid_until=datetime(2021, 12, 31, 0, 0),
+        )
         ),
     instance_type="c5.large")
 
