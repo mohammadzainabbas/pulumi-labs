@@ -86,7 +86,7 @@ security_group = aws.ec2.SecurityGroup(
 
 # Define the EBS block device mappings
 block_device_mappings = [
-    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+    aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
         device_name="/dev/sda1",
         ebs=aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingEbsArgs(
             delete_on_termination=True,
