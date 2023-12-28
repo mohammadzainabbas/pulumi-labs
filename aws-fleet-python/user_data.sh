@@ -7,4 +7,4 @@ ALLOCATION_ID=$2  # replace <YourRegion> with your region
 aws --region "$AWS_REGION" ec2 associate-address --instance-id "$INSTANCE_ID" --allocation-id "$ALLOCATION_ID"   # replace <YourRegion> with your region
 
 echo "Hello, World from Pulumi!" > index.html
-echo nohup python3 -m http.server 80 &
+nohup python3 -m http.server 80 &
