@@ -153,32 +153,32 @@ launch_template = aws.ec2.LaunchTemplate(
     }
 )
 
-# Override the instance type for the spot fleet
-auto_scaling_group_overrides = []
-for instance_type in instance_types:
-    auto_scaling_group_overrides.append(
-        aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(    
-            instance_type=instance_type,
-            weighted_capacity="1",
-        )
-    )
+# # Override the instance type for the spot fleet
+# auto_scaling_group_overrides = []
+# for instance_type in instance_types:
+#     auto_scaling_group_overrides.append(
+#         aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(    
+#             instance_type=instance_type,
+#             weighted_capacity="1",
+#         )
+#     )
 
-# Create an auto scaling group with the launch template
-auto_scaling_group_name = f"{project_name}-auto-scaling-group"
-auto_scaling_group = aws.autoscaling.Group(
-    auto_scaling_group_name,
-    availability_zones=azs.names,
-    desired_capacity=1,
-    max_size=1,
-    min_size=1,
-    mixed_instances_policy=aws.autoscaling.GroupMixedInstancesPolicyArgs(
-        launch_template=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs(
-            launch_template_specification=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs(
-                launch_template_id=launch_template.id,
-            ),
-            overrides=auto_scaling_group_overrides,
-        ),
-    ))
+# # Create an auto scaling group with the launch template
+# auto_scaling_group_name = f"{project_name}-auto-scaling-group"
+# auto_scaling_group = aws.autoscaling.Group(
+#     auto_scaling_group_name,
+#     availability_zones=azs.names,
+#     desired_capacity=1,
+#     max_size=1,
+#     min_size=1,
+#     mixed_instances_policy=aws.autoscaling.GroupMixedInstancesPolicyArgs(
+#         launch_template=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs(
+#             launch_template_specification=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs(
+#                 launch_template_id=launch_template.id,
+#             ),
+#             overrides=auto_scaling_group_overrides,
+#         ),
+#     ))
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
