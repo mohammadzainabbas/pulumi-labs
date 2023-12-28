@@ -145,7 +145,7 @@ launch_template = aws.ec2.LaunchTemplate(
         #     spot_instance_type="one-time",
         #     valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
         #     ),
-        # ),
+        ),
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
