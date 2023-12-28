@@ -102,6 +102,12 @@ security_group = aws.ec2.SecurityGroup(
 
 # Create a static IP address for the instance.
 # elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", vpc=True)
+aws_eip = aws.ec2.Eip("aws_eip",
+    domain="vpc",
+    network_border_group="eu-west-3",
+    public_ipv4_pool="amazon",
+    vpc=True,
+    opts=pulumi.ResourceOptions(protect=True))
 
 # Define the EBS block device mappings
 block_device_mappings = [
@@ -154,7 +160,8 @@ launch_template = aws.ec2.LaunchTemplate(
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
     # user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
-    user_data=process_user_data(f"{user_data_file}", aws_region, eip_association_id),
+    user_data=process_user_data(f"{user_data_file}", aws_region, aws_eip.allocation_id),
+    # user_data=process_user_data(f"{user_data_file}", aws_region, eip_association_id),
     # user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
     tags={
