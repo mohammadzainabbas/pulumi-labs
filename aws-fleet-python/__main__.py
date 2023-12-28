@@ -9,7 +9,7 @@ project_name = "aws-graphstorm"
 config = pulumi.Config()
 instance_types = config.get("instanceTypes") if config.get("instanceTypes") is not None else ['t3.micro', 't4g.small']
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
-aws_key = config.get("key") if config.get("key") is not None else "jarvis"
+aws_key = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
