@@ -94,7 +94,6 @@ security_group = aws.ec2.SecurityGroup(
 #         "Name": "webserver",
 #     })
 
-
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
 # pulumi.export("instance_types", instance_types)
