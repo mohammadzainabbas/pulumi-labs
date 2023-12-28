@@ -1,5 +1,18 @@
 config:
   aws-fleet-python:instanceTypes:
+    - r5n.large
+    - r4.large
+    - r5dn.large
+    - i4i.large
+    - i3.large
+    - m7i-flex.large
+    - m7i.large
+    - r5ad.large
+    - r5d.large"
+    - c5a.large
+    - c5d.large
+    - c5n.large
+    - inf1.xlarge
     - t3.micro
     - t4g.small
   aws-fleet-python:keypair: jarvis

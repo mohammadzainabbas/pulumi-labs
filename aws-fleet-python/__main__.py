@@ -107,5 +107,3 @@ pulumi.export("vpc", vpc_name)
 # pulumi.export("ip", server.public_ip)
 # pulumi.export("hostname", server.public_dns)
 # pulumi.export("url", server.public_dns.apply(lambda public_dns: f"http://{public_dns}"))
-
-[r5n.large, r4.large, r5dn.large, i4i.large, i3.large, m7i-flex.large, m7i.large, r5ad.large, r5d.large c5a.large, c5d.large, c5n.large, inf1.xlarge]
