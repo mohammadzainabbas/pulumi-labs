@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+# set -ex
 
 # INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 INSTANCE_ID=169.254.169.254
