@@ -143,6 +143,7 @@ launch_template = aws.ec2.LaunchTemplate(
             ),
         ),
     instance_type="c5.large",
+    vpc_security_group_ids=[security_group.id],
 )
 
 # Define the EBS block device mappings
