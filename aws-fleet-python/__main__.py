@@ -84,8 +84,10 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
-# 
-example_launch_template = aws.ec2.LaunchTemplate("exampleLaunchTemplate",
+# Launch template for the spot fleet
+launch_template_name = f"{project_name}-launch-template"
+launch_template = aws.ec2.LaunchTemplate(
+    launch_template_name,
     name_prefix="example",
     image_id=data["aws_ami"]["example"]["id"],
     instance_type="c5.large")
