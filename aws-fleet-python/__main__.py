@@ -149,7 +149,8 @@ launch_template = aws.ec2.LaunchTemplate(
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
-    user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
+    user_data=process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id),
+    # user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
     tags={
         "Name": launch_template_name,
