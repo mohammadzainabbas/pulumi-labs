@@ -18,6 +18,15 @@ valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
+def process_user_data():
+    with open(user_data_file, "r") as f:
+        lines = f.readlines()
+    lines = [line.replace("{{AWS_REGION}}", aws_region) for line in lines]
+    lines = [line.replace("{{VALID_UNTIL}}", valid_until.strftime("%Y-%m-%dT%H:%M:%SZ")) for line in lines]
+    lines = [line.replace("{{INSTANCE_TYPES}}", str(instance_types)) for line in lines]
+    with open(user_data_file, "w") as f:
+        f.writelines(lines)
+
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
     filters=[
