@@ -118,8 +118,8 @@ pulumi.export("vpc", vpc_name)
     "m7i.large",
     "r5ad.large",
     "r5d.large"
-    "inf1.xlarge",
     "c5a.large",
     "c5d.large",
     "c5n.large",
+    "inf1.xlarge",
 ]
