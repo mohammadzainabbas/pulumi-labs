@@ -140,7 +140,7 @@ launch_template = aws.ec2.LaunchTemplate(
             max_price="0.04",
             spot_instance_type="persistent",
             valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        )
+            ),
         ),
     instance_type="c5.large")
 
