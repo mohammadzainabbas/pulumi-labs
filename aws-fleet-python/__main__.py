@@ -182,9 +182,9 @@ launch_template = aws.ec2.LaunchTemplate(
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
-# pulumi.export("instance_types", instance_types)
 pulumi.export("azs", azs.names)
 pulumi.export("vpc", vpc_name)
+pulumi.export("security_group", security_group)
 pulumi.export("launch_template", launch_template)
 
 # pulumi.export("ip", server.public_ip)
