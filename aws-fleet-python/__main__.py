@@ -55,14 +55,6 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
     }
 ))
 
-# user_data = """#!/bin/bash
-# echo "Hello, World from Pulumi!" > index.html
-# nohup python -m SimpleHTTPServer 80 &
-# """
-# User data to start a HTTP server in the EC2 instance
-# with open(f"user_data.sh", "r") as f:
-#     user_data = f.read()
-
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
 security_group_name = f"{project_name}-security-group"
 security_group = aws.ec2.SecurityGroup(
@@ -143,15 +135,6 @@ launch_template = aws.ec2.LaunchTemplate(
     block_device_mappings=block_device_mappings,
     image_id=ami,
     key_name=keypair,
-    # instance_market_options=aws.ec2.LaunchTemplateInstanceMarketOptionsArgs(
-    #     market_type="spot",
-    #     # spot_options=aws.ec2.LaunchTemplateInstanceMarketOptionsSpotOptionsArgs(
-    #     #     instance_interruption_behavior="terminate",
-    #     #     max_price="0.04",
-    #     #     spot_instance_type="one-time",
-    #     #     valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
-    #     #     ),
-    #     ),
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
@@ -176,7 +159,6 @@ for instance_type in instance_types:
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
     auto_scaling_group_name,
-    # availability_zones=azs.names,
     desired_capacity=1,
     max_size=1,
     min_size=1,
