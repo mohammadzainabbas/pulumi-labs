@@ -128,7 +128,6 @@ block_device_mappings = [
     )
 ]
 
-
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
 launch_template = aws.ec2.LaunchTemplate(
