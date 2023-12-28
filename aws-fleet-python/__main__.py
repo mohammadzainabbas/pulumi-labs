@@ -110,9 +110,9 @@ pulumi.export("vpc", vpc_name)
 
 [
     "r5n.large",
+    "r4.large",
     "r5dn.large",
     "i4i.large",
-    "r4.large",
     "i3.large",
     "m7i-flex.large",
     "m7i.large",
