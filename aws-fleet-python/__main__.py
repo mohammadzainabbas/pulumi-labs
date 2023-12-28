@@ -21,7 +21,7 @@ user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
 # Process the user data file
-def process_user_data(path, aws_region, eip_association_id):
+def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
         userdata = f.read()
     userdata = userdata.replace("<AWS Region>", aws_region)
@@ -158,7 +158,7 @@ launch_template = aws.ec2.LaunchTemplate(
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
-    # user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
+    user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
     user_data=process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
