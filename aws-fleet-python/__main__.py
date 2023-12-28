@@ -58,8 +58,8 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 # nohup python -m SimpleHTTPServer 80 &
 # """
 # User data to start a HTTP server in the EC2 instance
-with open(f"user_data.sh", "r") as f:
-    user_data = f.read()
+# with open(f"user_data.sh", "r") as f:
+#     user_data = f.read()
 
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
 security_group_name = f"{project_name}-security-group"
@@ -147,7 +147,7 @@ launch_template = aws.ec2.LaunchTemplate(
         ),
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
-    user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{}"))
+    user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}")),
 )
 
 # Define the EBS block device mappings
