@@ -153,6 +153,28 @@ launch_template = aws.ec2.LaunchTemplate(
     }
 )
 
+# Override the instance type for the spot fleet
+auto_scaling_group_overrides = []
+for instance_type in instance_types:
+    auto_scaling_group_overrides.append(
+        aws.ec2.LaunchTemplateOverridesArgs(    
+            instance_type=instance_type,
+            weighted_capacity="1",
+        )
+    )
+
+overrides = [
+    aws.ec2.LaunchTemplateOverridesArgs(
+        instance_type="c4.large",
+        weighted_capacity="3",
+    ),
+    aws.ec2.LaunchTemplateOverridesArgs(
+        instance_type="c3.large",
+        weighted_capacity="2",
+    ),
+]
+
+# Create an auto scaling group with the launch template
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
     auto_scaling_group_name,
