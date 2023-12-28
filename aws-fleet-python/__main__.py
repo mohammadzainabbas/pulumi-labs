@@ -83,17 +83,18 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
-# # Create and launch an EC2 instance into the public subnet.
-# server = aws.ec2.Instance("server",
-#     instance_type=instance_type,
-#     subnet_id=subnet.id,
-#     vpc_security_group_ids=[sec_group.id],
-#     user_data=user_data,
-#     ami=ami,
-#     tags={
-#         "Name": "webserver",
-#     }
-#)
+# Create and launch an EC2 instance into the public subnet.
+instance_name = f"{project_name}-instance"
+instance = aws.ec2.Instance("server",
+    instance_type=instance_type,
+    subnet_id=subnet.id,
+    vpc_security_group_ids=[sec_group.id],
+    user_data=user_data,
+    ami=ami,
+    tags={
+        "Name": "webserver",
+    }
+)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
