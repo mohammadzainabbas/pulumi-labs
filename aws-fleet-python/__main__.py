@@ -156,7 +156,7 @@ launch_template = aws.ec2.LaunchTemplate(
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
     auto_scaling_group_name,
-    availability_zones=["us-east-1a"],
+    availability_zones=azs.names,
     desired_capacity=1,
     max_size=1,
     min_size=1,
