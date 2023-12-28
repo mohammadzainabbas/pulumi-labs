@@ -213,7 +213,7 @@ pulumi.export("azs", azs.names)
 pulumi.export("vpc", vpc_name)
 pulumi.export("security_group", security_group.id)
 pulumi.export("launch_template", launch_template.id)
-pulumi.export("auto_scaling_group", auto_scaling_group)
+pulumi.export("auto_scaling_group", auto_scaling_group.id)
 
 # pulumi.export("ip", server.public_ip)
 # pulumi.export("hostname", server.public_dns)
