@@ -18,16 +18,6 @@ valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
-# Process the user data file
-def process_user_data(path: str, aws_region: str, eip_association_id: str):
-    with open(path, "r") as f:
-        userdata = f.read()
-    userdata = userdata.replace("<AWS Region>", aws_region)
-    userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
-    return base64.b64encode(userdata.encode()).decode()
-
-# _user_data = partial(process_user_data, f"{user_data_file}", aws_region)
-
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
     filters=[
@@ -98,14 +88,6 @@ security_group = aws.ec2.SecurityGroup(
         "Project": project_name,
     }
 )
-
-# Create a static IP address for the instance.
-# elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", vpc=True)
-elastic_ip = aws.ec2.Eip("aws_eip",
-    network_border_group=aws_region,
-    public_ipv4_pool="amazon",
-    vpc=True,
-    opts=pulumi.ResourceOptions(protect=True))
 
 # Define the EBS block device mappings
 block_device_mappings = [
