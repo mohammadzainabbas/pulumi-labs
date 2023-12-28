@@ -188,6 +188,18 @@ auto_scaling_group = aws.autoscaling.Group(
         ),
     ),
     # vpc_zone_identifiers=vpc.public_subnet_ids,
+    tags=[
+        aws.autoscaling.GroupTagArgs(
+            key="Name",
+            value=auto_scaling_group_name,
+            propagate_at_launch=True,
+        ),
+        aws.autoscaling.GroupTagArgs(
+            key="Project",
+            value=project_name,
+            propagate_at_launch=True,
+        ),
+    ],
 )
 
 # Export the instance's publicly accessible IP address and hostname.
