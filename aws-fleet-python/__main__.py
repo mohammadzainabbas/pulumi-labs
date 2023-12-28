@@ -88,7 +88,7 @@ security_group = aws.ec2.SecurityGroup(
 block_device_mappings = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
         device_name="/dev/sda1",
-        ebs=aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingEbsArgs(
+        ebs=aws.ec2.SpotFleetRequestLaunchSpecificationBlockDeviceMappingEbsArgs(
             delete_on_termination=True,
             iops=3000,
             snapshot_id="snap-01c7cdb5e9eaf8fde",
