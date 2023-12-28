@@ -26,7 +26,7 @@ azs = aws.get_availability_zones(state="available")
 # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
 vpc_name = f"{project_name}-vpc"
 vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
-    cidr_block=f"{vpc_network_cidr}/24",
+    cidr_block=vpc_network_cidr,
     number_of_availability_zones=len(azs.names),
     subnet_specs=[
         awsx.ec2.SubnetSpecArgs(
