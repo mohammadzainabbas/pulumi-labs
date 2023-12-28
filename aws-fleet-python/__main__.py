@@ -101,6 +101,14 @@ block_device_mappings = [
     aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
         device_name="/dev/sdb",
         virtual_name="ephemeral0",
+        ebs=aws.ec2.LaunchTemplateBlockDeviceMappingEbsArgs(
+            delete_on_termination=True,
+            volume_size=10,
+            iops=3000,
+            volume_type="gp3",
+            throughput=125,
+            encrypted=False
+        ),
     ),
     aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
         device_name="/dev/sdc",
