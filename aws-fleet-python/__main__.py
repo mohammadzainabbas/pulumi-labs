@@ -55,8 +55,6 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 with open(f"user_data.sh", "r") as f:
     user_data = f.read()
 
-print(user_data)
-
 # # Create VPC.
 # vpc = aws.ec2.Vpc("vpc",
 #     cidr_block=vpc_network_cidr,
