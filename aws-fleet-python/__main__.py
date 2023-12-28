@@ -209,6 +209,6 @@ pulumi.export("launch_template", launch_template.id)
 # pulumi.export("auto_scaling_group_overrides", auto_scaling_group_overrides)
 pulumi.export("auto_scaling_group", auto_scaling_group.id)
 
-pulumi.export("ip", public_ip.public_ip)
+pulumi.export("ip", elastic_ip.public_ip)
 # pulumi.export("hostname", server.public_dns)
 pulumi.export("url", elastic_ip.public_ip.apply(lambda public_ip: f"http://{public_ip}"))
