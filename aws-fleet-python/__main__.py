@@ -18,7 +18,12 @@ valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
-
+# Process the user data file
+def process_user_data(path: str, aws_region: str, eip_association_id: str):
+    with open(path, "r") as f:
+        userdata = f.read()
+    userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_association_id)
+    return base64.b64encode(userdata.encode()).decode()
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
@@ -133,12 +138,6 @@ block_device_mappings = [
         ),
     )
 ]
-
-def process_user_data(path: str, aws_region: str, eip_association_id: str):
-    with open(path, "r") as f:
-        userdata = f.read()
-    userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_association_id)
-    return base64.b64encode(userdata.encode()).decode()
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
