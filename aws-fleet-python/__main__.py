@@ -137,13 +137,9 @@ block_device_mappings = [
 def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
         userdata = f.read()
-    userdata.replace("<AWS Region>", aws_region)
-    userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
-    lines = [line.replace("{{AWS_REGION}}", aws_region) for line in lines]
-    lines = [line.replace("{{VALID_UNTIL}}", valid_until.strftime("%Y-%m-%dT%H:%M:%SZ")) for line in lines]
-    lines = [line.replace("{{INSTANCE_TYPES}}", str(instance_types)) for line in lines]
-    with open(user_data_file, "w") as f:
-        f.writelines(lines)
+    userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_association_id)
+    return base64.b64encode(userdata.encode()).decode()
+    
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
