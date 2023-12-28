@@ -160,8 +160,8 @@ launch_template = aws.ec2.LaunchTemplate(
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
     # user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
-    user_data=process_user_data(f"{user_data_file}", aws_region, aws_eip.allocation_id),
-    # user_data=process_user_data(f"{user_data_file}", aws_region, eip_association_id),
+    # user_data=process_user_data(f"{user_data_file}", aws_region, aws_eip.allocation_id),
+    user_data=process_user_data(f"{user_data_file}", aws_region, eip_association_id),
     # user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
     tags={
@@ -224,6 +224,7 @@ auto_scaling_group = aws.autoscaling.Group(
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
+pulumi.export("aws_eip", aws_eip)
 pulumi.export("ami", ami)
 pulumi.export("azs", azs.names)
 pulumi.export("vpc", vpc_name)
