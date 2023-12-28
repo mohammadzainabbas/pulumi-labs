@@ -83,7 +83,6 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
-
 # # Create and launch an EC2 instance into the public subnet.
 # server = aws.ec2.Instance("server",
 #     instance_type=instance_type,
