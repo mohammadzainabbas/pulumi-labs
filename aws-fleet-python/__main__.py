@@ -89,11 +89,12 @@ instance = aws.ec2.Instance(
     instance_name,
     instance_type=instance_type,
     subnet_id=subnet.id,
-    vpc_security_group_ids=[sec_group.id],
+    vpc_security_group_ids=[security_group.id],
     user_data=user_data,
     ami=ami,
     tags={
-        "Name": "webserver",
+        "Name": instance_name,
+        "Project": project_name,
     }
 )
 
