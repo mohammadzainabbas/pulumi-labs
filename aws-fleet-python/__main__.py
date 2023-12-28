@@ -103,7 +103,7 @@ security_group = aws.ec2.SecurityGroup(
 # Create a static IP address for the instance.
 # elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", vpc=True)
 aws_eip = aws.ec2.Eip("aws_eip",
-    domain="vpc",
+    # domain="vpc",
     network_border_group="eu-west-3",
     public_ipv4_pool="amazon",
     vpc=True,
