@@ -185,7 +185,9 @@ auto_scaling_group = aws.autoscaling.Group(
             on_demand_percentage_above_base_capacity=0,
             spot_allocation_strategy="capacity-optimized",
         ),
-    ))
+    ),
+    vpc_zone_identifiers=vpc.public_subnet_ids,
+)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
