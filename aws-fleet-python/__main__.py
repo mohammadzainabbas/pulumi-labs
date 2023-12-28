@@ -153,6 +153,7 @@ launch_template = aws.ec2.LaunchTemplate(
     }
 )
 
+aws.autoscaling.Group
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
