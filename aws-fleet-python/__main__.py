@@ -84,6 +84,30 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
+# Define the EBS block device mappings
+block_device_mappings = [
+    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+        device_name="/dev/sda1",
+        ebs=aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingEbsArgs(
+            delete_on_termination=True,
+            iops=3000,
+            snapshot_id="snap-01c7cdb5e9eaf8fde",
+            volume_size=100,
+            volume_type="gp3",
+            throughput=125,
+            encrypted=False
+        ),
+    ),
+    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+        device_name="/dev/sdb",
+        virtual_name="ephemeral0",
+    ),
+    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+        device_name="/dev/sdc",
+        virtual_name="ephemeral1",
+    )
+]
+
 # Create and launch an EC2 instance into the public subnet.
 instance_name = f"{project_name}-instance"
 instance = aws.ec2.Instance(
