@@ -23,7 +23,8 @@ def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
         userdata = f.read()
     userdata = userdata.replace("<AWS Region>", aws_region)
-    userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
+    # userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
+    userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id.apply(lambda x: str(x)))
     return base64.b64encode(userdata.encode()).decode()
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
