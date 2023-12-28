@@ -85,7 +85,7 @@ security_group = aws.ec2.SecurityGroup(
 )
 
 # Define the EBS block device mappings
-block_device_mappings = [
+ebs_block_devices = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
         device_name="/dev/sda1",
         delete_on_termination=True,
@@ -95,7 +95,9 @@ block_device_mappings = [
         throughput=125,
         volume_size=100,
         volume_type="gp3",
-    ),
+    )
+]
+ephemeral_block_devices = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceArgs(
         device_name="/dev/sdb",
         virtual_name="ephemeral0",
