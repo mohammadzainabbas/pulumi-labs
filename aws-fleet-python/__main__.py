@@ -153,7 +153,30 @@ launch_template = aws.ec2.LaunchTemplate(
     }
 )
 
-aws.autoscaling.Group
+auto_scaling_group_name = f"{project_name}-auto-scaling-group"
+auto_scaling_group = aws.autoscaling.Group(
+    auto_scaling_group_name,
+    availability_zones=["us-east-1a"],
+    desired_capacity=1,
+    max_size=1,
+    min_size=1,
+    mixed_instances_policy=aws.autoscaling.GroupMixedInstancesPolicyArgs(
+        launch_template=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateArgs(
+            launch_template_specification=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs(
+                launch_template_id=example_launch_template.id,
+            ),
+            overrides=[
+                aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(
+                    instance_type="c4.large",
+                    weighted_capacity="3",
+                ),
+                aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(
+                    instance_type="c3.large",
+                    weighted_capacity="2",
+                ),
+            ],
+        ),
+    ))
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
