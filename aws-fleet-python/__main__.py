@@ -18,6 +18,7 @@ keypair = config.get("keypair") if config.get("keypair") is not None else "jarvi
 
 valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
+eip_association_id = "eipalloc-0f30ff698cc4d95f5"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
 # Process the user data file
@@ -102,7 +103,7 @@ security_group = aws.ec2.SecurityGroup(
 )
 
 # Create a static IP address for the instance.
-elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", vpc=True)
+# elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", vpc=True)
 
 # Define the EBS block device mappings
 block_device_mappings = [
