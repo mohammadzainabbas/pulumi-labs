@@ -89,7 +89,7 @@ block_device_mappings = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
         device_name="/dev/sda1",
         iops=3000,
-        
+
         ebs=aws.ec2.SpotFleetRequestLaunchSpecificationBlockDeviceMappingEbsArgs(
             delete_on_termination=True,
             snapshot_id="snap-01c7cdb5e9eaf8fde",
@@ -99,7 +99,7 @@ block_device_mappings = [
             encrypted=False
         ),
     ),
-    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+    aws.ec2.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceArgs(
         device_name="/dev/sdb",
         virtual_name="ephemeral0",
     ),
