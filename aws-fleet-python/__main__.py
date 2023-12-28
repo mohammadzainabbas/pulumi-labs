@@ -163,17 +163,6 @@ for instance_type in instance_types:
         )
     )
 
-overrides = [
-    aws.ec2.LaunchTemplateOverridesArgs(
-        instance_type="c4.large",
-        weighted_capacity="3",
-    ),
-    aws.ec2.LaunchTemplateOverridesArgs(
-        instance_type="c3.large",
-        weighted_capacity="2",
-    ),
-]
-
 # Create an auto scaling group with the launch template
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
