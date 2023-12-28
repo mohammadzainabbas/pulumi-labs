@@ -84,6 +84,12 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
+# 
+example_launch_template = aws.ec2.LaunchTemplate("exampleLaunchTemplate",
+    name_prefix="example",
+    image_id=data["aws_ami"]["example"]["id"],
+    instance_type="c5.large")
+
 # Define the EBS block device mappings
 ebs_block_devices = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
