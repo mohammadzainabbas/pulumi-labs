@@ -153,59 +153,6 @@ launch_template = aws.ec2.LaunchTemplate(
     }
 )
 
-# Define the EBS block device mappings
-ebs_block_devices = [
-    aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
-        device_name="/dev/sda1",
-        delete_on_termination=True,
-        encrypted=False,
-        iops=3000,
-        snapshot_id="snap-01c7cdb5e9eaf8fde",
-        throughput=125,
-        volume_size=100,
-        volume_type="gp3",
-    )
-]
-ephemeral_block_devices = [
-    aws.ec2.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceArgs(
-        device_name="/dev/sdb",
-        virtual_name="ephemeral0",
-    ),
-    aws.ec2.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceArgs(
-        device_name="/dev/sdc",
-        virtual_name="ephemeral1",
-    )
-]
-
-# Define the launch template configurations for the different instance types
-launch_template_configs = []
-for instance_type in instance_types:
-    launch_template_configs.append(
-        aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
-            ami=ami,
-            instance_type=instance_type,
-            key_name=keypair,
-            vpc_security_group_ids=[security_group.id],
-            ebs_block_devices=ebs_block_devices,
-            ephemeral_block_devices=ephemeral_block_devices,
-        )
-    )
-
-
-# Create and launch an EC2 instance into the public subnet.
-instance_name = f"{project_name}-instance"
-instance = aws.ec2.Instance(
-    instance_name,
-    instance_type=instance_type,
-    subnet_id=subnet.id,
-    vpc_security_group_ids=[security_group.id],
-    user_data=user_data,
-    ami=ami,
-    tags={
-        "Name": instance_name,
-        "Project": project_name,
-    }
-)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("ami", ami)
