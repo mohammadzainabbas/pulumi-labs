@@ -8,7 +8,7 @@ config:
     - m7i-flex.large
     - m7i.large
     - r5ad.large
-    - r5d.large"
+    - r5d.large
     - c5a.large
     - c5d.large
     - c5n.large
