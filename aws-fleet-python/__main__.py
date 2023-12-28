@@ -30,7 +30,7 @@ def process_user_data(path: str, aws_region: str, eip_association_id: str):
     userdata = pulumi.Output.all(userdata, eip_association_id).apply(lambda args: args[0].replace("<Elastic IP Allocation-ID>", str(args[1])))
     return base64.b64encode(userdata.encode()).decode()
 
-_user_data = partial(process_user_data, f"{user_data_file}", aws_region)
+# _user_data = partial(process_user_data, f"{user_data_file}", aws_region)
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
@@ -158,8 +158,8 @@ launch_template = aws.ec2.LaunchTemplate(
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
-    user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
-    # user_data=process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id),
+    # user_data=pulumi.Output.all(elastic_ip.association_id).apply(lambda args: _user_data(*args)),
+    user_data=process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path, aws_region, eip_association_id: process_user_data(path, aws_region, eip_association_id))(f"{user_data_file}", aws_region, elastic_ip.association_id),
     # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
     tags={
