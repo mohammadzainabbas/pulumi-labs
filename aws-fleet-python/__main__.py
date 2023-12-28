@@ -88,16 +88,13 @@ security_group = aws.ec2.SecurityGroup(
 block_device_mappings = [
     aws.ec2.SpotFleetRequestLaunchSpecificationEbsBlockDeviceArgs(
         device_name="/dev/sda1",
+        delete_on_termination=True,
         iops=3000,
-
-        ebs=aws.ec2.SpotFleetRequestLaunchSpecificationBlockDeviceMappingEbsArgs(
-            delete_on_termination=True,
-            snapshot_id="snap-01c7cdb5e9eaf8fde",
-            volume_size=100,
-            volume_type="gp3",
-            throughput=125,
-            encrypted=False
-        ),
+        snapshot_id="snap-01c7cdb5e9eaf8fde",
+        volume_size=100,
+        volume_type="gp3",
+        throughput=125,
+        encrypted=False,
     ),
     aws.ec2.SpotFleetRequestLaunchSpecificationEphemeralBlockDeviceArgs(
         device_name="/dev/sdb",
