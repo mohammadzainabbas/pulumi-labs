@@ -131,6 +131,9 @@ launch_template = aws.ec2.LaunchTemplate(
     block_device_mappings=block_device_mappings,
     image_id=ami,
     key_name=keypair,
+    instance_market_options=aws.ec2.LaunchTemplateInstanceMarketOptionsArgs(
+        market_type="spot",
+        ),
     instance_type="c5.large")
 
 # Define the EBS block device mappings
