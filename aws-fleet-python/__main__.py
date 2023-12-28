@@ -134,7 +134,7 @@ block_device_mappings = [
     )
 ]
 
-def process_user_data():
+def process_user_data(path: str, aws_region: str, elastic_assio: datetime, instance_types: list):
     with open(user_data_file, "r") as f:
         lines = f.readlines()
     lines = [line.replace("{{AWS_REGION}}", aws_region) for line in lines]
