@@ -142,7 +142,8 @@ launch_template = aws.ec2.LaunchTemplate(
             valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
             ),
         ),
-    instance_type="c5.large")
+    instance_type="c5.large",
+)
 
 # Define the EBS block device mappings
 ebs_block_devices = [
