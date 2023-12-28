@@ -139,7 +139,7 @@ launch_template = aws.ec2.LaunchTemplate(
             instance_interruption_behavior="terminate",
             max_price="0.04",
             spot_instance_type="persistent",
-            valid_until=datetime(2021, 12, 31, 0, 0),
+            valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
         )
         ),
     instance_type="c5.large")
