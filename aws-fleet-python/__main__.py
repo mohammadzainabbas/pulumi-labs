@@ -15,6 +15,7 @@ keypair = config.get("keypair") if config.get("keypair") is not None else "jarvi
 
 valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
+instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
