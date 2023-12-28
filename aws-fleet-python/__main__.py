@@ -25,9 +25,7 @@ def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
         userdata = f.read()
     userdata = userdata.replace("<AWS Region>", aws_region)
-    # userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
-    # userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id.apply(lambda x: str(x)))
-    userdata = pulumi.Output.all(userdata, eip_association_id).apply(lambda args: args[0].replace("<Elastic IP Allocation-ID>", str(args[1])))
+    userdata = userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
     return base64.b64encode(userdata.encode()).decode()
 
 # _user_data = partial(process_user_data, f"{user_data_file}", aws_region)
