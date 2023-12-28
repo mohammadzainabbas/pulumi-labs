@@ -7,7 +7,7 @@ from json import loads
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
-aws_region = aws.get_region()
+aws_region = aws.get_region().name
 project_name = "aws-graphstorm"
 config = pulumi.Config()
 instance_types = config.get("instanceTypes") if config.get("instanceTypes") is not None else ['t3.micro', 't4g.small']
