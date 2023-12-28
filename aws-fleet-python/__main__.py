@@ -21,7 +21,7 @@ user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
 # Process the user data file
-def process_user_data(path: str, aws_region: str, eip_association_id: str):
+def process_user_data(path, aws_region, eip_association_id):
     with open(path, "r") as f:
         userdata = f.read()
     userdata = userdata.replace("<AWS Region>", aws_region)
