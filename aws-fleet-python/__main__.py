@@ -186,7 +186,7 @@ auto_scaling_group = aws.autoscaling.Group(
             on_demand_base_capacity=0,
             on_demand_percentage_above_base_capacity=0,
             spot_allocation_strategy="price-capacity-optimized",
-            spot_max_price=launch_template.instance_market_options.spot_options.max_price,
+            spot_max_price="0.04",
         ),
     ),
     # vpc_zone_identifiers=vpc.public_subnet_ids,
