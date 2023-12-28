@@ -187,7 +187,7 @@ auto_scaling_group = aws.autoscaling.Group(
             spot_max_price=launch_template.instance_market_options.spot_options.max_price,
         ),
     ),
-    vpc_zone_identifiers=vpc.public_subnet_ids,
+    # vpc_zone_identifiers=vpc.public_subnet_ids,
 )
 
 # Export the instance's publicly accessible IP address and hostname.
