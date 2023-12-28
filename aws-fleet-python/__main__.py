@@ -77,7 +77,7 @@ security_group = aws.ec2.SecurityGroup(
         )
     ],
     tags={
-        "Name": vpc_name,
+        "Name": security_group_name,
         "Project": project_name,
     }
 )
