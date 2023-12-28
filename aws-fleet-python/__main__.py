@@ -138,7 +138,7 @@ def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
         userdata = f.read()
     userdata.replace("<AWS Region>", aws_region)
-    userdata.replace("<Elastic IP Association ID>", eip_association_id)
+    userdata.replace("<Elastic IP Allocation-ID>", eip_association_id)
     lines = [line.replace("{{AWS_REGION}}", aws_region) for line in lines]
     lines = [line.replace("{{VALID_UNTIL}}", valid_until.strftime("%Y-%m-%dT%H:%M:%SZ")) for line in lines]
     lines = [line.replace("{{INSTANCE_TYPES}}", str(instance_types)) for line in lines]
