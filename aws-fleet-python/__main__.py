@@ -145,8 +145,6 @@ block_device_mappings = [
     )
 ]
 
-user_data = process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id)
-
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
 launch_template = aws.ec2.LaunchTemplate(
