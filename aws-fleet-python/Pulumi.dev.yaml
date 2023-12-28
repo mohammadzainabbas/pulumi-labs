@@ -5,4 +5,4 @@ config:
   aws-fleet-python:vpcNetworkCidr: 10.0.0.0/16
   aws:region: eu-west-3
 environment:
-  - aws-avatar
+  - aws-jarvis
