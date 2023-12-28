@@ -129,7 +129,7 @@ launch_template_name = f"{project_name}-launch-template"
 launch_template = aws.ec2.LaunchTemplate(
     launch_template_name,
     block_device_mappings=block_device_mappings,
-    image_id=data["aws_ami"]["example"]["id"],
+    image_id=ami,
     instance_type="c5.large")
 
 # Define the EBS block device mappings
