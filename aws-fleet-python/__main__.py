@@ -58,7 +58,7 @@ with open(f"user_data.sh", "r") as f:
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound
 # access to anywhere.
 security_group = aws.ec2.SecurityGroup(
-    "group",
+    f"{project_name}-security_group",
     vpc_id=vpc.vpc_id,
     ingress=[
         aws.ec2.SecurityGroupIngressArgs(
