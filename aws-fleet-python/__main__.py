@@ -5,8 +5,6 @@ import base64
 from datetime import datetime, timedelta
 from json import loads
 
-from functools import partial
-
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
 aws_region = aws.get_region().name
