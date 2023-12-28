@@ -170,7 +170,7 @@ for instance_type in instance_types:
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
     auto_scaling_group_name,
-    availability_zones=azs.names,
+    # availability_zones=azs.names,
     desired_capacity=1,
     max_size=1,
     min_size=1,
@@ -189,7 +189,7 @@ auto_scaling_group = aws.autoscaling.Group(
             spot_max_price="0.04",
         ),
     ),
-    # vpc_zone_identifiers=vpc.public_subnet_ids,
+    vpc_zone_identifiers=vpc.public_subnet_ids,
     tags=[
         aws.autoscaling.GroupTagArgs(
             key="Name",
