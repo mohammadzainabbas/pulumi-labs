@@ -199,6 +199,11 @@ auto_scaling_group = aws.autoscaling.Group(
             value=project_name,
             propagate_at_launch=True,
         ),
+        aws.autoscaling.GroupTagArgs(
+            key="Env",
+            value="dev",
+            propagate_at_launch=True,
+        ),
     ],
 )
 
