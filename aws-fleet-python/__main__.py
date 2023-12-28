@@ -136,7 +136,8 @@ block_device_mappings = [
 
 def process_user_data(path: str, aws_region: str, eip_association_id: str):
     with open(path, "r") as f:
-        lines = f.read()
+        userdata = f.read()
+    userdata.replace("{{AWS_REGION}}", aws_region)
     lines = [line.replace("{{AWS_REGION}}", aws_region) for line in lines]
     lines = [line.replace("{{VALID_UNTIL}}", valid_until.strftime("%Y-%m-%dT%H:%M:%SZ")) for line in lines]
     lines = [line.replace("{{INSTANCE_TYPES}}", str(instance_types)) for line in lines]
