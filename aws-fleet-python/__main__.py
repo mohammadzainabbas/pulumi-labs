@@ -137,15 +137,15 @@ launch_template = aws.ec2.LaunchTemplate(
     block_device_mappings=block_device_mappings,
     image_id=ami,
     key_name=keypair,
-    instance_market_options=aws.ec2.LaunchTemplateInstanceMarketOptionsArgs(
-        market_type="spot",
-        # spot_options=aws.ec2.LaunchTemplateInstanceMarketOptionsSpotOptionsArgs(
-        #     instance_interruption_behavior="terminate",
-        #     max_price="0.04",
-        #     spot_instance_type="one-time",
-        #     valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
-        #     ),
-        ),
+    # instance_market_options=aws.ec2.LaunchTemplateInstanceMarketOptionsArgs(
+    #     market_type="spot",
+    #     # spot_options=aws.ec2.LaunchTemplateInstanceMarketOptionsSpotOptionsArgs(
+    #     #     instance_interruption_behavior="terminate",
+    #     #     max_price="0.04",
+    #     #     spot_instance_type="one-time",
+    #     #     valid_until=valid_until.strftime("%Y-%m-%dT%H:%M:%SZ"),
+    #     #     ),
+    #     ),
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
