@@ -183,7 +183,7 @@ auto_scaling_group = aws.autoscaling.Group(
             on_demand_allocation_strategy="prioritized",
             on_demand_base_capacity=0,
             on_demand_percentage_above_base_capacity=0,
-            spot_allocation_strategy="capacity-optimized",
+            spot_allocation_strategy="price-capacity-optimized",
         ),
     ),
     vpc_zone_identifiers=vpc.public_subnet_ids,
