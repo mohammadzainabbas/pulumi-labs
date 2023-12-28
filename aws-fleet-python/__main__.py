@@ -176,16 +176,7 @@ auto_scaling_group = aws.autoscaling.Group(
             launch_template_specification=aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateLaunchTemplateSpecificationArgs(
                 launch_template_id=launch_template.id,
             ),
-            overrides=[
-                aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(
-                    instance_type="c4.large",
-                    weighted_capacity="3",
-                ),
-                aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(
-                    instance_type="c3.large",
-                    weighted_capacity="2",
-                ),
-            ],
+            overrides=auto_scaling_group_overrides,
         ),
     ))
 
