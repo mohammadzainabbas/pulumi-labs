@@ -200,13 +200,9 @@ auto_scaling_group = aws.autoscaling.Group(
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
-pulumi.export("elastic_ip", elastic_ip.allocation_id)
 pulumi.export("ami", ami)
 pulumi.export("azs", azs.names)
 pulumi.export("vpc", vpc_name)
 pulumi.export("security_group", security_group.id)
 pulumi.export("launch_template", launch_template.id)
 pulumi.export("auto_scaling_group", auto_scaling_group.id)
-
-pulumi.export("ip", elastic_ip.public_ip)
-pulumi.export("url", elastic_ip.public_ip.apply(lambda public_ip: f"http://{public_ip}"))
