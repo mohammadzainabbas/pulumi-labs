@@ -144,6 +144,7 @@ launch_template = aws.ec2.LaunchTemplate(
         ),
     instance_type="c5.large",
     vpc_security_group_ids=[security_group.id],
+    user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{}"))
 )
 
 # Define the EBS block device mappings
