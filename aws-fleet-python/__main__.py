@@ -13,7 +13,7 @@ vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") 
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
 valid_until = datetime.now() + timedelta(days=365) # 1 year from now
-user_data_file = "user_data.sh"
+user_data_file = f"user_data.sh"
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
