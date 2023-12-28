@@ -98,11 +98,11 @@ block_device_mappings = [
             encrypted=False
         ),
     ),
-    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+    aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
         device_name="/dev/sdb",
         virtual_name="ephemeral0",
     ),
-    aws.ec2.SpotFleetRequestLaunchTemplateConfigBlockDeviceMappingArgs(
+    aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
         device_name="/dev/sdc",
         virtual_name="ephemeral1",
     )
