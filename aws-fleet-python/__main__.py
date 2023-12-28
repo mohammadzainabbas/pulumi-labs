@@ -202,7 +202,7 @@ auto_scaling_group = aws.autoscaling.Group(
 )
 
 # Export the instance's publicly accessible IP address and hostname.
-pulumi.export("aws_region", aws_region)
+pulumi.export("aws_region", aws.get_region())
 pulumi.export("ami", ami)
 pulumi.export("azs", azs.names)
 pulumi.export("vpc", vpc_name)
