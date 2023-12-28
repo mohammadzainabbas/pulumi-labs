@@ -52,8 +52,10 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 # nohup python -m SimpleHTTPServer 80 &
 # """
 # User data to start a HTTP server in the EC2 instance
-with open("user_data.sh", "r") as f:
+with open(f"user_data.sh", "r") as f:
     user_data = f.read()
+
+print(user_data)
 
 # # Create VPC.
 # vpc = aws.ec2.Vpc("vpc",
