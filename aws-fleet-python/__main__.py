@@ -55,24 +55,8 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 with open(f"user_data.sh", "r") as f:
     user_data = f.read()
 
-# Create a security group allowing inbound access over port 80 and outbound
+# Create a security group allowing inbound access over port 22 and 443 (https) and outbound
 # access to anywhere.
-sec_group = aws.ec2.SecurityGroup("secGroup",
-    description="Enable HTTP access",
-    vpc_id=vpc.id,
-    ingress=[aws.ec2.SecurityGroupIngressArgs(
-        from_port=80,
-        to_port=80,
-        protocol="tcp",
-        cidr_blocks=["0.0.0.0/0"],
-    )],
-    egress=[aws.ec2.SecurityGroupEgressArgs(
-        from_port=0,
-        to_port=0,
-        protocol="-1",
-        cidr_blocks=["0.0.0.0/0"],
-    )])
-
 security_group = aws.ec2.SecurityGroup(
     "group",
     vpc_id=vpc.vpc_id,
