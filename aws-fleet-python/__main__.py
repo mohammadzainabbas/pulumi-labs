@@ -1,6 +1,7 @@
 import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
+import base64
 from datetime import datetime, timedelta
 
 # Get some configuration values or set default values.
@@ -12,6 +13,7 @@ vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") 
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
 valid_until = datetime.now() + timedelta(days=365) # 1 year from now
+user_data_file = "user_data.sh"
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
@@ -125,7 +127,7 @@ block_device_mappings = [
         ),
     )
 ]
-import base64
+
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
