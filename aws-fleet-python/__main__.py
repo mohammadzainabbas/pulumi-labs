@@ -117,7 +117,8 @@ for instance_type in instance_types:
             instance_type=instance_type,
             key_name=keypair,
             vpc_security_group_ids=[security_group.id],
-            block_device_mappings=block_device_mappings,
+            ebs_block_devices=ebs_block_devices,
+            ephemeral_block_devices=ephemeral_block_devices,
         )
     )
 
