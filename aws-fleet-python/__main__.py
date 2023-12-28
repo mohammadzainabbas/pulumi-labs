@@ -110,7 +110,7 @@ block_device_mappings = [
 launch_template_configs = []
 for instance_type in instance_types:
     launch_template_configs.append(
-        aws.ec2.SpotFleetRequestLaunchTemplateConfigArgs(
+        aws.ec2.SpotFleetRequestLaunchSpecificationArgs(
             launch_template_specification=aws.ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs(
                 launch_template_id="lt-0123456"  # Assume a launch template ID available
             ),
