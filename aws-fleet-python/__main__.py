@@ -179,6 +179,12 @@ auto_scaling_group = aws.autoscaling.Group(
             ),
             overrides=auto_scaling_group_overrides,
         ),
+        instances_distribution=aws.autoscaling.GroupMixedInstancesPolicyInstancesDistributionArgs(
+            on_demand_allocation_strategy="prioritized",
+            on_demand_base_capacity=0,
+            on_demand_percentage_above_base_capacity=0,
+            spot_allocation_strategy="capacity-optimized",
+        ),
     ))
 
 # Export the instance's publicly accessible IP address and hostname.
