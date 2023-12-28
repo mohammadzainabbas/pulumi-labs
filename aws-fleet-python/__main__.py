@@ -157,7 +157,7 @@ launch_template = aws.ec2.LaunchTemplate(
 auto_scaling_group_overrides = []
 for instance_type in instance_types:
     auto_scaling_group_overrides.append(
-        aws.ec2.LaunchTemplateOverridesArgs(    
+        aws.autoscaling.GroupMixedInstancesPolicyLaunchTemplateOverrideArgs(    
             instance_type=instance_type,
             weighted_capacity="1",
         )
