@@ -108,21 +108,7 @@ block_device_mappings = [
 
 # Define the launch template configurations for the different instance types
 launch_template_configs = []
-for instance_type in [
-    "inf1.xlarge",
-    "c5a.large",
-    "c5d.large",
-    "c5n.large",
-    "r5n.large",
-    "r5dn.large",
-    "i4i.large",
-    "r4.large",
-    "i3.large",
-    "m7i-flex.large",
-    "m7i.large",
-    "r5ad.large",
-    "r5d.large"
-]:
+for instance_type in instance_types:
     launch_template_configs.append(
         aws.ec2.SpotFleetRequestLaunchTemplateConfigArgs(
             launch_template_specification=aws.ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs(
