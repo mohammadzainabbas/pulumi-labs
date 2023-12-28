@@ -125,6 +125,7 @@ block_device_mappings = [
         ),
     )
 ]
+import base64
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
