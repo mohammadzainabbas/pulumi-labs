@@ -114,14 +114,8 @@ for instance_type in instance_types:
             ami=ami,
             instance_type=instance_type,
             key_name=keypair,
-            launch_template_specification=aws.ec2.SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecificationArgs(
-                launch_template_id="lt-0123456"  # Assume a launch template ID available
-            ),
-            overrides=[
-                aws.ec2.SpotFleetRequestLaunchTemplateConfigOverrideArgs(
-                    instance_type=instance_type
-                )
-            ]
+            vpc_security_group_ids=[security_group.id],
+            block_device_mappings=block_device_mappings,
         )
     )
 
