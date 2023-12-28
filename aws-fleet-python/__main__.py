@@ -85,7 +85,8 @@ security_group = aws.ec2.SecurityGroup(
 
 # Create and launch an EC2 instance into the public subnet.
 instance_name = f"{project_name}-instance"
-instance = aws.ec2.Instance("server",
+instance = aws.ec2.Instance(
+    instance_name,
     instance_type=instance_type,
     subnet_id=subnet.id,
     vpc_security_group_ids=[sec_group.id],
