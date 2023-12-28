@@ -155,6 +155,7 @@ launch_template = aws.ec2.LaunchTemplate(
 )
 
 print(instance_types)
+print(len(instance_types))
 
 # Override the instance type for the spot fleet
 auto_scaling_group_overrides = []
