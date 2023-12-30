@@ -98,3 +98,5 @@ To destroy the Pulumi stack and all of its resources:
 ```bash
 pulumi destroy
 ```
+
+> Note: you can use `--yes` flag to skip the confirmation prompt.
