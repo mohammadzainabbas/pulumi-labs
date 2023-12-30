@@ -62,6 +62,7 @@ pulumi stack init
 
 6. Update your environment:
 
+Now, update your environment with the OIDC provider URL and the AWS region
 ```bash
 pulumi config set aws:region us-east-1
 ```
