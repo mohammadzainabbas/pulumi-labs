@@ -13,5 +13,5 @@ run() {
 run cd $home_dir || exit
 run sudo apt-get update -y && sudo apt-get install -y python3-pip || echo "Failed to install python3-pip"
 run echo "Hello, World from Pulumi!" > index.html
-nohup python3 -m http.server 80 > file.txt 2>&1 &
-cd - || exit
+run nohup python3 -m http.server 80 > file.txt 2>&1 &
+run cd - || exit
