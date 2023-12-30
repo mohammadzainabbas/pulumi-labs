@@ -24,7 +24,9 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 
 ### Setup
 
-1. Create a new directory & initialize a new project:
+1. Configuring OpenID Connect for AWS:
+
+Follow the guideline [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html) to create an OIDC provider for AWS.
 
 ```bash
 mkdir newProject && cd newProject
