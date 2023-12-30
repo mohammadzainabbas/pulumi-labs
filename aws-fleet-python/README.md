@@ -1,5 +1,7 @@
 # AWS Autoscaling Group with Launch Template
 
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
+
 ## Overview
 
 A Pulumi IaC program written in Python to deploy a Hugging Face Language Model (LLM) on Amazon SageMaker.
