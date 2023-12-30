@@ -60,7 +60,13 @@ pip3 install -r requirements.txt
 pulumi stack init
 ```
 
-6. Set the AWS region:
+6. Update your environment:
+
+```bash
+pulumi config set aws:region us-east-1
+```
+
+7. Set the AWS region:
 
 ```bash
 pulumi config set aws:region us-east-1
