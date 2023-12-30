@@ -96,6 +96,9 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
+# Create a static IP address for the instance.
+elastic_ip = aws.ec2.Eip(f"{project_name}-elastic-ip", domain="vpc")
+
 # Define the EBS block device mappings
 block_device_mappings = [
     aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
