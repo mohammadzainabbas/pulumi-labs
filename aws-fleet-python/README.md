@@ -62,7 +62,7 @@ pulumi stack init
 
 6. Update your environment:
 
-Now, update your environment in `Pulumi.dev.yaml` with the following:
+Now, update your environment (that you'd already setup in step 1) in `Pulumi.dev.yaml` like the following:
 
 ```yaml
 environment:
