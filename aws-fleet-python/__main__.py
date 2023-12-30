@@ -115,12 +115,6 @@ lb = aws.elb.LoadBalancer(
         unhealthy_threshold=2,
     ),
     listeners=[
-        # aws.elb.LoadBalancerListenerArgs(
-        #     instance_port=22,
-        #     instance_protocol="tcp",
-        #     lb_port=22,
-        #     lb_protocol="tcp",
-        # ),
         aws.elb.LoadBalancerListenerArgs(
             instance_port=80,
             instance_protocol="http",
