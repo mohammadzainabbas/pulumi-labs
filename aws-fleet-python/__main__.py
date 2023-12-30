@@ -19,11 +19,11 @@ user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
 
 # Process the user data file
-def process_user_data(path: str, aws_region: str, eip_association_id: str) -> str:
+def process_user_data(path: str, aws_region: str, eip_value: str) -> str:
     with open(path, "r") as f:
         userdata = f.read()
      # Extract the value from the Output
-    eip_value = eip_association_id.apply(lambda id: str(id))
+    # eip_value = eip_association_id.apply(lambda id: str(id))
     # Use the extracted value in replace
     userdata = userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_value)
     return base64.b64encode(userdata.encode()).decode()
