@@ -179,9 +179,9 @@ auto_scaling_group = aws.autoscaling.Group(
             spot_max_price="0.04",
         ),
     ),
-    instance_maintenance_policy=aws.autoscaling.GroupInstanceMaintenancePolicyArgs(
-        max_healthy_percentage="Sun:23:00-Mon:03:00",
-        min_healthy_percentage="Sun:23:00-Mon:03:00",
+    instance_maintenance_policy=aws.autoscaling.GroupInstanceMaintenancePolicyArgs( # 
+        max_healthy_percentage=110,
+        min_healthy_percentage=100,
     ),
     vpc_zone_identifiers=vpc.public_subnet_ids,
     tags=[
