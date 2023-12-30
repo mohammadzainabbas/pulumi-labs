@@ -1,5 +1,7 @@
 #!/bin/bash
 
+home_dir="/home/ubuntu"
+output_file="$home_dir/output.txt"
 run() {
     echo "Running: $@"
     "$@"
