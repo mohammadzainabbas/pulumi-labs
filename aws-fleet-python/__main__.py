@@ -89,17 +89,6 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
-# Create a static IP address
-eip_name = f"{project_name}-eip"
-eip = aws.ec2.Eip(
-    eip_name,
-    domain="vpc",
-    tags={
-        "Name": eip_name,
-        "Project": project_name,
-    }
-)
-
 # Define the EBS block device mappings
 block_device_mappings = [
     aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
