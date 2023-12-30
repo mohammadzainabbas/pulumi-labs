@@ -190,8 +190,6 @@ auto_scaling_group = aws.autoscaling.Group(
         ),
     ),
     vpc_zone_identifiers=vpc.public_subnet_ids,
-    load_balancers=[lb.name],
-    termination_policies=["OldestInstance"],
     tags=[
         aws.autoscaling.GroupTagArgs(
             key="Name",
@@ -209,14 +207,6 @@ auto_scaling_group = aws.autoscaling.Group(
             propagate_at_launch=True,
         ),
     ],
-)
-
-# Attach the Elastic IP to the Load Balancer
-eip_attachment_name = f"{project_name}-eip-attachment"
-eip_attachment = aws.ec2.EipAssociation(
-    eip_attachment_name,
-    instance_id=lb.instances[0].id,
-    allocation_id=eip.id,
 )
 
 # Export the instance's publicly accessible IP address and hostname.
