@@ -215,6 +215,7 @@ auto_scaling_group = aws.autoscaling.Group(
     ),
     vpc_zone_identifiers=vpc.public_subnet_ids,
     load_balancers=[lb.name],
+    termination_policies=["OldestInstance"],
     tags=[
         aws.autoscaling.GroupTagArgs(
             key="Name",
