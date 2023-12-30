@@ -106,6 +106,7 @@ lb = aws.elb.LoadBalancer(
     lb_name,
     subnets=vpc.public_subnet_ids + vpc.private_subnet_ids,
     instances=[], # Instances will be managed by Auto Scaling Group
+    security_groups=[security_group.id],
     listeners=[
         aws.elb.LoadBalancerListenerArgs(
             instance_port=22,
