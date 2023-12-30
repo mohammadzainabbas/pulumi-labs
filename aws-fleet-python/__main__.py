@@ -104,6 +104,7 @@ eip = aws.ec2.Eip(
 lb_name = f"{project_name}-lb"
 lb = aws.elb.LoadBalancer(
     lb_name,
+    availability_zones=azs.names,
     subnets=vpc.public_subnet_ids + vpc.private_subnet_ids,
     instances=[], # Instances will be managed by Auto Scaling Group
     security_groups=[security_group.id],
