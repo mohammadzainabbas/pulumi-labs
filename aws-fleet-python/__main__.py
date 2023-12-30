@@ -100,7 +100,21 @@ eip = aws.ec2.Eip(
     }
 )
 
-
+# Create a new load balancer
+lb_name = f"{project_name}-lb"
+lb = aws.elb.LoadBalancer(
+    lb_name,
+    subnets=vpc.public_subnet_ids + vpc.private_subnet_ids,
+    instances=[], # Instances will be managed by Auto Scaling Group
+    listeners=[
+        aws.elb.LoadBalancerListenerArgs(
+            instance_port=80,
+            instance_protocol="http",
+            lb_port=80,
+            lb_protocol="http",
+        ),
+    ],
+)
 
 # Define the EBS block device mappings
 block_device_mappings = [
