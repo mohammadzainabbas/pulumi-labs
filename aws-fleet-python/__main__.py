@@ -100,6 +100,8 @@ eip = aws.ec2.Eip(
     }
 )
 
+
+
 # Define the EBS block device mappings
 block_device_mappings = [
     aws.ec2.LaunchTemplateBlockDeviceMappingArgs(
