@@ -239,6 +239,12 @@ auto_scaling_group = aws.autoscaling.Group(
     ],
 )
 
+# Attach the Elastic IP to the Load Balancer
+eip_attachment = aws.ec2.EipAssociation("eipAttachment",
+    instance_id=lb.instances[0].id,
+    allocation_id=eip.id,
+)
+
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
