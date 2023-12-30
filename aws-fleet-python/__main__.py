@@ -92,8 +92,8 @@ security_group = aws.ec2.SecurityGroup(
 # Create a static IP address that can be attached to the load balancer
 eip_name = f"{project_name}-eip"
 eip = aws.ec2.Eip(
-    eip_name, 
-    vpc=True, 
+    eip_name,
+    domain="vpc",
     tags={
         "Name": eip_name,
         "Project": project_name,
