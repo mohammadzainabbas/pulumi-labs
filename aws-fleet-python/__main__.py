@@ -160,6 +160,7 @@ for instance_type in instance_types:
 auto_scaling_group_name = f"{project_name}-auto-scaling-group"
 auto_scaling_group = aws.autoscaling.Group(
     auto_scaling_group_name,
+    capacity_rebalance=True,
     desired_capacity=1,
     max_size=1,
     min_size=1,
