@@ -240,7 +240,9 @@ auto_scaling_group = aws.autoscaling.Group(
 )
 
 # Attach the Elastic IP to the Load Balancer
-eip_attachment = aws.ec2.EipAssociation("eipAttachment",
+eip_attachment_name = f"{project_name}-eip-attachment"
+eip_attachment = aws.ec2.EipAssociation(
+    eip_attachment_name,
     instance_id=lb.instances[0].id,
     allocation_id=eip.id,
 )
