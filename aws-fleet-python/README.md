@@ -54,6 +54,18 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
+5. Create a new Pulumi stack, which is an isolated deployment target for this example:
+
+```bash
+pulumi stack init
+```
+
+6. Set the AWS region:
+
+```bash
+pulumi config set aws:region us-east-1
+```
+
 > Note that Pulumi will provide the SageMaker endpoint name as an output.
 
 ### Test the SageMaker Endpoint
