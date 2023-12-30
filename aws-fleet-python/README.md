@@ -28,11 +28,6 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 
 Follow the guideline [here](https://www.pulumi.com/docs/pulumi-cloud/oidc/aws/) to create an OIDC provider for AWS.
 
-```bash
-mkdir newProject && cd newProject
-pulumi new sagemaker-aws-python
-```
-
 2. Deploy the stack:
 
 ```bash
