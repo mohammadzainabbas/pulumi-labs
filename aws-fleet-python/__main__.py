@@ -74,7 +74,7 @@ elastic_ip = aws.ec2.Eip(
     }
 )
 
-eip_value = aws.ec2.get_elastic_ip(id=elastic_ip.association_id).apply(lambda eip: eip.association_id)
+user_data = aws.ec2.get_elastic_ip(id=elastic_ip.association_id).apply(lambda eip: eip.association_id)
 
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
 security_group_name = f"{project_name}-security-group"
