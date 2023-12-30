@@ -11,8 +11,8 @@ run() {
 }
 
 cd $home_dir || exit
-run sudo apt-get update -y
-run sudo apt-get install -y python3-pip docker.io
+sudo apt-get update -y
+sudo apt-get install -y python3-pip docker.io
 echo "Hello, World from Pulumi!" > index.html
 run nohup python3 -m http.server 80 > file.txt 2>&1 &
 mkdir -p $home_dir/docker_volume
