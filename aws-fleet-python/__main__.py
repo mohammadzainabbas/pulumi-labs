@@ -122,6 +122,10 @@ lb = aws.elb.LoadBalancer(
             lb_protocol="http",
         ),
     ],
+    tags={
+        "Name": lb_name,
+        "Project": project_name,
+    }
 )
 
 # Define the EBS block device mappings
