@@ -16,5 +16,5 @@ run sudo apt-get install -y docker.io || echo "Failed to install docker.io"
 run echo "Hello, World from Pulumi!" > index.html
 run nohup python3 -m http.server 80 > file.txt 2>&1 &
 run mkdir -p $home_dir/docker_volume
-run docker run --network=host -v ~/Desktop/graphstorm/docker_volume:/dev/shm -d --name test mohammadzainabbas/graphstorm:local
+run docker run --network=host -v $docker_vol:/dev/shm -d --name graphstorm mohammadzainabbas/graphstorm:local
 run cd - || exit
