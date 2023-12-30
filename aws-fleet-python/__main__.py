@@ -179,7 +179,7 @@ auto_scaling_group = aws.autoscaling.Group(
             spot_max_price="0.04",
         ),
     ),
-    instance_maintenance_policy=aws.autoscaling.GroupInstanceMaintenancePolicyArgs( # 
+    instance_maintenance_policy=aws.autoscaling.GroupInstanceMaintenancePolicyArgs( # Launch before terminating
         max_healthy_percentage=110,
         min_healthy_percentage=100,
     ),
