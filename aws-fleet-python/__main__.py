@@ -76,6 +76,8 @@ elastic_ip = aws.ec2.Eip(
 
 user_data = aws.ec2.get_elastic_ip(id=elastic_ip.association_id).apply(lambda eip: eip.association_id)
 
+user_data = elastic_ip.association_id.apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, str(eip_id)))
+
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
 security_group_name = f"{project_name}-security-group"
 security_group = aws.ec2.SecurityGroup(
@@ -151,7 +153,7 @@ block_device_mappings = [
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
-user_data = elastic_ip.association_id.apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, str(eip_id)))
+# user_data = elastic_ip.association_id.apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, str(eip_id)))
 launch_template = aws.ec2.LaunchTemplate(
     launch_template_name,
     block_device_mappings=block_device_mappings,
