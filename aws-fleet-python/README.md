@@ -79,7 +79,13 @@ To deploy to a region other than the default one configured for your AWS CLI pro
 pulumi config set aws:region us-east-1
 ```
 
-> Note that Pulumi will provide the SageMaker endpoint name as an output.
+> If you don't specify anything, everything will be deployed in `eu-west-3` region.
+
+8. Run `pulumi up` to preview and deploy changes:
+
+```bash
+pulumi up
+```
 
 ### Test the SageMaker Endpoint
 
