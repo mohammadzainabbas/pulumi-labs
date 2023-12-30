@@ -40,6 +40,20 @@ or if GitHub CLI is installed:
 gh repo clone mohammadzainabbas/pulumi-labs
 ```
 
+3. Change directory:
+
+```bash
+cd aws-fleet-python
+```
+
+4. Create a new Python virtualenv, activate it, and install dependencies:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
 > Note that Pulumi will provide the SageMaker endpoint name as an output.
 
 ### Test the SageMaker Endpoint
