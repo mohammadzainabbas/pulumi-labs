@@ -10,7 +10,7 @@ run() {
     "$@ | tee -a $output_file"
 }
 
-run cd $home_dir || exit
+cd $home_dir || exit
 run sudo apt-get update -y && sudo apt-get install -y python3-pip || echo "Failed to install python3-pip"
 run sudo apt-get install -y docker.io || echo "Failed to install docker.io"
 run echo "Hello, World from Pulumi!" > index.html
