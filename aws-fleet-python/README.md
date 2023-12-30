@@ -87,6 +87,8 @@ pulumi config set aws:region us-east-1
 pulumi up
 ```
 
+> Note: you can use `--yes` flag to skip the confirmation prompt.
+
 ### Test the SageMaker Endpoint
 
 Use this rudimentary Python snippet to test the deployed SageMaker endpoint.
