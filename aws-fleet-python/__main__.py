@@ -105,7 +105,7 @@ lb_name = f"{project_name}-lb"
 subnets = pulumi.Output.all(vpc.public_subnet_ids, vpc.private_subnet_ids).apply(lambda args: args[0] + args[1])
 lb = aws.elb.LoadBalancer(
     lb_name,
-    availability_zones=azs.names,
+    # availability_zones=azs.names,
     subnets=subnets,
     instances=[], # Instances will be managed by Auto Scaling Group
     security_groups=[security_group.id],
