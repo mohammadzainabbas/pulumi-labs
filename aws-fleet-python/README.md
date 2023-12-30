@@ -1,4 +1,4 @@
-# AWS Autoscaling Group with Launch Template
+# AWS Autoscaling Group with Spot Fleet
 
 [![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
 
