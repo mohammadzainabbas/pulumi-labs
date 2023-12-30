@@ -62,9 +62,11 @@ pulumi stack init
 
 6. Update your environment:
 
-Now, update your environment with the OIDC provider URL and the AWS region
-```bash
-pulumi config set aws:region us-east-1
+Now, update your environment in `Pulumi.dev.yaml` with the following:
+
+```yaml
+environment:
+  - aws-jarvis
 ```
 
 7. Set the AWS region:
