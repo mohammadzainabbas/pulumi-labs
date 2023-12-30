@@ -4,7 +4,9 @@ home_dir="/home/ubuntu"
 output_file="$home_dir/output.log"
 
 run() {
+    # shellcheck disable=SC2145
     echo "Running: $@"
+    # shellcheck disable=SC2145
     "$@ | tee -a $output_file"
 }
 
