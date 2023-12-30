@@ -26,7 +26,7 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 
 1. Configuring OpenID Connect for AWS:
 
-Follow the guideline [here](https://www.pulumi.com/docs/pulumi-cloud/oidc/aws/) to create an OIDC provider for AWS.
+Follow the guideline [here](https://www.pulumi.com/docs/pulumi-cloud/oidc/aws/) to configure `Pulumi` to use OpenID Connect to authenticate with AWS.
 
 2. Clone the repo:
 
