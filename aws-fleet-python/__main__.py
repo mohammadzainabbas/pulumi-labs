@@ -102,11 +102,11 @@ eip = aws.ec2.Eip(
 
 # Create a new load balancer
 lb_name = f"{project_name}-lb"
-subnets = pulumi.Output.all(vpc.public_subnet_ids).apply(lambda args: args[0])
+# subnets = pulumi.Output.all(vpc.public_subnet_ids).apply(lambda args: args[0])
 lb = aws.elb.LoadBalancer(
     lb_name,
     # availability_zones=azs.names,
-    subnets=subnets,
+    subnets=vpc.public_subnet_ids,
     instances=[], # Instances will be managed by Auto Scaling Group
     security_groups=[security_group.id],
     listeners=[
