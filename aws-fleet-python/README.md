@@ -8,7 +8,7 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 
 ## Included:
 
-- AMI ID (Deep Learning AMI )
+- AMI ID (Look up the latest AWS Deep Learning AMI GPU CUDA)
 - VPC, Subnets, Security Groups
 - SageMaker model endpoint
 - CloudWatch alarms
