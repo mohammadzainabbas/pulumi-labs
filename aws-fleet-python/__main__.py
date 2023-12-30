@@ -179,6 +179,7 @@ auto_scaling_group = aws.autoscaling.Group(
             spot_max_price="0.04",
         ),
     ),
+    instance_maintenance_policy="terminate",
     vpc_zone_identifiers=vpc.public_subnet_ids,
     tags=[
         aws.autoscaling.GroupTagArgs(
