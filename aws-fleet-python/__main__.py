@@ -67,7 +67,7 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 elastic_ip_name = f"{project_name}-elastic-ip"
 elastic_ip = aws.ec2.Eip(
     elastic_ip_name,
-    domain="vpc",
+    # domain="vpc",
     tags={
         "Name": elastic_ip_name,
         "Project": project_name,
