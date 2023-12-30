@@ -31,7 +31,13 @@ Follow the guideline [here](https://www.pulumi.com/docs/pulumi-cloud/oidc/aws/) 
 2. Clone the repo:
 
 ```bash
-pulumi up
+git clone https://github.com/mohammadzainabbas/pulumi-labs.git
+```
+
+or if GitHub CLI is installed:
+
+```bash
+gh repo clone mohammadzainabbas/pulumi-labs
 ```
 
 > Note that Pulumi will provide the SageMaker endpoint name as an output.
