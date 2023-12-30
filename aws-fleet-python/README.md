@@ -17,7 +17,7 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 
 * `Python 3.9+`
 * `Pulumi`
-* `AWS CLI v2` (with valid credentials configured)
+* `AWS CLI v2` _(with valid credentials configured)_
 * `AWS Native CLI`
 
 ## Quick Start
