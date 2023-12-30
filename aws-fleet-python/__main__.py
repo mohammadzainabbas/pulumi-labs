@@ -109,6 +109,13 @@ lb = aws.elb.LoadBalancer(
     subnets=vpc.public_subnet_ids,
     instances=[], # Instances will be managed by Auto Scaling Group
     security_groups=[security_group.id],
+    health_check=aws.elb.LoadBalancerHealthCheckArgs(
+        healthy_threshold=2,
+        interval=30,
+        target="HTTP:80/",
+        timeout=3,
+        unhealthy_threshold=2,
+    ),
     listeners=[
         # aws.elb.LoadBalancerListenerArgs(
         #     instance_port=22,
