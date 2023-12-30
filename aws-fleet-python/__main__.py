@@ -89,41 +89,13 @@ security_group = aws.ec2.SecurityGroup(
     }
 )
 
-# Create a static IP address that can be attached to the load balancer
+# Create a static IP address
 eip_name = f"{project_name}-eip"
 eip = aws.ec2.Eip(
     eip_name,
     domain="vpc",
     tags={
         "Name": eip_name,
-        "Project": project_name,
-    }
-)
-
-# Create a new load balancer
-lb_name = f"{project_name}-lb"
-lb = aws.elb.LoadBalancer(
-    lb_name,
-    subnets=vpc.public_subnet_ids,
-    instances=[], # Instances will be managed by Auto Scaling Group
-    security_groups=[security_group.id],
-    health_check=aws.elb.LoadBalancerHealthCheckArgs(
-        healthy_threshold=2,
-        interval=10,
-        target="TCP:80",
-        timeout=3,
-        unhealthy_threshold=2,
-    ),
-    listeners=[
-        aws.elb.LoadBalancerListenerArgs(
-            instance_port=80,
-            instance_protocol="http",
-            lb_port=80,
-            lb_protocol="http",
-        ),
-    ],
-    tags={
-        "Name": lb_name,
         "Project": project_name,
     }
 )
