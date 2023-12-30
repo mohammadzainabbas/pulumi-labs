@@ -65,10 +65,6 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 
 # Create a static IP address for the instance.
 elastic_ip_name = f"{project_name}-elastic-ip"
-eip = awsx.ec2.Eip(elastic_ip_name, vpc=vpc, tags={
-    "Name": elastic_ip_name,
-    "Project": project_name,
-})
 elastic_ip = aws.ec2.Eip(
     elastic_ip_name,
     domain="vpc",
