@@ -1,10 +1,11 @@
 #!/bin/bash
 
 home_dir="/home/ubuntu"
-output_file="$home_dir/output.txt"
+output_file="$home_dir/output.log"
+
 run() {
     echo "Running: $@"
-    "$@"
+    "$@ | tee -a $output_file"
 }
 
 cd /home/ubuntu || exit
