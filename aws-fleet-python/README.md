@@ -11,7 +11,7 @@ A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Laun
 - AMI ID (Look up the latest AWS Deep Learning AMI GPU CUDA)
 - Create new VPC, Subnets (Public and Private), RouteTables and Security Group
 - Define Launch Configuration with User Data
-- CloudWatch alarms
+- Create Autoscaling Group with Launch Template and Spot Fleet
 
 ## Prerequisites
 
