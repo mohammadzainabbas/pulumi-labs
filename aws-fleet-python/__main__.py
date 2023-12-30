@@ -163,7 +163,10 @@ launch_template = aws.ec2.LaunchTemplate(
     tags={
         "Name": launch_template_name,
         "Project": project_name,
-    }
+    },
+    opts=pulumi.ResourceOptions(
+        depends_on=[elastic_ip],
+    )
 )
 
 # Override the instance type for the spot fleet
