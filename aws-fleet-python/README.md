@@ -1,4 +1,4 @@
-# Amazon SageMaker + Hugging Face LLM Deployment
+# AWS Autoscaling Group with Launch Template
 
 ## Overview
 
