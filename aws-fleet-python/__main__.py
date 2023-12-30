@@ -112,7 +112,7 @@ lb = aws.elb.LoadBalancer(
     health_check=aws.elb.LoadBalancerHealthCheckArgs(
         healthy_threshold=2,
         interval=10,
-        target="HTTP:80/",
+        target="TCP:80",
         timeout=3,
         unhealthy_threshold=2,
     ),
