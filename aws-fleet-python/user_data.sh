@@ -35,25 +35,38 @@ WEB_PAGE="""
 """
 
 setup_instance() {
-  sudo apt update -y && sudo apt install -y apache2 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
+    sudo apt update -y && sudo apt install -y apache2 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
 }
 
 success_notify() {
-  curl \
-  -H "Title: Docker build has finished successfully \
-  -H "Priority: urgent" \
-  -H "Tags: tada,spark" \
-  -d "Successfully build docker image. Let's start with the new docker image!." \
-  ntfy.sh/mohammadzainabbas
+    curl ntfy.sh \
+    -d '{
+        "topic": "mohammadzainabbas",
+        "message": "Disk space is low at 5.1 GB",
+        "title": "Low disk space alert",
+        "tags": ["warning","cd"],
+        "priority": 4,
+        "attach": "https://filesrv.lan/space.jpg",
+        "filename": "diskspace.jpg",
+        "click": "https://homecamera.lan/xasds1h2xsSsa/",
+        "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
+    }'
 }
 
 failure_notify() {
-  curl \
-  -H "Title: Docker build failed" \
-  -H "Priority: urgent" \
-  -H "Tags: warning,skull" \
-  -d "Failed to build docker image. Have a look!." \
-  ntfy.sh/mohammadzainabbas
+curl ntfy.sh \
+  -d '{
+    "topic": "mohammadzainabbas",
+    "message": "Disk space is low at 5.1 GB",
+    "title": "Low disk space alert",
+    "tags": ["warning","cd"],
+    "priority": 4,
+    "attach": "https://filesrv.lan/space.jpg",
+    "filename": "diskspace.jpg",
+    "click": "https://homecamera.lan/xasds1h2xsSsa/",
+    "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
+  }'
+}
   
 
 (sudo apt update -y && sudo apt install -y apache2 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file) && (curl \
