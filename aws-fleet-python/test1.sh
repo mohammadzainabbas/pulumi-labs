@@ -61,6 +61,36 @@ start_notify() {
 	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
 	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
 
+    # Assuming your variables are properly defined
+    json_data=$(jq -n \
+        --arg topic "$topic" \
+        --arg msg "$msg" \
+        --arg title "$title" \
+        --arg attach "$attach" \
+        --arg filename "$filename" \
+        --arg click "$click" \
+        --arg project_link "$project_link" \
+        --arg pulumi "$pulumi" \
+        --arg web_url "$web_url" \
+        '{
+            topic: $topic,
+            message: $msg,
+            title: $title,
+            tags: ["white_check_mark", "tada"],
+            priority: 4,
+            attach: $attach,
+            filename: $filename,
+            click: $click,
+            actions: [
+                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi, clear: false},
+                {action: "view", label: "View Website", url: $web_url, clear: false}
+            ]
+        }')
+
+    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
+
+
     curl ntfy.sh \
     -d "{
         \"topic\": \"$topic\",
