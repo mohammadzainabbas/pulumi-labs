@@ -60,7 +60,7 @@ success_notify() {
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
-        \"actions\": [{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"https://filesrv.lan/admin\" }]
+        \"actions\": [{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\" }, { \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\" }]
     }"
 }
 
