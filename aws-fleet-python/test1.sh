@@ -74,7 +74,7 @@ start_notify() {
             topic: $topic,
             message: $msg,
             title: $title,
-            tags: ["white_check_mark", "tada"],
+            tags: ["package"],
             priority: 4,
             click: $click
         }')
