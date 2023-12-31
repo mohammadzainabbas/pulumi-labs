@@ -42,7 +42,7 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas"
 _click="https://github.com/mohammadzainabbas/pulumi-labs"
-_actions="[{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]"
+_actions='"[{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]"'
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
