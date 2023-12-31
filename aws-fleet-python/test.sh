@@ -143,8 +143,8 @@ run() {
     start=$(date +%s.%N);
     "$*" | tee -a "$output_file"
     end=$(date +%s.%N);
-    time_diff=$(echo "$end - $start" | bc);
-    echo "[ run ] $* took $time_diff secs" | tee -a "$output_file"
+    _time_diff=$(echo "$end - $start" | bc);
+    echo "[ run ] $* took $_time_diff secs" | tee -a "$output_file"
 }
 
 main() {
