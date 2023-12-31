@@ -83,7 +83,7 @@ start_notify() {
                 {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
-    echo "$json_data" | jq
+    echo "$json_data" | jq | tee "$output_file"
     curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
 }
 
