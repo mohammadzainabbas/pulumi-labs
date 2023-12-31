@@ -42,21 +42,6 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas"
 
-# success_notify() {
-#     curl ntfy.sh \
-#     -d '{
-#         "topic": "$topic",
-#         "message": "Disk space is low at 5.1 GB",
-#         "title": "Success: Low disk space alert",
-#         "tags": ["warning","cd"],
-#         "priority": 4,
-#         "attach": "https://filesrv.lan/space.jpg",
-#         "filename": "diskspace.jpg",
-#         "click": "https://homecamera.lan/xasds1h2xsSsa/",
-#         "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
-#     }'
-# }
-
 success_notify() {
     curl ntfy.sh \
     -d "{
