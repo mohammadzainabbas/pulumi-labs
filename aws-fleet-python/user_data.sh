@@ -60,7 +60,7 @@ _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 start_notify() {
 	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
-	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
+	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
     _web_url="http://$PUBLIC_IP"
 
     curl ntfy.sh \
