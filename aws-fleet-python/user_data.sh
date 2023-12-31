@@ -5,6 +5,7 @@ output_file="$home_dir/output.log"
 
 INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/hostname)
+REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
 
 WEB_PAGE="""
 <html>
