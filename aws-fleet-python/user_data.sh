@@ -14,5 +14,5 @@ export TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aw
 curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/hostname
 curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region
 python3 -m pip install awscli
-
+aws --version &>> $output_file
 aws --region "$AWS_REGION" ec2 associate-address --instance-id "$INSTANCE_ID" --allocation-id "$ALLOCATION_ID" &>> $output_file  # replace <YourRegion> with your region
