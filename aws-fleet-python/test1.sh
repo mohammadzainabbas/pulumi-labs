@@ -83,10 +83,9 @@ start_notify() {
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false}
             ]
         }')
-    echo "$json_data" | jq
     send_to_ntfy "$json_data"
 }
 
@@ -111,7 +110,7 @@ end_notify() {
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
@@ -140,7 +139,7 @@ success_notify() {
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
                 {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
-                {action: "view", label: "View Website", url: $web_link, clear: false},
+                {action: "view", label: "View Website", url: $web_link, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
