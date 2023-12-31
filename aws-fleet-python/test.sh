@@ -1,9 +1,9 @@
 #!/bin/bash
 
-AMI_ID="AMI_ID"
-INSTANCE_ID="INSTANCE_ID"
-HOSTNAME="HOSTNAME"
-REGION="REGION"
+AMI_ID="AWS AMI_ID"
+INSTANCE_ID="AWS INSTANCE_ID"
+HOSTNAME="AWS HOSTNAME"
+REGION="AWS REGION"
 
 WEB_PAGE="""
 <!doctype html>
@@ -32,10 +32,6 @@ WEB_PAGE="""
 """
 
 setup_instance() {
-    sudo apt update -y && \
-    sudo apt install -y apache2 && \
-    sudo systemctl start apache2 && \
-    sudo systemctl enable apache2 && \
     echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
 }
 
