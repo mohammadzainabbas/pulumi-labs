@@ -133,7 +133,7 @@ success_notify() {
             topic: $topic,
             message: $msg,
             title: $title,
-            tags: ["package"],
+            tags: ["white_check_mark", "tada"],
             priority: 4,
             click: $click,
             actions: [
