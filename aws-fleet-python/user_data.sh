@@ -58,6 +58,27 @@ _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
+start_notify() {
+	_title="Setup deployed on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
+	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
+
+    curl ntfy.sh \
+    -d "{
+        \"topic\": \"$topic\",
+        \"message\": \"$_msg\",
+        \"title\": \"$_title\",
+        \"tags\": [\"white_check_mark\",\"computer\",\"tada\"],
+        \"priority\": 4,
+        \"attach\": \"$_attach\",
+        \"filename\": \"$_filename\",
+        \"click\": \"$_click\",
+        \"actions\": [
+				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
+				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
+			]
+    }"
+}
+
 success_notify() {
 	_title="Setup deployed on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
 	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
