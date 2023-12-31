@@ -59,7 +59,7 @@ success_notify() {
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
-        \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
+        \"actions\": [{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"https://filesrv.lan/admin\" }]
     }"
 }
 
