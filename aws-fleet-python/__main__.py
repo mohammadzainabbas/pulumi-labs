@@ -174,8 +174,7 @@ launch_template = aws.ec2.LaunchTemplate(
     vpc_security_group_ids=[security_group.id],
     update_default_version=True,
     user_data=user_data,
-    # user_data=process_user_data(f"{user_data_file}", aws_region, elastic_ip.association_id),
-    # user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
+    user_data=(lambda path: base64.b64encode(open(path).read().encode()).decode())(f"{user_data_file}"),
     tags={
         "Name": launch_template_name,
         "Project": project_name,
