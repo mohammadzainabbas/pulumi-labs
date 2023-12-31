@@ -144,6 +144,7 @@ main() {
     start_time=$(date +%s);
     echo "Starting setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧" | tee -a $output_file
     start_notify;
+    echo "start_notify()" | tee -a $output_file
     if setup_instance; then
         success_notify
     else
