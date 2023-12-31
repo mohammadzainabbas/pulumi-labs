@@ -60,7 +60,7 @@ _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 success_notify() {
 	_msg="Instance ID: '$INSTANCE_ID' deployed 🚀"
-	_title="New '$INSTANCE_TYPE' deployed 🚀"
+	_title="New '$INSTANCE_TYPE' deployed with '$PUBLIC_IP' IPv4 🚀"
 
     curl ntfy.sh \
     -d "{
