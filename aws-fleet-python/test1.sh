@@ -86,6 +86,7 @@ start_notify() {
                 {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
             ]
         }')
+    echo "$json_data" | jq
     send_to_ntfy "$json_data"
 }
 
