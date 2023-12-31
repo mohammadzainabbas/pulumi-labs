@@ -101,7 +101,6 @@ end_notify() {
         --arg click "$_click" \
         --arg _project_link "$_project_link" \
         --arg _pulumi "$_pulumi" \
-        --arg _web_url "$_web_url" \
         '{
             topic: $topic,
             message: $msg,
@@ -112,7 +111,6 @@ end_notify() {
             actions: [
                 {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
                 {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
-                {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
