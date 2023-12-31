@@ -28,6 +28,7 @@ WEB_PAGE="""
 
 <body>
 <h1>Deployed via Pulumi</h1>
+<p>Instance Type: $INSTANCE_TYPE</p>
 <p>Instance ID: $INSTANCE_ID</p>
 <p>Public Hostname: $HOSTNAME</p>
 <p>Region: $REGION</p>
