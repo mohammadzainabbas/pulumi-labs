@@ -43,7 +43,7 @@ setup_instance() {
 topic="mohammadzainabbas"
 github="https://github.com/mohammadzainabbas/pulumi-labs"
 project="aws-fleet-python"
-_click="$github/tree/main/aws-fleet-python"
+_click="$github/tree/main/$project"
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
