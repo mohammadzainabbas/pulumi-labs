@@ -78,7 +78,7 @@ start_notify() {
 }
 
 end_notify() {
-	_title="Took '$TIME' to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
+	_title="Took '$TIME' to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
 	_msg="Setup scripts completed on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
 
     curl ntfy.sh \
