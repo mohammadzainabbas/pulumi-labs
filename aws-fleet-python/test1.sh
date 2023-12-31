@@ -165,7 +165,7 @@ failure_notify() {
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
@@ -178,8 +178,8 @@ log() {
 run() {
     start=$(date +%s.%N);
     # shellcheck disable=SC2048
-    $*
-    # $* | tee -a "$output_file"
+    # $*
+    $* | tee -a "$output_file"
     end=$(date +%s.%N);
     _time_diff=$(echo "$end - $start" | bc);
     echo "[ run ] $* took $_time_diff secs" | tee -a "$output_file"
