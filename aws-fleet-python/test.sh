@@ -73,7 +73,7 @@ start_notify() {
 
 end_notify() {
     local TIME=$1
-	_title="Took '$TIME' secs to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
+	_title="Took $TIME secs to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
 	_msg="Setup scripts completed on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 👨‍💻"
 
     curl ntfy.sh \
@@ -140,7 +140,7 @@ log() {
 }
 
 run() {
-    $1 | tee -a "$output_file"
+    $* | tee -a "$output_file"
 }
 
 main() {
