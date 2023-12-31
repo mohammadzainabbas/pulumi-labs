@@ -41,7 +41,8 @@ setup_instance() {
 # Notify via ntfy.sh
 # ------------------------------
 topic="mohammadzainabbas"
-_click="https://github.com/mohammadzainabbas/pulumi-labs"
+github="https://github.com/mohammadzainabbas/pulumi-labs"
+_click="$github"
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
