@@ -11,11 +11,6 @@ INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq .AccountId)
 
-IDENTITY=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance)
-AWS_ACCESS_KEY_ID=$(echo "$IDENTITY" | jq .AccessKeyId)
-AWS_SECRET_ACCESS_KEY=$(echo "$IDENTITY" | jq .SecretAccessKey)
-AWS_SESSION_TOKEN=$(echo "$IDENTITY" | jq .Token)
-
 WEB_PAGE="""
 <!doctype html>
 <html>
