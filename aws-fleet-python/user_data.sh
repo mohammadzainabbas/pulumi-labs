@@ -11,8 +11,8 @@ ALLOCATION_ID='<Elastic IP Allocation-ID>'  # replace with your allocation id
 
 # shellcheck disable=SC2155
 export TOKEN=$(curl -s -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 600")
-curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/hostname
-curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region
+curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/hostname | sudo tee -a $output_file
+curl -s -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/placement/region | sudo tee -a $output_file
 python3 -m pip install awscli
 aws --version | sudo tee -a $output_file
 aws --region "$AWS_REGION" ec2 associate-address --instance-id "$INSTANCE_ID" --allocation-id "$ALLOCATION_ID" &>> $output_file  # replace <YourRegion> with your region
