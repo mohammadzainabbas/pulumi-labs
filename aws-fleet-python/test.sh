@@ -51,7 +51,7 @@ _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 success_notify() {
 	_msg="Instance ID: '$INSTANCE_ID' deployed successfully"
-	_title="New '$INSTANCE_ID' deployed"
+	_title="New '$INSTANCE_TYPE' deployed"
 
     curl ntfy.sh \
     -d "{
