@@ -146,13 +146,17 @@ main() {
     start_notify;
     echo "start_notify()" | tee -a $output_file
     if setup_instance; then
+        echo "setup_instance()" | tee -a $output_file
         success_notify
+        echo "success_notify()" | tee -a $output_file
     else
         failure_notify
+        echo "failure_notify()" | tee -a $output_file
     fi
     end_time=$(date +%s);
     time_diff=$((end_time - start_time));
     end_notify "$time_diff";
+    echo "end_notify()" | tee -a $output_file
 }
 
 main
