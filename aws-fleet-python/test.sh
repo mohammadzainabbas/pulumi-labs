@@ -47,7 +47,7 @@ success_notify() {
     -d '{
         "topic": "$topic",
         "message": "Disk space is low at 5.1 GB",
-        "title": "Low disk space alert",
+        "title": "Success: Low disk space alert",
         "tags": ["warning","cd"],
         "priority": 4,
         "attach": "https://filesrv.lan/space.jpg",
@@ -62,7 +62,7 @@ curl ntfy.sh \
   -d '{
     "topic": "mohammadzainabbas",
     "message": "Disk space is low at 5.1 GB",
-    "title": "Low disk space alert",
+    "title": "Failed: Low disk space alert",
     "tags": ["warning","cd"],
     "priority": 4,
     "attach": "https://filesrv.lan/space.jpg",
