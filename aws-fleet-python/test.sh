@@ -55,6 +55,7 @@ success_notify() {
 
     curl ntfy.sh \
     -d "{
+        \"icon\": \"$_attach\",
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
