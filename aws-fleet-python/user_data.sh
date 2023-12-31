@@ -64,9 +64,9 @@ send_to_ntfy() {
 }
 
 start_notify() {
-	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
-	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
-
+    _title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
+    _msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
+    
     json_data=$(jq -n \
         --arg topic "$topic" \
         --arg msg "$_msg" \
@@ -91,7 +91,7 @@ start_notify() {
 
 end_notify() {
     local TIME=$1
-	_title="Took $TIME secs to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
+    _title="Took $TIME secs to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
     _msg="Setup scripts completed on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 👨‍💻"
 
     json_data=$(jq -n \
