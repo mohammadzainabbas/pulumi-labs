@@ -30,8 +30,8 @@ WEB_PAGE="""
 <h1>Deployed via Pulumi</h1>
 <p>Instance Type: $INSTANCE_TYPE</p>
 <p>Instance ID: $INSTANCE_ID</p>
-<p>Public Hostname: $HOSTNAME</p>
-<p>Region: $REGION</p>
+<p>Hostname: $HOSTNAME</p>
+<p>Region: $AWS_REGION</p>
 <p>AMI ID: $AMI_ID</p>
 <p>Made with ♥ using <a href='https://pulumi.com'>Pulumi</a>.</p>
 </body>
