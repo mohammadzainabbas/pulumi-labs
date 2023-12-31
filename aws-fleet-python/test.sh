@@ -58,8 +58,8 @@ success_notify() {
         \"tags\": [\"warning\",\"cd\"],
         \"priority\": 4,
         \"attach\": \"https://filesrv.lan/space.jpg\",
-        \"filename\": \"diskspace.jpg\",
-        \"click\": \"https://homecamera.lan/xasds1h2xsSsa/\",
+        \"filename\": \"$_filename\",
+        \"click\": \"$_click\",
         \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
     }"
 }
