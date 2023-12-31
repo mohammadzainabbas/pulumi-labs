@@ -15,6 +15,10 @@ WEB_PAGE="""
 </head>
 <body>
 <h1>Deployed via Pulumi</h1>
+<p>Instance ID: $INSTANCE_ID</p>
+<p>Public Hostname: $HOSTNAME</p>
+<p>Region: $REGION</p>
+
 </body>
 </html>
 """
