@@ -9,10 +9,20 @@ HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/public-hostname)
 REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
 
 WEB_PAGE="""
+<!doctype html>
 <html>
 <head>
-<title>Deployed via Pulumi</title>
+  <meta charset="utf-8">
+  <title>Super-amazing static website!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <style>
+      body {
+        background-color: lightblue;
+      }
+  </style>
 </head>
+
 <body>
 <h1>Deployed via Pulumi</h1>
 <p>Instance ID: $INSTANCE_ID</p>
