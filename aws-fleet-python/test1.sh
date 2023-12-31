@@ -106,7 +106,7 @@ end_notify() {
             topic: $topic,
             message: $msg,
             title: $title,
-            tags: ["package"],
+            tags: ["alarm_clock"],
             priority: 4,
             click: $click,
             actions: [
