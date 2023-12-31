@@ -139,8 +139,7 @@ success_notify() {
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
                 {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
-
-                {action: "view", label: "View Website", url: $_web_url, clear: false}
+                {action: "view", label: "View Website", url: $web_link, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
