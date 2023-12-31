@@ -1,5 +1,7 @@
 # Amazon SageMaker + Hugging Face LLM Deployment
 
+https://app.pulumi.com/new?template=https://github.com/pulumi/examples/tree/master/aws-py-apigatewayv2-eventbridge
+
 ## Overview
 
 A Pulumi IaC program written in Python to deploy a Hugging Face Language Model (LLM) on Amazon SageMaker.
