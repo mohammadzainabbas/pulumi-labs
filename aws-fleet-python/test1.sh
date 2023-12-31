@@ -154,19 +154,19 @@ run() {
 
 main() {
     start_time=$(date +%s.%N);
-    log "start_notify()"
+    log "start_notify()";
     run start_notify;
-    log "setup_instance()"
+    log "setup_instance()";
     if run setup_instance; then
-        log "success_notify()"
-        run success_notify
+        log "success_notify()";
+        run success_notify;
     else
-        log "failure_notify()"
-        run failure_notify
+        log "failure_notify()";
+        run failure_notify;
     fi
     end_time=$(date +%s.%N);
     time_diff=$(echo "$end_time - $start_time" | bc);
-    log "end_notify()"
+    log "end_notify()";
     run end_notify "$time_diff";
 }
 
