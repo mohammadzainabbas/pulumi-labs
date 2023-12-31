@@ -42,13 +42,15 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas"
 _click="https://github.com/mohammadzainabbas/pulumi-labs"
-_actions=[
-      {
-        "action": "view",
-        "label": "Open Twitter",
-        "url": "https://twitter.com/binwiederhier/status/1467633927951163392"
-      }
-    ]
+_actions="""
+[
+	{
+		'action': 'view',
+		'label': 'Open Twitter',
+		'url': 'https://twitter.com/binwiederhier/status/1467633927951163392'
+	}
+]
+"""
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
