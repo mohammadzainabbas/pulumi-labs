@@ -11,7 +11,8 @@ INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq .AccountId)
 
-WEB_PAGE="""
+setup_instance() {
+    local WEB_PAGE="""
 <!doctype html>
 <html>
 <head>
@@ -37,8 +38,6 @@ WEB_PAGE="""
 </body>
 </html>
 """
-
-setup_instance() {
     sudo apt update -y && \
     sudo apt install -y apache2 && \
     sudo systemctl start apache2 && \
