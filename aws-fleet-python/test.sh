@@ -46,6 +46,8 @@ _click="$github"
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
+_pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
+
 success_notify() {
 	_msg="Disk space is low at 5.1 GB"
 	_title="Success: Low disk space alert"
