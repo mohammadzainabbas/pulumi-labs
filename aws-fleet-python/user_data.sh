@@ -59,7 +59,7 @@ _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 start_notify() {
-	_title="Setup deployed on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
+	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
 	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
     _web_url="http://$PUBLIC_IP"
 
