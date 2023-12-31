@@ -71,5 +71,9 @@ curl ntfy.sh \
     "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
   }'
 }
-  
-setup_instance && success_notify || failure_notify
+
+main() {
+    setup_instance && success_notify || failure_notify
+}
+
+{setup_instance && success_notify} || failure_notify
