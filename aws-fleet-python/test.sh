@@ -136,11 +136,11 @@ failure_notify() {
 }
 
 log() {
-    echo "[ log ] $1" | tee -a $output_file
+    echo "[ log ] $1" | tee -a "$output_file"
 }
 
 run() {
-    $1 | tee -a $output_file
+    $1 | tee -a "$output_file"
 }
 
 main() {
@@ -148,17 +148,17 @@ main() {
     echo "Starting setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧" | tee -a $output_file
     run start_notify;
     log "start_notify()"
-    if setup_instance; then
+    if run setup_instance; then
         log "setup_instance()"
-        success_notify
+        run success_notify
         log "success_notify()"
     else
-        failure_notify
+        run failure_notify
         log "failure_notify()"
     fi
     end_time=$(date +%s);
     time_diff=$((end_time - start_time));
-    end_notify "$time_diff";
+    run end_notify "$time_diff";
     log "end_notify()"
 }
 
