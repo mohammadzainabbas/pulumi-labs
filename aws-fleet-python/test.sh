@@ -37,7 +37,7 @@ setup_instance() {
 </body>
 </html>
 """
-    echo "$WEB_PAGE" | tee /var/www/html/index.html $output_file
+    echo "$WEB_PAGE" | tee /var/www/html/index.html "$output_file"
 }
 
 # ------------------------------
