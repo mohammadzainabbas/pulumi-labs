@@ -148,6 +148,9 @@ main() {
     else
         failure_notify
     fi
+    end_time=$(date +%s);
+    time_diff=$((end_time - start_time));
+    end_notify "$time_diff";
 }
 
 main
