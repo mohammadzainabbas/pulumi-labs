@@ -183,6 +183,7 @@ run() {
     end=$(date +%s.%N);
     _time_diff=$(echo "$end - $start" | bc);
     echo "[ run ] $* took $_time_diff secs with exit code $exit_code" | tee -a "$output_file"
+    return $exit_code
 }
 
 main() {
