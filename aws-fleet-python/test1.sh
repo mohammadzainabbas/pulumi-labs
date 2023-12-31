@@ -76,7 +76,12 @@ start_notify() {
             title: $title,
             tags: ["package"],
             priority: 4,
-            click: $click
+            click: $click,
+            actions: [
+                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi, clear: false},
+                {action: "view", label: "View Website", url: $web_url, clear: false}
+            ]
         }')
 
     curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
