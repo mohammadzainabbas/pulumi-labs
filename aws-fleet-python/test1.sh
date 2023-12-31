@@ -67,9 +67,9 @@ start_notify() {
         --arg msg "$_msg" \
         --arg title "$_title" \
         --arg click "$_click" \
-        --arg project_link "$_project_link" \
-        --arg pulumi "$_pulumi" \
-        --arg web_url "$_web_url" \
+        --arg _project_link "$_project_link" \
+        --arg _pulumi "$_pulumi" \
+        --arg _web_url "$_web_url" \
         '{
             topic: $topic,
             message: $msg,
@@ -78,7 +78,7 @@ start_notify() {
             priority: 4,
             click: $click,
             actions: [
-                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
                 {action: "view", label: "View Pulumi", url: $pulumi, clear: false},
                 {action: "view", label: "View Website", url: $web_url, clear: false}
             ]
