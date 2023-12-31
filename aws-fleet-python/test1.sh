@@ -137,8 +137,9 @@ success_notify() {
             priority: 4,
             click: $click,
             actions: [
-                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
+                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
+
                 {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
@@ -165,8 +166,9 @@ failure_notify() {
             priority: 4,
             click: $click,
             actions: [
-                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
+                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
+
                 {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
