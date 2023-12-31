@@ -47,7 +47,6 @@ _project_link="$github/tree/main/$project"
 _click="$_project_link"
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
-
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 success_notify() {
@@ -82,7 +81,10 @@ failure_notify() {
         \"attach\": \"https://filesrv.lan/space.jpg\",
         \"filename\": \"diskspace.jpg\",
         \"click\": \"https://homecamera.lan/xasds1h2xsSsa/\",
-        \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
+        \"actions\": [
+				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
+				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
+			]
     }"
 }
 
