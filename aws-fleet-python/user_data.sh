@@ -148,19 +148,19 @@ main() {
     start_time=$(date +%s);
     echo "Starting setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧" | tee -a $output_file
     start_notify;
-    echo "start_notify()" | tee -a $output_file
+    log "start_notify()"
     if setup_instance; then
-        echo "setup_instance()" | tee -a $output_file
+        log "setup_instance()"
         success_notify
-        echo "success_notify()" | tee -a $output_file
+        log "success_notify()"
     else
         failure_notify
-        echo "failure_notify()" | tee -a $output_file
+        log "failure_notify()"
     fi
     end_time=$(date +%s);
     time_diff=$((end_time - start_time));
     end_notify "$time_diff";
-    echo "end_notify()" | tee -a $output_file
+    log "end_notify()"
 }
 
 main
