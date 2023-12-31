@@ -50,20 +50,33 @@ setup_instance() {
 # Notify via ntfy.sh
 # ------------------------------
 topic="mohammadzainabbas"
+github="https://github.com/mohammadzainabbas/pulumi-labs"
+project="aws-fleet-python"
+_project_link="$github/tree/main/$project"
+_click="$_project_link"
+_attach="https://get.pulumi.com/new/button.svg"
+_filename="pulumi.svg"
+_pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 success_notify() {
+	_msg="Instance ID: '$INSTANCE_ID' deployed successfully"
+	_title="New '$INSTANCE_TYPE' deployed"
+
     curl ntfy.sh \
-    -d '{
-        "topic": "$topic",
-        "message": "Disk space is low at 5.1 GB",
-        "title": "Low disk space alert",
-        "tags": ["warning","cd"],
-        "priority": 4,
-        "attach": "https://filesrv.lan/space.jpg",
-        "filename": "diskspace.jpg",
-        "click": "https://homecamera.lan/xasds1h2xsSsa/",
-        "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
-    }'
+    -d "{
+        \"topic\": \"$topic\",
+        \"message\": \"$_msg\",
+        \"title\": \"$_title\",
+        \"tags\": [\"white_check_mark\",\"computer\",\"tada\"],
+        \"priority\": 4,
+        \"attach\": \"$_attach\",
+        \"filename\": \"$_filename\",
+        \"click\": \"$_click\",
+        \"actions\": [
+				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
+				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
+			]
+    }"
 }
 
 failure_notify() {
