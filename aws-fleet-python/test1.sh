@@ -58,7 +58,9 @@ _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 send_to_ntfy() {
-    
+    local json_data=$1
+    echo "$json_data" | jq
+    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
 }
 
 start_notify() {
