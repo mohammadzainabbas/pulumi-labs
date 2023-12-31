@@ -1,5 +1,7 @@
 #!/bin/bash
 
+output_file="$HOME/Desktop/output.log"
+
 AMI_ID="AWS AMI_ID"
 INSTANCE_ID="AWS INSTANCE_ID"
 HOSTNAME="AWS HOSTNAME"
