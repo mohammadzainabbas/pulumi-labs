@@ -50,7 +50,7 @@ topic="mohammadzainabbas"
 success_notify() {
     curl ntfy.sh \
     -d '{
-        "topic": "mohammadzainabbas",
+        "topic": "$topic",
         "message": "Disk space is low at 5.1 GB",
         "title": "Low disk space alert",
         "tags": ["warning","cd"],
