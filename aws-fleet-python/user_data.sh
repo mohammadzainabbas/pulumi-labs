@@ -59,7 +59,7 @@ _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 start_notify() {
-	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
+	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
 	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
     _web_url="http://$PUBLIC_IP"
 
@@ -68,7 +68,7 @@ start_notify() {
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
-        \"tags\": [\"butterfly\",\"package\"],
+        \"tags\": [\"package\"],
         \"priority\": 4,
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
