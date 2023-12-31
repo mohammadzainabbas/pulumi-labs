@@ -86,7 +86,7 @@ end_notify() {
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
-        \"tags\": [\"package\"],
+        \"tags\": [\"alarm_clock\"],
         \"priority\": 4,
         \"click\": \"$_click\",
         \"actions\": [
