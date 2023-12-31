@@ -140,9 +140,10 @@ log() {
 }
 
 run() {
-    local start=$(date +%s.%N)
+    local start=$(date +%s.%N);
     "$*" | tee -a "$output_file"
-    local end=$(date +%s.%N)
+    local end=$(date +%s.%N);
+    local time_diff=$(echo "$end - $start" | bc);
 }
 
 main() {
