@@ -47,9 +47,10 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas"
 success_notify() {
+    local topic=$1
     curl ntfy.sh \
     -d '{
-        "topic": "$topic",
+        "topic": (topic),
         "message": "Disk space is low at 5.1 GB",
         "title": "Low disk space alert",
         "tags": ["warning","cd"],
