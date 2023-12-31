@@ -64,30 +64,6 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
     }
 ))
 
-# Create a static IP address for the instance.
-elastic_ip_name = f"{project_name}-elastic-ip"
-# elastic_ip = aws.ec2.Eip(
-#     elastic_ip_name,
-#     # domain="vpc",
-#     tags={
-#         "Name": elastic_ip_name,
-#         "Project": project_name,
-#     }
-# )
-# elastic_ip = aws.ec2.get_elastic_ip(id="eipalloc-0a9bc84e0ce0dc123")
-elastic_ip = {
-    "association_id": "eipalloc-0a9bc84e0ce0dc123",
-    "public_ip": "15.236.236.36"
-}
-
-
-user_data = process_user_data(f"{user_data_file}", aws_region, f"{elastic_ip['association_id']}")
-# user_data = aws.ec2.get_elastic_ip(
-#     tags={
-#         "Name": "test-eip",
-#     }).apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, f"{eip_id}"))
-# user_data = aws.ec2.get_elastic_ip(id=elastic_ip.association_id).apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, str(eip_id)))
-
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
 security_group_name = f"{project_name}-security-group"
 security_group = aws.ec2.SecurityGroup(
