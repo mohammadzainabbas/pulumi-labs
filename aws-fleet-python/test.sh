@@ -3,13 +3,13 @@
 home_dir="/home/ubuntu"
 output_file="$home_dir/output.log"
 
-AMI_ID=$(curl http://169.254.169.254/latest/meta-data/ami-id)
-INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
-HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/hostname)
-AWS_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
-INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
-PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
-ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq .AccountId)
+AMI_ID="AWS AMI_ID"
+INSTANCE_ID="AWS INSTANCE_ID"
+HOSTNAME="AWS HOSTNAME"
+AWS_REGION="AWS AWS_REGION"
+INSTANCE_TYPE="AWS INSTANCE_TYPE"
+PUBLIC_IP="AWS PUBLIC_IP"
+ACCOUNT_ID="AWS ACCOUNT_ID"
 
 setup_instance() {
     local WEB_PAGE="""
