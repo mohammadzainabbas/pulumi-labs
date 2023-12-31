@@ -140,10 +140,10 @@ log() {
 }
 
 run() {
-    local start=$(date +%s.%N);
+    start=$(date +%s.%N);
     "$*" | tee -a "$output_file"
-    local end=$(date +%s.%N);
-    local time_diff=$(echo "$end - $start" | bc);
+    end=$(date +%s.%N);
+    time_diff=$(echo "$end - $start" | bc);
     echo "[ run ] $* took $time_diff secs" | tee -a "$output_file"
 }
 
