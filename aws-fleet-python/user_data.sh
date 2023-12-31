@@ -34,7 +34,7 @@ WEB_PAGE="""
 </html>
 """
 
-sudo apt update -y && sudo apt install -y apache2 python3 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html $output_file
+sudo apt update -y && sudo apt install -y apache2 python3 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
 
 AWS_REGION='<AWS Region>'  # replace with your region
 ALLOCATION_ID='<Elastic IP Allocation-ID>'  # replace with your allocation id
