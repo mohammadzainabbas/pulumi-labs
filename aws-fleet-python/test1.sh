@@ -89,8 +89,6 @@ start_notify() {
             ]
         }')
     send_to_ntfy "$json_data"
-    echo "$json_data" | jq
-    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
 }
 
 end_notify() {
