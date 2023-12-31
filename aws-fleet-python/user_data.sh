@@ -69,8 +69,6 @@ start_notify() {
         \"title\": \"$_title\",
         \"tags\": [\"package\"],
         \"priority\": 4,
-        \"attach\": \"$_attach\",
-        \"filename\": \"$_filename\",
         \"click\": \"$_click\",
         \"actions\": [
 				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
