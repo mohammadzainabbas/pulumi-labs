@@ -45,6 +45,7 @@ setup_instance() {
 # ------------------------------
 # Notify via ntfy.sh
 # ------------------------------
+topic="mohammadzainabbas"
 
 success_notify() {
     curl ntfy.sh \
