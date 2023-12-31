@@ -180,9 +180,6 @@ launch_template = aws.ec2.LaunchTemplate(
         "Name": launch_template_name,
         "Project": project_name,
     },
-    # opts=pulumi.ResourceOptions(
-    #     depends_on=[elastic_ip],
-    # )
 )
 
 # Override the instance type for the spot fleet
@@ -250,7 +247,3 @@ pulumi.export("vpc", vpc_name)
 pulumi.export("security_group", security_group.id)
 pulumi.export("launch_template", launch_template.id)
 pulumi.export("auto_scaling_group", auto_scaling_group.id)
-pulumi.export("ip", elastic_ip['public_ip'])
-pulumi.export("url", f"http://{elastic_ip['public_ip']}")
-# pulumi.export("ip", elastic_ip.public_ip)
-# pulumi.export("url", elastic_ip.public_ip.apply(lambda public_ip: f"http://{public_ip}"))
