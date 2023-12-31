@@ -48,7 +48,7 @@ setup_instance() {
 # ------------------------------
 # Notify via ntfy.sh
 # ------------------------------
-topic="mohammadzainabbas"
+topic="mohammadzainabbas-aws"
 github="https://github.com/mohammadzainabbas/pulumi-labs"
 project="aws-fleet-python"
 _project_link="$github/tree/main/$project"
