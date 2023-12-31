@@ -61,6 +61,7 @@ _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 success_notify() {
 	_title="Setup deployed on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
 	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
+    _web_url="http://$PUBLIC_IP"
 
     curl ntfy.sh \
     -d "{
@@ -75,7 +76,7 @@ success_notify() {
         \"actions\": [
 				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
 				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false },
-				{ \"action\": \"view\", \"label\": \"View Website\", \"url\": \"$_pulumi\", \"clear\": false }
+				{ \"action\": \"view\", \"label\": \"View Website\", \"url\": \"$_web_url\", \"clear\": false }
 			]
     }"
 }
