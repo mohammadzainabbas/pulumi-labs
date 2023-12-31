@@ -137,9 +137,9 @@ success_notify() {
             priority: 4,
             click: $click,
             actions: [
+                {action: "view", label: "View Website", url: $web_link, clear: false},
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
-                {action: "view", label: "View Website", url: $web_link, clear: false}
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
