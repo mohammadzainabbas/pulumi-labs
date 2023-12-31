@@ -9,7 +9,7 @@ HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/hostname)
 AWS_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
 INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
-ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq .AccountId)
+ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
 setup_instance() {
     local WEB_PAGE="""
