@@ -3,6 +3,17 @@
 home_dir="/home/ubuntu"
 output_file="$home_dir/output.log"
 
+WEB_PAGE="""
+<html>
+<head>
+<title>Deployed via Pulumi</title>
+</head>
+<body>
+<h1>Deployed via Pulumi</h1>
+</body>
+</html>
+"""
+
 sudo apt update -y && sudo apt install -y apache2 python3 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html $output_file
 
 INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
