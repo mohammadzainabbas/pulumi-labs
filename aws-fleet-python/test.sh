@@ -156,7 +156,7 @@ main() {
         log "failure_notify()"
     fi
     end_time=$(date +%s.%N);
-    time_diff=$((end_time - start_time));
+    time_diff=$(echo "$end_time - $start_time" | bc);
     run end_notify "$time_diff";
     log "end_notify()"
 }
