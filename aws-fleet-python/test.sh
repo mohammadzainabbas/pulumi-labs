@@ -32,7 +32,7 @@ WEB_PAGE="""
 """
 
 setup_instance() {
-    echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
+    echo "$WEB_PAGE" | sudo tee $output_file
 }
 
 # ------------------------------
