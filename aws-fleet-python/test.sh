@@ -43,7 +43,8 @@ setup_instance() {
 topic="mohammadzainabbas"
 github="https://github.com/mohammadzainabbas/pulumi-labs"
 project="aws-fleet-python"
-_click="$github/tree/main/$project"
+_project_link="$github/tree/main/$project"
+_click="$_project_link"
 _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 
@@ -64,7 +65,7 @@ success_notify() {
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
         \"actions\": [
-			{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\", \"clear\": true }, 
+			{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": true }, 
 			{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": true }
 			]
     }"
