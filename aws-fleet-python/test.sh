@@ -1,7 +1,6 @@
 #!/bin/bash
 
-home_dir="/home/ubuntu"
-output_file="$home_dir/output.log"
+output_file="$HOME/Desktop/output.log"
 
 AMI_ID="AWS AMI_ID"
 INSTANCE_ID="AWS INSTANCE_ID"
