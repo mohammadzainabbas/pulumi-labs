@@ -44,6 +44,7 @@ topic="mohammadzainabbas"
 _click="https://github.com/mohammadzainabbas/pulumi-labs"
 _actions="[{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]"
 _attach="https://get.pulumi.com/new/button.svg"
+_filename="pulumi.svg"
 
 success_notify() {
 	_msg="Disk space is low at 5.1 GB"
