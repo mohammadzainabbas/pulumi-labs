@@ -57,7 +57,7 @@ success_notify() {
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
-        \"tags\": [\"computer\",\"tada\"],
+        \"tags\": [\"computer\",\"computer\",\"tada\"],
         \"priority\": 4,
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
