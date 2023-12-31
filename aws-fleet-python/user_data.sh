@@ -179,9 +179,10 @@ run() {
     start=$(date +%s.%N);
     # shellcheck disable=SC2048
     $* | tee -a "$output_file"
+    exit_code=$?
     end=$(date +%s.%N);
     _time_diff=$(echo "$end - $start" | bc);
-    echo "[ run ] $* took $_time_diff secs" | tee -a "$output_file"
+    echo "[ run ] $* took $_time_diff secs with exit code $exit_code" | tee -a "$output_file"
 }
 
 main() {
