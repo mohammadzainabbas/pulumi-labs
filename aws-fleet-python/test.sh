@@ -57,7 +57,7 @@ success_notify() {
         \"title\": \"$_title\",
         \"tags\": [\"warning\",\"cd\"],
         \"priority\": 4,
-        \"attach\": \"https://filesrv.lan/space.jpg\",
+        \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
         \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
