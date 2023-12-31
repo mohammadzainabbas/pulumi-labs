@@ -80,7 +80,7 @@ success_notify() {
 }
 
 failure_notify() {
-	_title="Unable to deploy setup on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
+	_title="Unable to deploy setup on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 💔"
 	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
 
     curl ntfy.sh \
