@@ -53,6 +53,8 @@ github="https://github.com/mohammadzainabbas/pulumi-labs"
 project="aws-fleet-python"
 _project_link="$github/tree/main/$project"
 _click="$_project_link"
+_attach="https://get.pulumi.com/new/button.svg"
+_filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 send_to_ntfy() {
