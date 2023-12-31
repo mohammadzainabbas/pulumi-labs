@@ -3,4 +3,4 @@ runtime:
   name: python
   options:
     virtualenv: venv
-description: A Python program to deploy a VM on Amazon EC2 using spot fleet (via spot request)
+description: A Python program to deploy AWS Autoscaling Group with Launch Template to request Spot Instances for multi-type instances.
