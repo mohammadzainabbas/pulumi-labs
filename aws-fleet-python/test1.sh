@@ -91,19 +91,29 @@ end_notify() {
 	_title="Took $TIME secs to run setup scripts on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🌟"
 	_msg="Setup scripts completed on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 👨‍💻"
 
-    curl ntfy.sh \
-    -d "{
-        \"topic\": \"$topic\",
-        \"message\": \"$_msg\",
-        \"title\": \"$_title\",
-        \"tags\": [\"alarm_clock\"],
-        \"priority\": 4,
-        \"click\": \"$_click\",
-        \"actions\": [
-				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
-				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
-			]
-    }"
+    json_data=$(jq -n \
+        --arg topic "$topic" \
+        --arg msg "$_msg" \
+        --arg title "$_title" \
+        --arg click "$_click" \
+        --arg _project_link "$_project_link" \
+        --arg _pulumi "$_pulumi" \
+        --arg _web_url "$_web_url" \
+        '{
+            topic: $topic,
+            message: $msg,
+            title: $title,
+            tags: ["package"],
+            priority: 4,
+            click: $click,
+            actions: [
+                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
+                {action: "view", label: "View Website", url: $_web_url, clear: false}
+            ]
+        }')
+    echo "$json_data" | jq
+    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
 }
 
 success_notify() {
@@ -111,22 +121,29 @@ success_notify() {
 	_msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
     _web_url="http://$PUBLIC_IP"
 
-    curl ntfy.sh \
-    -d "{
-        \"topic\": \"$topic\",
-        \"message\": \"$_msg\",
-        \"title\": \"$_title\",
-        \"tags\": [\"white_check_mark\",\"tada\"],
-        \"priority\": 4,
-        \"attach\": \"$_attach\",
-        \"filename\": \"$_filename\",
-        \"click\": \"$_click\",
-        \"actions\": [
-				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
-				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false },
-				{ \"action\": \"view\", \"label\": \"View Website\", \"url\": \"$_web_url\", \"clear\": false }
-			]
-    }"
+    json_data=$(jq -n \
+        --arg topic "$topic" \
+        --arg msg "$_msg" \
+        --arg title "$_title" \
+        --arg click "$_click" \
+        --arg _project_link "$_project_link" \
+        --arg _pulumi "$_pulumi" \
+        --arg _web_url "$_web_url" \
+        '{
+            topic: $topic,
+            message: $msg,
+            title: $title,
+            tags: ["package"],
+            priority: 4,
+            click: $click,
+            actions: [
+                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
+                {action: "view", label: "View Website", url: $_web_url, clear: false}
+            ]
+        }')
+    echo "$json_data" | jq
+    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
 }
 
 failure_notify() {
