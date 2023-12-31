@@ -22,6 +22,7 @@ instance_types = loads(instance_types) if isinstance(instance_types, str) else i
 def process_user_data(path: str, aws_region: str, eip_value: str) -> str:
     with open(path, "r") as f: userdata = f.read()
     # Use the extracted value in replace
+    # eip_value = eip_value if eip_value else "eipalloc-0a9bc84e0ce0dc123"
     userdata = userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_value)
     return base64.b64encode(userdata.encode()).decode()
 
@@ -65,15 +66,26 @@ vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
 
 # Create a static IP address for the instance.
 elastic_ip_name = f"{project_name}-elastic-ip"
-elastic_ip = aws.ec2.Eip(
-    elastic_ip_name,
-    # domain="vpc",
-    tags={
-        "Name": elastic_ip_name,
-        "Project": project_name,
-    }
-)
+# elastic_ip = aws.ec2.Eip(
+#     elastic_ip_name,
+#     # domain="vpc",
+#     tags={
+#         "Name": elastic_ip_name,
+#         "Project": project_name,
+#     }
+# )
+# elastic_ip = aws.ec2.get_elastic_ip(id="eipalloc-0a9bc84e0ce0dc123")
+elastic_ip = {
+    "association_id": "eipalloc-0a9bc84e0ce0dc123",
+    "public_ip": "15.236.236.36"
+}
 
+
+user_data = process_user_data(f"{user_data_file}", aws_region, f"{elastic_ip['association_id']}")
+# user_data = aws.ec2.get_elastic_ip(
+#     tags={
+#         "Name": "test-eip",
+#     }).apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, f"{eip_id}"))
 # user_data = aws.ec2.get_elastic_ip(id=elastic_ip.association_id).apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, str(eip_id)))
 
 # Create a security group allowing inbound access over port 22 and 443 (https) and outbound access to anywhere.
@@ -151,7 +163,7 @@ block_device_mappings = [
 
 # Launch template for the spot fleet
 launch_template_name = f"{project_name}-launch-template"
-user_data = elastic_ip.association_id.apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, f"{eip_id}"))
+# user_data = elastic_ip.association_id.apply(lambda eip_id: process_user_data(f"{user_data_file}", aws_region, f"{eip_id}"))
 # print(user_data)
 launch_template = aws.ec2.LaunchTemplate(
     launch_template_name,
@@ -168,9 +180,9 @@ launch_template = aws.ec2.LaunchTemplate(
         "Name": launch_template_name,
         "Project": project_name,
     },
-    opts=pulumi.ResourceOptions(
-        depends_on=[elastic_ip],
-    )
+    # opts=pulumi.ResourceOptions(
+    #     depends_on=[elastic_ip],
+    # )
 )
 
 # Override the instance type for the spot fleet
@@ -238,5 +250,7 @@ pulumi.export("vpc", vpc_name)
 pulumi.export("security_group", security_group.id)
 pulumi.export("launch_template", launch_template.id)
 pulumi.export("auto_scaling_group", auto_scaling_group.id)
-pulumi.export("ip", elastic_ip.public_ip)
-pulumi.export("url", elastic_ip.public_ip.apply(lambda public_ip: f"http://{public_ip}"))
+pulumi.export("ip", elastic_ip['public_ip'])
+pulumi.export("url", f"http://{elastic_ip['public_ip']}")
+# pulumi.export("ip", elastic_ip.public_ip)
+# pulumi.export("url", elastic_ip.public_ip.apply(lambda public_ip: f"http://{public_ip}"))
