@@ -1,8 +1,6 @@
 # AWS Autoscaling Group with Spot Fleet
 
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
-
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/pulumi/examples/tree/master/aws-py-apigatewayv2-eventbridge)
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/aws-fleet-python)
 
 ## Overview
 
