@@ -120,7 +120,7 @@ success_notify() {
     _title="Setup deployed on '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🚀"
     _msg="Instance ID: '$INSTANCE_ID' was deployed with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚀"
     _web_url="http://$PUBLIC_IP"
-
+    
     json_data=$(jq -n \
         --arg topic "$topic" \
         --arg msg "$_msg" \
