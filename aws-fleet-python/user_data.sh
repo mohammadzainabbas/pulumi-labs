@@ -89,7 +89,7 @@ failure_notify() {
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
         \"tags\": [\"no_entry_sign\",\"x\",\"face_with_head_bandage\"],
-        \"priority\": 4,
+        \"priority\": 5,
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
