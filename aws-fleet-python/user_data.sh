@@ -8,6 +8,7 @@ INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/public-hostname)
 REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
 INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
+PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 
 WEB_PAGE="""
 <!doctype html>
