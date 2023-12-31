@@ -88,7 +88,7 @@ failure_notify() {
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
-        \"tags\": [\"no_entry_sign\",\"computer\",\"tada\"],
+        \"tags\": [\"no_entry_sign\",\"computer\",\"face_with_head_bandage\"],
         \"priority\": 4,
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
