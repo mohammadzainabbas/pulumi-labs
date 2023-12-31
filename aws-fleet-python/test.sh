@@ -58,18 +58,18 @@ success_notify() {
 }
 
 failure_notify() {
-curl ntfy.sh \
-  -d '{
-    "topic": "mohammadzainabbas",
-    "message": "Disk space is low at 5.1 GB",
-    "title": "Failed: Low disk space alert",
-    "tags": ["warning","cd"],
-    "priority": 4,
-    "attach": "https://filesrv.lan/space.jpg",
-    "filename": "diskspace.jpg",
-    "click": "https://homecamera.lan/xasds1h2xsSsa/",
-    "actions": [{ "action": "view", "label": "Admin panel", "url": "https://filesrv.lan/admin" }]
-  }'
+    curl ntfy.sh \
+    -d "{
+        \"topic\": \"$topic\",
+        \"message\": \"Disk space is low at 5.1 GB\",
+        \"title\": \"Failed: Low disk space alert\",
+        \"tags\": [\"warning\",\"cd\"],
+        \"priority\": 4,
+        \"attach\": \"https://filesrv.lan/space.jpg\",
+        \"filename\": \"diskspace.jpg\",
+        \"click\": \"https://homecamera.lan/xasds1h2xsSsa/\",
+        \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
+    }"
 }
 
 main() {
