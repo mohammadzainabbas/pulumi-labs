@@ -29,6 +29,7 @@ WEB_PAGE="""
 <p>Public Hostname: $HOSTNAME</p>
 <p>Region: $REGION</p>
 <p>AMI ID: $AMI_ID</p>
+<p>Made with ♥ using <a href="https://pulumi.com">Pulumi</a>.</p>
 </body>
 </html>
 """
