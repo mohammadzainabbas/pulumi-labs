@@ -152,8 +152,8 @@ log() {
 
 run() {
     start=$(date +%s.%N);
-    func=$*
-    func
+    # shellcheck disable=SC2068
+    $@
     end=$(date +%s.%N);
     _time_diff=$(echo "$end - $start" | bc);
     echo "[ run ] $* took $_time_diff secs" | tee -a "$output_file"
