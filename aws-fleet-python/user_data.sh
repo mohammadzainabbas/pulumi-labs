@@ -3,7 +3,7 @@
 home_dir="/home/ubuntu"
 output_file="$home_dir/output.log"
 
-INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/ami-id)
+AMI_ID=$(curl http://169.254.169.254/latest/meta-data/ami-id)
 INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/public-hostname)
 REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
@@ -18,7 +18,7 @@ WEB_PAGE="""
 <p>Instance ID: $INSTANCE_ID</p>
 <p>Public Hostname: $HOSTNAME</p>
 <p>Region: $REGION</p>
-
+<p>AMI ID: $AMI_ID</p>
 </body>
 </html>
 """
