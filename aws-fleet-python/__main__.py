@@ -14,17 +14,8 @@ instance_types = config.get("instanceTypes") if config.get("instanceTypes") is n
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
-valid_until = datetime.now() + timedelta(days=365) # 1 year from now
 user_data_file = f"user_data.sh"
 instance_types = loads(instance_types) if isinstance(instance_types, str) else instance_types
-
-# Process the user data file
-def process_user_data(path: str, aws_region: str, eip_value: str) -> str:
-    with open(path, "r") as f: userdata = f.read()
-    # Use the extracted value in replace
-    # eip_value = eip_value if eip_value else "eipalloc-0a9bc84e0ce0dc123"
-    userdata = userdata.replace("<AWS Region>", aws_region).replace("<Elastic IP Allocation-ID>", eip_value)
-    return base64.b64encode(userdata.encode()).decode()
 
 # Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
 ami = aws.ec2.get_ami(
