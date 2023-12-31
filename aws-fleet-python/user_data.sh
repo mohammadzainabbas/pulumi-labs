@@ -34,4 +34,14 @@ WEB_PAGE="""
 </html>
 """
 
-sudo apt update -y && sudo apt install -y apache2 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
+(sudo apt update -y && sudo apt install -y apache2 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file) && (curl \
+  -H "Title: Docker build has finished successfully \
+  -H "Priority: urgent" \
+  -H "Tags: tada,spark" \
+  -d "Successfully build docker image. Let's start with the new docker image!." \
+  ntfy.sh/mohammadzainabbas) || (curl \
+  -H "Title: Docker build failed" \
+  -H "Priority: urgent" \
+  -H "Tags: warning,skull" \
+  -d "Failed to build docker image. Have a look!." \
+  ntfy.sh/mohammadzainabbas)
