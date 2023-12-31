@@ -78,8 +78,6 @@ start_notify() {
             title: $title,
             tags: ["white_check_mark", "tada"],
             priority: 4,
-            attach: $attach,
-            filename: $filename,
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
