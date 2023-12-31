@@ -57,6 +57,10 @@ _attach="https://get.pulumi.com/new/button.svg"
 _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
+send_to_ntfy() {
+    
+}
+
 start_notify() {
 	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
 	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
