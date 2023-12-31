@@ -140,6 +140,10 @@ failure_notify() {
     }"
 }
 
+log() {
+    echo "[ log ] $1" | tee -a $output_file
+}
+
 main() {
     start_time=$(date +%s);
     echo "Starting setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧" | tee -a $output_file
