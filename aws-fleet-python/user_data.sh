@@ -74,7 +74,8 @@ success_notify() {
         \"click\": \"$_click\",
         \"actions\": [
 				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
-				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
+				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false },
+				{ \"action\": \"view\", \"label\": \"View Website\", \"url\": \"$_pulumi\", \"clear\": false }
 			]
     }"
 }
