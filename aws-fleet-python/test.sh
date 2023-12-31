@@ -41,7 +41,7 @@ setup_instance() {
 # Notify via ntfy.sh
 # ------------------------------
 topic="mohammadzainabbas"
-
+_click="https://homecamera.lan/xasds1h2xsSsa/"
 success_notify() {
 	_msg="Disk space is low at 5.1 GB"
 	_title="Success: Low disk space alert"
