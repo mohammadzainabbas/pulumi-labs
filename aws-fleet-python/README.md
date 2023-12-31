@@ -2,6 +2,8 @@
 
 [![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new)
 
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/pulumi/examples/tree/master/aws-py-apigatewayv2-eventbridge)
+
 ## Overview
 
 A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Launch Template to request Spot Instances for multi-type instances.
