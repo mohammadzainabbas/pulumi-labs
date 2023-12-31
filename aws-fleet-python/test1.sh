@@ -156,7 +156,6 @@ failure_notify() {
         --arg click "$_click" \
         --arg project_link "$_project_link" \
         --arg pulumi_link "$_pulumi" \
-        --arg _web_url "$_web_url" \
         '{
             topic: $topic,
             message: $msg,
