@@ -76,4 +76,4 @@ main() {
     setup_instance && success_notify || failure_notify
 }
 
-{setup_instance && success_notify} || failure_notify
+main
