@@ -140,7 +140,8 @@ log() {
 }
 
 run() {
-    $* | tee -a "$output_file"
+    
+    "$*" | tee -a "$output_file"
 }
 
 main() {
