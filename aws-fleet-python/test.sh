@@ -149,20 +149,20 @@ run() {
 
 main() {
     start_time=$(date +%s.%N);
-    run start_notify;
     log "start_notify()"
+    run start_notify;
+    log "setup_instance()"
     if run setup_instance; then
-        log "setup_instance()"
-        run success_notify
         log "success_notify()"
+        run success_notify
     else
-        run failure_notify
         log "failure_notify()"
+        run failure_notify
     fi
     end_time=$(date +%s.%N);
     time_diff=$(echo "$end_time - $start_time" | bc);
-    run end_notify "$time_diff";
     log "end_notify()"
+    run end_notify "$time_diff";
 }
 
 main
