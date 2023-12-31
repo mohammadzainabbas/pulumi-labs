@@ -172,7 +172,7 @@ failure_notify() {
 }
 
 log() {
-    echo "[ log ] $1" | tee -a $output_file
+    echo "[ log ] $1" | tee -a "$output_file"
 }
 
 run() {
