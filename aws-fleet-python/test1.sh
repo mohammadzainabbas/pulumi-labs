@@ -72,8 +72,8 @@ start_notify() {
         --arg msg "$_msg" \
         --arg title "$_title" \
         --arg click "$_click" \
-        --arg _project_link "$_project_link" \
-        --arg _pulumi "$_pulumi" \
+        --arg project_link "$_project_link" \
+        --arg pulumi_link "$_pulumi" \
         '{
             topic: $topic,
             message: $msg,
@@ -126,8 +126,8 @@ success_notify() {
         --arg msg "$_msg" \
         --arg title "$_title" \
         --arg click "$_click" \
-        --arg _project_link "$_project_link" \
-        --arg _pulumi "$_pulumi" \
+        --arg project_link "$_project_link" \
+        --arg pulumi_link "$_pulumi" \
         --arg _web_url "$_web_url" \
         '{
             topic: $topic,
