@@ -3,6 +3,9 @@
 home_dir="/home/ubuntu"
 output_file="$home_dir/output.log"
 
+INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
+HOSTNAME=$(curl http://169.254.169.254/latest/meta-data/hostname)
+
 WEB_PAGE="""
 <html>
 <head>
@@ -16,7 +19,6 @@ WEB_PAGE="""
 
 sudo apt update -y && sudo apt install -y apache2 python3 && sudo systemctl start apache2 && sudo systemctl enable apache2 && echo '<h1>Deployed via Pulumi</h1>' | sudo tee /var/www/html/index.html $output_file
 
-INSTANCE_ID=$(curl http://169.254.169.254/latest/meta-data/instance-id)
 AWS_REGION='<AWS Region>'  # replace with your region
 ALLOCATION_ID='<Elastic IP Allocation-ID>'  # replace with your allocation id
 
