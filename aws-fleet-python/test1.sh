@@ -66,8 +66,6 @@ start_notify() {
         --arg topic "$topic" \
         --arg msg "$_msg" \
         --arg title "$_title" \
-        --arg attach "$_attach" \
-        --arg filename "$_filename" \
         --arg click "$_click" \
         --arg project_link "$_project_link" \
         --arg pulumi "$_pulumi" \
@@ -87,21 +85,6 @@ start_notify() {
         }')
 
     curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
-
-
-    curl ntfy.sh \
-    -d "{
-        \"topic\": \"$topic\",
-        \"message\": \"$_msg\",
-        \"title\": \"$_title\",
-        \"tags\": [\"package\"],
-        \"priority\": 4,
-        \"click\": \"$_click\",
-        \"actions\": [
-				{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$_project_link\", \"clear\": false }, 
-				{ \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": false }
-			]
-    }"
 }
 
 end_notify() {
