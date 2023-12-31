@@ -42,6 +42,7 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas"
 _click="https://github.com/mohammadzainabbas/pulumi-labs"
+_actions="[{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]"
 success_notify() {
 	_msg="Disk space is low at 5.1 GB"
 	_title="Success: Low disk space alert"
