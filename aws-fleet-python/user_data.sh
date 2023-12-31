@@ -11,6 +11,11 @@ INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq .AccountId)
 
+IDENTITY=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance)
+ACCESS_KEY=$(echo $IDENTITY | jq .AccessKeyId)
+SECRET_KEY=$(echo $IDENTITY | jq .SecretAccessKey)
+TOKEN=$(echo $IDENTITY | jq .Token)
+
 WEB_PAGE="""
 <!doctype html>
 <html>
