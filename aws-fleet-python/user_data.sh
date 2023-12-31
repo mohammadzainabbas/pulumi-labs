@@ -78,7 +78,7 @@ start_notify() {
 }
 
 end_notify() {
-	_title="Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
+	_title="End of Deploying '$INSTANCE_TYPE' with '$PUBLIC_IP' IPv4 🦋"
 	_msg="Started setup scripts on Instance ID: '$INSTANCE_ID' with AMI: '$AMI_ID' at '$AWS_REGION' by account: '$ACCOUNT_ID' 🚧"
 
     curl ntfy.sh \
