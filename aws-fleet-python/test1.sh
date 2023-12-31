@@ -117,8 +117,7 @@ end_notify() {
                 {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
-    echo "$json_data" | jq
-    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
+    send_to_ntfy "$json_data"
 }
 
 success_notify() {
@@ -147,8 +146,7 @@ success_notify() {
                 {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
-    echo "$json_data" | jq
-    curl -X POST -H "Content-Type: application/json" -d "$json_data" https://ntfy.sh
+    send_to_ntfy "$json_data"
 }
 
 failure_notify() {
