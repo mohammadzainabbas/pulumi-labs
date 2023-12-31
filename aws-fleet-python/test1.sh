@@ -161,14 +161,12 @@ failure_notify() {
             topic: $topic,
             message: $msg,
             title: $title,
-            tags: ["package"],
-            priority: 4,
+            tags: ["x", "face_with_head_bandage"],
+            priority: 5,
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
                 {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
-
-                {action: "view", label: "View Website", url: $_web_url, clear: false}
             ]
         }')
     send_to_ntfy "$json_data"
