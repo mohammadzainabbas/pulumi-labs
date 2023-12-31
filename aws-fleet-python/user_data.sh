@@ -73,7 +73,12 @@ curl ntfy.sh \
 }
 
 main() {
-    setup_instance && success_notify || failure_notify
+    setup_instance
+    if [ $? -eq 0 ]; then
+        success_notify
+    else
+        failure_notify
+    fi
 }
 
 main
