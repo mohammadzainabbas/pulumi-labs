@@ -62,7 +62,7 @@ success_notify() {
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
         \"click\": \"$_click\",
-        \"actions\": [{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\", \"clear\": true }, { \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\", \"clear\": true }]
+        \"actions\": [{ \"action\": \"view\", \"label\": \"Open GitHub\", \"url\": \"$github\", \"clear\": true }, { \"action\": \"view\", \"label\": \"View Pulumi\", \"url\": \"$_pulumi\", \"clear\": true }]
     }"
 }
 
