@@ -50,8 +50,8 @@ success_notify() {
     curl ntfy.sh \
     -d "{
         \"topic\": \"$topic\",
-        \"message\": \"Disk space is low at 5.1 GB\",
-        \"title\": \"Success: Low disk space alert\",
+        \"message\": \"$_msg\",
+        \"title\": \"$_title\",
         \"tags\": [\"warning\",\"cd\"],
         \"priority\": 4,
         \"attach\": \"https://filesrv.lan/space.jpg\",
