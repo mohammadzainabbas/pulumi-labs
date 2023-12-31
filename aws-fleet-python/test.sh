@@ -49,7 +49,7 @@ _filename="pulumi.svg"
 _pulumi="https://app.pulumi.com/mohammadzainabbas/projects"
 
 success_notify() {
-	_msg="Disk space is low at 5.1 GB"
+	_msg="Instance ID: '$INSTANCE_ID' deployed successfully"
 	_title="New '$INSTANCE_ID' deployed"
 
     curl ntfy.sh \
