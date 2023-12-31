@@ -74,6 +74,11 @@ curl ntfy.sh \
 
 main() {
     
+    if [ $setup_instance ]; then
+        success_notify
+    else
+        failure_notify
+    fi
 }
 
 main
