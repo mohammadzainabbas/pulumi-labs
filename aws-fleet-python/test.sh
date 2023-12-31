@@ -140,8 +140,9 @@ log() {
 }
 
 run() {
-    
+    local start=$(date +%s.%N)
     "$*" | tee -a "$output_file"
+    local end=$(date +%s.%N)
 }
 
 main() {
