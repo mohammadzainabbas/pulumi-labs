@@ -91,7 +91,7 @@ success_notify() {
         \"topic\": \"$topic\",
         \"message\": \"$_msg\",
         \"title\": \"$_title\",
-        \"tags\": [\"white_check_mark\",\"computer\",\"tada\"],
+        \"tags\": [\"white_check_mark\",\"tada\"],
         \"priority\": 4,
         \"attach\": \"$_attach\",
         \"filename\": \"$_filename\",
