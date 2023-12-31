@@ -64,14 +64,14 @@ start_notify() {
     # Assuming your variables are properly defined
     json_data=$(jq -n \
         --arg topic "$topic" \
-        --arg msg "$msg" \
-        --arg title "$title" \
-        --arg attach "$attach" \
-        --arg filename "$filename" \
-        --arg click "$click" \
-        --arg project_link "$project_link" \
-        --arg pulumi "$pulumi" \
-        --arg web_url "$web_url" \
+        --arg msg "$_msg" \
+        --arg title "$_title" \
+        --arg attach "$_attach" \
+        --arg filename "$_filename" \
+        --arg click "$_click" \
+        --arg project_link "$_project_link" \
+        --arg pulumi "$_pulumi" \
+        --arg web_url "$_web_url" \
         '{
             topic: $topic,
             message: $msg,
