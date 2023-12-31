@@ -82,8 +82,8 @@ start_notify() {
             priority: 4,
             click: $click,
             actions: [
-                {action: "view", label: "Open GitHub", url: $_project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $_pulumi, clear: false},
+                {action: "view", label: "Open GitHub", url: $project_link, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
             ]
         }')
     send_to_ntfy "$json_data"
@@ -100,7 +100,7 @@ end_notify() {
         --arg title "$_title" \
         --arg click "$_click" \
         --arg project_link "$_project_link" \
-        --arg pulumi "$_pulumi" \
+        --arg pulumi_link "$_pulumi" \
         '{
             topic: $topic,
             message: $msg,
@@ -110,7 +110,7 @@ end_notify() {
             click: $click,
             actions: [
                 {action: "view", label: "Open GitHub", url: $project_link, clear: false},
-                {action: "view", label: "View Pulumi", url: $pulumi, clear: false},
+                {action: "view", label: "View Pulumi", url: $pulumi_link, clear: false},
             ]
         }')
     send_to_ntfy "$json_data"
