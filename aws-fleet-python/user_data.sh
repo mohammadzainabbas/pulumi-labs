@@ -141,6 +141,7 @@ failure_notify() {
 }
 
 main() {
+    start_notify; start_time=$(date +%s);
     if setup_instance; then
         success_notify
     else
