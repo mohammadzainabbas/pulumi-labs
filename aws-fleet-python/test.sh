@@ -57,7 +57,7 @@ success_notify() {
         \"attach\": \"https://filesrv.lan/space.jpg\",
         \"filename\": \"diskspace.jpg\",
         \"click\": \"https://homecamera.lan/xasds1h2xsSsa/\",
-        \"actions\": [{ \"action\": \"view\", \"label\": \"Admin panel\", \"url\": \"https://filesrv.lan/admin\" }]
+        \"actions\": \"$actions\"
     }"
 }
 
