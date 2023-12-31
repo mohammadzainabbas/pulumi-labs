@@ -2,7 +2,6 @@ import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
 import base64
-from datetime import datetime, timedelta
 from json import loads
 
 # Get some configuration values or set default values.
