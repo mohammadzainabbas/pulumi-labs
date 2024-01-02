@@ -13,7 +13,10 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 
 - [x] Creating a Pulumi Project
 - [x] Creating Docker Images
-- [x] Creating a MongoDB Atlas Database
+- [x] Configuring and Provisioning Containers
+
+#
+
 ## Prerequisites
 
 * `Pulumi` _(Account and CLI)_
