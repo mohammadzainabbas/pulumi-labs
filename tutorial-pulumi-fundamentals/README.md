@@ -23,4 +23,18 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 1. Clone the repo:
 
 ```bash
-git clone 
+git clone https://github.com/mohammadzainabbas/pulumi-labs.git
+```
+
+or if GitHub CLI is installed:
+
+```bash
+gh repo clone mohammadzainabbas/pulumi-labs
+```
+
+2. Change directory:
+
+```bash
+cd tutorial-pulumi-fundamentals
+```
+
