@@ -3,7 +3,6 @@ import * as docker from "@pulumi/docker";
 
 const projectName = pulumi.getProject();
 const stack = pulumi.getStack();
-pulumi.log.info(`Running ${projectName} the ${stack} stack!`);
 pulumi.log.info(`Program: ${projectName}`);
 pulumi.log.info(`Stack: ${stack}`);
 
