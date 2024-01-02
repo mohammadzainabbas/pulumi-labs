@@ -21,5 +21,7 @@ const frontend = new docker.RemoteImage(`${projectName}-${frontendImageName}`, {
 /* Pull the database (MongoDB) image from Docker Hub */
 const databaseImageName = "database-image";
 const database = new docker.RemoteImage(`${projectName}-${databaseImageName}`, {
-    name: "pulumi/tutorial-pulumi-fundamentals-database:latest",
+    name: "pulumi/tutorial-pulumi-fundamentals-database-local:latest",
 });
+
+
