@@ -79,6 +79,7 @@ To deploy to a region other than the default one configured for your AWS CLI pro
 pulumi config set aws:region us-east-1
 ```
 
+> [!IMPORTANT] 
 > If you don't specify anything, everything will be deployed in `eu-west-3` region.
 
 8. Run `pulumi up` to preview and deploy changes:
