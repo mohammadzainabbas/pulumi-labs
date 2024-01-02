@@ -6,7 +6,7 @@
 
 A Pulumi IaC program written in Python to deploy a Hugging Face Language Model (LLM) on Amazon SageMaker.
 
-## What you'll learn
+## Key Concepts
 
 - [x] IAM roles
 - [x] SageMaker model endpoint
