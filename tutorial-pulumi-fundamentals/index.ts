@@ -18,4 +18,8 @@ const frontend = new docker.RemoteImage(`${projectName}-${frontendImageName}`, {
     name: "pulumi/tutorial-pulumi-fundamentals-frontend:latest",
 });
 
-
+/* Pull the database image from Docker Hub */
+const databaseImageName = "database-image";
+const database = new docker.RemoteImage(`${projectName}-${databaseImageName}`, {
+    name: "pulumi/tutorial-pulumi-fundamentals-database:latest",
+});
