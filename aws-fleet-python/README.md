@@ -69,7 +69,8 @@ environment:
   - aws-jarvis
 ```
 
-> Note that the `aws-jarvis` is the name of the environment that I've created in step 1.
+> [!NOTE]
+> Here, `aws-jarvis` is the name of the environment that I've created in step 1.
 
 7. Set the AWS region (optional):
 
