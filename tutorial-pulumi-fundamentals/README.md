@@ -14,6 +14,6 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 
 * `Pulumi` _(Account and CLI)_
 * `Docker`
-* `Python 3.9+`
+* `TypeScript` or `JavaScript` (NodeJS v14+)
 * `AWS CLI v2` _(with valid credentials configured)_
 * `AWS Native CLI`
