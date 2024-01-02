@@ -3,8 +3,11 @@ import * as docker from "@pulumi/docker";
 
 const projectName = pulumi.getProject();
 const stack = pulumi.getStack();
-
 pulumi.log.info(`Running ${projectName} the ${stack} stack!`);
+
+/* Get configuration values */
+const config = new pulumi.Config();
+
 
 /* Pull the backend (ExpressJS & NodeJS) image from Docker Hub */
 const backendImageName = "backend-image";
