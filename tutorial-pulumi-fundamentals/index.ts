@@ -11,7 +11,6 @@ const frontendPort = config.requireNumber("frontendPort");
 const backendPort = config.requireNumber("backendPort");
 const databasePort = config.requireNumber("databasePort");
 
-
 /* Pull the backend (ExpressJS & NodeJS) image from Docker Hub */
 const backendImageName = "backend-image";
 const backend = new docker.RemoteImage(`${projectName}-${backendImageName}`, {
