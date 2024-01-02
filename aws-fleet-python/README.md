@@ -87,7 +87,8 @@ pulumi config set aws:region us-east-1
 pulumi up
 ```
 
-> Note: you can use `--yes` flag to skip the confirmation prompt.
+> [!NOTE] 
+> You can use `--yes` flag to skip the confirmation prompt.
 
 and voila! You've deployed Auto scaling group using spot fleet along with your custom launch config to AWS.
 
