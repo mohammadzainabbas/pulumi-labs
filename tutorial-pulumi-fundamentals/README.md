@@ -9,7 +9,7 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 > [!NOTE]
 > This tutorial is part of official Pulumi tutorials. You can follow along [here](https://www.pulumi.com/learn/pulumi-fundamentals/).
 
-## What you'll learn
+## Key Concepts
 
 - [x] Creating a Pulumi Project
 - [x] Creating Docker Images
