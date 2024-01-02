@@ -35,4 +35,7 @@ const database = new docker.RemoteImage(`${projectName}-${databaseImageName}`, {
 });
 
 /* Create a network for the containers to communicate */
-const network = new docker.Network(`${projectName}-network`);
+const networkName = `network`;
+const network = new docker.Network(`${projectName}-${networkName}`, {
+    name: networkName,
+});
