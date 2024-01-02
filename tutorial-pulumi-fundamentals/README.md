@@ -15,8 +15,6 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 - [x] Creating Docker Images
 - [x] Configuring and Provisioning Containers
 
-#
-
 ## Prerequisites
 
 * `Pulumi` _(Account and CLI)_
