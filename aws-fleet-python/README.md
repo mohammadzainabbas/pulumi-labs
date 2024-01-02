@@ -6,12 +6,12 @@
 
 A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Launch Template to request Spot Instances for multi-type instances.
 
-## Included:
+## What you'll learn
 
-- AMI ID (Look up the latest AWS Deep Learning AMI GPU CUDA)
-- Create new VPC, Subnets (Public and Private), RouteTables and Security Group
-- Define Launch Configuration with User Data
-- Create Autoscaling Group with Launch Template and Spot Fleet
+- [x] AMI ID (Look up the latest AWS Deep Learning AMI GPU CUDA)
+- [x] Create new VPC, Subnets (Public and Private), RouteTables and Security Group
+- [x] Define Launch Configuration with User Data
+- [x] Create Autoscaling Group with Launch Template and Spot Fleet
 
 ## Prerequisites
 
