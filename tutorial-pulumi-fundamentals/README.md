@@ -12,7 +12,7 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 ## Included:
 
 - Creating a Pulumi Project
-- Create new VPC, Subnets (Public and Private), RouteTables and Security Group
+- Creating Docker Images
 - Define Launch Configuration with User Data
 - Create Autoscaling Group with Launch Template and Spot Fleet
 
