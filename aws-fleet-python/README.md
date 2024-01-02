@@ -99,4 +99,5 @@ To destroy the Pulumi stack and all of its resources:
 pulumi destroy
 ```
 
-> Note: you can use `--yes` flag to skip the confirmation prompt.
+> [!NOTE] 
+> You can use `--yes` flag to skip the confirmation prompt.
