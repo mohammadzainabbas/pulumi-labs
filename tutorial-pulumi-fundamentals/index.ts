@@ -7,6 +7,9 @@ pulumi.log.info(`Running ${projectName} the ${stack} stack!`);
 
 /* Get configuration values */
 const config = new pulumi.Config();
+const frontendPort = config.requireNumber("frontendPort");
+const backendPort = config.requireNumber("backendPort");
+const databasePort = config.requireNumber("databasePort");
 
 
 /* Pull the backend (ExpressJS & NodeJS) image from Docker Hub */
