@@ -11,9 +11,9 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 
 ## Key Concepts
 
-- [x] Creating a Pulumi Project
-- [x] Creating Docker Images
-- [x] Configuring and Provisioning Containers
+- [x] Create a Pulumi Project
+- [x] Pull Docker Images
+- [x] Configure and Provision Containers
 
 ## Prerequisites
 
