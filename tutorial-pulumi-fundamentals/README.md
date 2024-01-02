@@ -1,5 +1,7 @@
 # Pulumi Fundamentals - Tutorial
 
+:octocat: [GitHub](https://github.com/mohammadzainabbas/pulumi-labs/tree/main/tutorial-pulumi-fundamentals)
+
 A tutorial-style typescript based Pulumi program with sample progressive web application (PWA) "the Pulumipus Boba Tea Shop"; built with MongoDB, ExpressJS, React, and NodeJS (the MERN stack).
 
 > [!NOTE]
