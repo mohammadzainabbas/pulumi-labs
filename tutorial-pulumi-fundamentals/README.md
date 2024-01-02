@@ -9,6 +9,12 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 > [!NOTE]
 > This tutorial is part of official Pulumi tutorials. You can follow along [here](https://www.pulumi.com/learn/pulumi-fundamentals/).
 
+## Included:
+
+- 
+- Create new VPC, Subnets (Public and Private), RouteTables and Security Group
+- Define Launch Configuration with User Data
+- Create Autoscaling Group with Launch Template and Spot Fleet
 
 ## Prerequisites
 
