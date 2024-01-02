@@ -11,6 +11,10 @@ const frontendPort = config.requireNumber("frontendPort");
 const backendPort = config.requireNumber("backendPort");
 const databasePort = config.requireNumber("databasePort");
 
+pulumi.log.info(`Frontend port: ${frontendPort}`);
+pulumi.log.info(`Backend port: ${backendPort}`);
+pulumi.log.info(`Database port: ${databasePort}`);
+
 /* Pull the backend (ExpressJS & NodeJS) image from Docker Hub */
 const backendImageName = "backend-image";
 const backend = new docker.RemoteImage(`${projectName}-${backendImageName}`, {
