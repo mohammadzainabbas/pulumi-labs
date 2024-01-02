@@ -34,4 +34,5 @@ const database = new docker.RemoteImage(`${projectName}-${databaseImageName}`, {
     name: "pulumi/tutorial-pulumi-fundamentals-database-local:latest",
 });
 
-
+/* Create a network for the containers to communicate */
+const network = new docker.Network(`${projectName}-network`);
