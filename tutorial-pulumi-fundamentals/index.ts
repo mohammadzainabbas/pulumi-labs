@@ -4,7 +4,7 @@ import * as docker from "@pulumi/docker";
 const projectName = pulumi.getProject();
 const stack = pulumi.getStack();
 
-pulumi.log.info(`Hello, world! You are running the ${stack} stack!`);
+pulumi.log.info(`Running ${projectName} the ${stack} stack!`);
 
 /* Pull the backend image from Docker Hub */
 const backendImageName = "backend-image";
@@ -17,3 +17,5 @@ const frontendImageName = "frontend-image";
 const frontend = new docker.RemoteImage(`${projectName}-${frontendImageName}`, {
     name: "pulumi/tutorial-pulumi-fundamentals-frontend:latest",
 });
+
+
