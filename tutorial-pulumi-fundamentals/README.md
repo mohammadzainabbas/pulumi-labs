@@ -11,11 +11,9 @@ A tutorial-style typescript based Pulumi program with sample progressive web app
 
 ## Included:
 
-- Creating a Pulumi Project
-- Creating Docker Images
-- Define Launch Configuration with User Data
-- Create Autoscaling Group with Launch Template and Spot Fleet
-
+- [x] Creating a Pulumi Project
+- [x] Creating Docker Images
+- [x] Creating a MongoDB Atlas Database
 ## Prerequisites
 
 * `Pulumi` _(Account and CLI)_
