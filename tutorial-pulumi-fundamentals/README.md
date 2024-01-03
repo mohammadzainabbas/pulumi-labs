@@ -65,7 +65,7 @@ pulumi up
 ```
 
 > [!NOTE]
-> **Pulumipus Boba Tea Shop** application is deployed to `http://localhost:3001` by default. You can change the port by setting the `PORT` environment variable.
+> Source code of **Pulumipus Boba Tea Shop** application is available [here](
 
 5. Access the application by open the following URL in the browser:
 
