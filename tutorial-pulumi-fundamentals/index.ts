@@ -62,4 +62,20 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         `NODE_ENV=${nodeEnvironment}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [backendContainerName] }],
-}, { dependsOn: [network] });
+}, { dependsOn: [ databaseContainer ] });
+
+/* Create the frontend container */
+const frontendContainerName = `frontend-container`;
+const frontendContainer = new docker.Container(`${projectName}-${frontendContainerName}`, {
+    name: `${frontendContainerName}-${stack}`,
+    image: frontend.repoDigest,
+    ports: [{
+        internal: frontendPort,
+        external: frontendPort,
+    }],
+    envs: [
+        `PORT=${frontendPort}`,
+        `REACT_APP_BACKEND_URL=http://${backendContainerName}:${backendPort}`,
+    ],
+    networksAdvanced: [{ name: network.name, aliases: [frontendContainerName] }],
+});
