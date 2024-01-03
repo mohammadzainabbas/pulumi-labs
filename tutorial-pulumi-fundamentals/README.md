@@ -65,7 +65,7 @@ pulumi up
 ```
 
 > [!NOTE]
-> You will be prompted to confirm the creation of the stack. Type `yes` to proceed.
+> You will be prompted to confirm the creation of the stack `dev`. Select `yes` to proceed.
 
 5. Access the application by open the following URL in the browser:
 
@@ -83,4 +83,4 @@ pulumi destroy
 ```
 
 > [!NOTE]
-> You will be prompted to confirm the destruction of the stack. Type `yes` to proceed.
+> You will be prompted to confirm the destruction of the stack `dev`. Type `yes` to proceed.
