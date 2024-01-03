@@ -64,8 +64,14 @@ npm install
 pulumi up
 ```
 
-5. Access the application:
+5. Access the application by open the following URL in the browser:
 
 ```bash
 pulumi stack output frontendUrl
+```
+
+6. Cleanup:
+
+```bash
+pulumi destroy
 ```
