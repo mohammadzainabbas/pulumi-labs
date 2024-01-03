@@ -51,8 +51,8 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
     }],
     envs: [
         `NODE_ENV=${nodeEnvironment}`,
-        `DATABASE_NAME=mongodb://database:${databasePort}`,
-        `DATABASE_HOST=mongodb://database:${databasePort}`,
+        `DATABASE_NAME=${databaseName}`,
+        `DATABASE_HOST=${databasePort}`,
         `PORT=${backendPort}`,
     ],
     networksAdvanced: [{
