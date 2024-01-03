@@ -14,7 +14,7 @@ const databasePort = config.requireNumber("databasePort");
 
 const nodeEnvironment = config.require("nodeEnvironment")
 const databaseName = config.require("databaseName")
-const databaseHost = pulumi.interpolate config.require("databaseHost")
+const databaseHost = config.require("databaseHost")
 
 pulumi.log.info(`Frontend port: ${frontendPort}`);
 pulumi.log.info(`Backend port: ${backendPort}`);
