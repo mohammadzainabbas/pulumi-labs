@@ -46,5 +46,5 @@ cd tutorial-pulumi-fundamentals
 3. Create a new Pulumi stack, which is an isolated deployment target for this example:
 
 ```bash
-pulumi stack init
+pulumi up
 ```
