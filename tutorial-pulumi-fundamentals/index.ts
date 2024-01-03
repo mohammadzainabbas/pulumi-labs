@@ -59,7 +59,5 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         `DATABASE_HOST=${databaseHost}`,
         `PORT=${backendPort}`,
     ],
-    networksAdvanced: [{
-        name: network.name,
-    }],
+    networksAdvanced: [{ name: network.name, }],
 });
