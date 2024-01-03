@@ -64,16 +64,13 @@ npm install
 pulumi up
 ```
 
-> [!NOTE]
-> You will be prompted to confirm the creation of the stack `dev`. Select `yes` to proceed.
-
 5. Access the application by open the following URL in the browser:
 
 ```bash
 pulumi stack output frontendUrl
 ```
 
-> [!NOTE]
+> [!TIP]
 > By default, the application is deployed to `http://localhost:3001`.
 
 6. Cleanup:
