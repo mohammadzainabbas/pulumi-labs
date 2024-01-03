@@ -43,7 +43,21 @@ gh repo clone mohammadzainabbas/pulumi-labs
 cd tutorial-pulumi-fundamentals
 ```
 
-3. Create a new Pulumi stack, which is an isolated deployment target for this example:
+3. Install dependencies:
+
+```bash
+yarn
+```
+
+or if `npm` is preferred:
+
+```bash
+npm install
+```
+
+> [!CAUTION]
+> If you are using `npm`, make sure to delete `yarn.lock` file.
+
 
 ```bash
 pulumi up
