@@ -55,7 +55,7 @@ const databaseContainer = new docker.Container(`${projectName}-${databaseContain
         internal: databasePort,
         external: databasePort,
     }],
-    networksAdvanced: [{ name: network.name, aliases: [databaseContainerName, `mongodb`] }],
+    networksAdvanced: [{ name: network.name, aliases: [databaseContainerName, `mongo`, `mongodb`, `database`] }],
 });
 
 /* Create the backend container */
