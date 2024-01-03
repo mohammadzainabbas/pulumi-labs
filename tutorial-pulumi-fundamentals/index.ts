@@ -76,8 +76,7 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     envs: [
         `PORT=${frontendPort}`,
         `HTTP_PROXY=${frontendPort}`,
-        `HTTP_PROXY=${frontendPort}`,
-        `REACT_APP_BACKEND_URL=http://${backendContainerName}:${backendPort}`,
+        `PROXY_PROTOCOL=${frontendPort}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName] }],
 });
