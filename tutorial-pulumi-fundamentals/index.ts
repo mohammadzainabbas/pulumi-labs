@@ -45,11 +45,11 @@ const backendContainerName = `backend-container`;
 const backendContainer = new docker.Container(`${projectName}-${backendContainerName}`, {
     name: `${backendContainerName}-${stack}`,
     image: backend.repoDigest,
-    networksAdvanced: [{
-        name: network.name,
-    }],
     ports: [{
         internal: backendPort,
         external: backendPort,
+    }],
+    networksAdvanced: [{
+        name: network.name,
     }],
 });
