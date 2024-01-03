@@ -118,6 +118,5 @@ curl --location --request POST 'http://localhost:3000/api/products' \
 ```
 
 > [!IMPORTANT]  
-> The above request will add a new drink item called `My New Milk Tea` to the app. 
-> This is just an example. You can change the request body as per your needs.
+> The above request will add a new drink item called `My New Milk Tea` to the app. This is just an example. You can change the request body as per your needs.
 
