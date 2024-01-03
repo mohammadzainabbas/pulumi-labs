@@ -94,4 +94,4 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName, `frontend`] }],
 });
 
-export const frontendUrl = pulumi.interpolate`${frontendContainerName}-${stack}:${frontendPort}`
+export const frontendUrl = pulumi.interpolate`${protocol}-${stack}:${frontendPort}`
