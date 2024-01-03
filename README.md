@@ -2,7 +2,7 @@
     <h3 style="color:rgb(47, 129, 247);" > 👨🏻‍💻 Pulumi Labs 🔬 </h3>
     <h6> A collection of experimental projects that showcase the power of Pulumi. </h6>
     <picture>
-        <img style="width:20%;" alt="Deploy via Pulumi" src="https://get.pulumi.com/new/button.svg" width="100">
+        <img style="width:20%;visibility:visible;" alt="Deploy via Pulumi" src="https://get.pulumi.com/new/button.svg" width="100">
     </picture>
 </div>
 
