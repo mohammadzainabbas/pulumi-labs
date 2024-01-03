@@ -62,4 +62,4 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         `NODE_ENV=${nodeEnvironment}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [backendContainerName] }],
-});
+}, { dependsOn: [network] });
