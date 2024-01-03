@@ -79,3 +79,18 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     ],
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName] }],
 });
+
+/* Create the database container */
+const databaseContainerName = `database-container`;
+const databaseContainer = new docker.Container(`${projectName}-${databaseContainerName}`, {
+    name: `${databaseContainerName}-${stack}`,
+    image: database.repoDigest,
+    ports: [{
+        internal: databasePort,
+        external: databasePort,
+    }],
+    envs: [
+        `MONGO_INITDB_DATABASE=${databaseName}`,
+    ],
+    networksAdvanced: [{ name: network.name, aliases: [databaseContainerName] }],
+});
