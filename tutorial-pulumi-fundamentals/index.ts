@@ -50,7 +50,7 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         external: backendPort,
     }],
     envs: [
-        `networkName=${backendPort}`,
+        `NODE_ENV=${nodeEnvironment}`,
         `MONGO_URL=mongodb://database:${databasePort}`,
     ],
     networksAdvanced: [{
