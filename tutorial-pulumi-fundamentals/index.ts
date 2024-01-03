@@ -94,6 +94,10 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName, `frontend`] }],
 });
 
+/* Pulumi exports */
 export const frontendUrl = pulumi.interpolate`${protocol}localhost:${frontendPort}`
 export const backendUrl = pulumi.interpolate`${protocol}localhost:${backendPort}`
 export const databaseUrl = pulumi.interpolate`${protocol}localhost:${databasePort}`
+export const frontendContainerName = frontendContainer.name
+export const backendContainerName = backendContainer.name
+export const databaseContainerName = databaseContainer.name
