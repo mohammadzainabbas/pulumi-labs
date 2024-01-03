@@ -54,10 +54,10 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         external: backendPort,
     }],
     envs: [
-        `NODE_ENV=${nodeEnvironment}`,
+        `PORT=${backendPort}`,
         `DATABASE_NAME=${databaseName}`,
         `DATABASE_HOST=${databaseHost}`,
-        `PORT=${backendPort}`,
+        `NODE_ENV=${nodeEnvironment}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [backendContainerName] }],
 });
