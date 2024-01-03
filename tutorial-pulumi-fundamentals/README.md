@@ -64,6 +64,9 @@ npm install
 pulumi up
 ```
 
+> [!NOTE]
+> If you are using Pulumi for the first time, you will be asked to login to your Pulumi account. Follow the instructions on the terminal to login.
+
 5. Access the application by open the following URL in the browser:
 
 ```bash
