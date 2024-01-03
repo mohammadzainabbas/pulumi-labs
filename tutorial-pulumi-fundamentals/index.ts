@@ -61,7 +61,7 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
         `DATABASE_HOST=${pulumi.interpolate`${databaseHost}:${databasePort}`}`,
         `NODE_ENV=${nodeEnvironment}`,
     ],
-    networksAdvanced: [{ name: network.name, aliases: [backendContainerName] }],
+    networksAdvanced: [{ name: network.name, aliases: [backendContainerName, `backend`] }],
 }, { dependsOn: [ databaseContainer ] });
 
 /* Create the frontend container */
@@ -76,7 +76,7 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     envs: [
         `PORT=${frontendPort}`,
         `HTTP_PROXY=${backendContainerName}-${stack}:${backendPort}`,
-        `PROXY_PROTOCOL=${frontendPort}`,
+        `PROXY_PROTOCOL=${protocol}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName, `frontend`] }],
 });
