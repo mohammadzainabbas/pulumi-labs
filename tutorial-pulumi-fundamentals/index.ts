@@ -92,5 +92,5 @@ const databaseContainer = new docker.Container(`${projectName}-${databaseContain
     envs: [
         `MONGO_INITDB_DATABASE=${databaseName}`,
     ],
-    networksAdvanced: [{ name: network.name, aliases: [databaseContainerName, `mongo`] }],
+    networksAdvanced: [{ name: network.name, aliases: [databaseContainerName, `mongodb`] }],
 });
