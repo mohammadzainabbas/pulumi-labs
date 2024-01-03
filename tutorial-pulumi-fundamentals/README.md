@@ -67,5 +67,5 @@ pulumi up
 5. Access the application:
 
 ```bash
-pulumi stack output url
+pulumi stack output frontendUrl
 ```
