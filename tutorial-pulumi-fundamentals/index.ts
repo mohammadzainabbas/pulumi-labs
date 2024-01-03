@@ -39,7 +39,7 @@ const networkName = `network`;
 const network = new docker.Network(`${projectName}-${networkName}`, {
     name: `${networkName}-${stack}`,
     labels: {
-        "pulumi:project": projectName,
+        "apply": projectName,
         "pulumi:stack": stack,
     },
 });
