@@ -65,7 +65,7 @@ pulumi up
 ```
 
 > [!NOTE]
-> Source code of **Pulumipus Boba Tea Shop** application is available [here](
+> Source code of **Pulumipus Boba Tea Shop** application is available [here](https://github.com/pulumi/tutorial-pulumi-fundamentals/).
 
 5. Access the application by open the following URL in the browser:
 
