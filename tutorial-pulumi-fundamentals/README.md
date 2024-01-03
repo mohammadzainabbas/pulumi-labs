@@ -49,7 +49,7 @@ cd tutorial-pulumi-fundamentals
 yarn
 ```
 
-or if `npm` is preferred:
+or if you prefer `npm`:
 
 ```bash
 npm install
