@@ -78,3 +78,6 @@ pulumi stack output frontendUrl
 ```bash
 pulumi destroy
 ```
+
+> [!NOTE]
+> You will be prompted to confirm the destruction of the stack. Type `yes` to proceed.
