@@ -96,3 +96,4 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
 
 export const frontendUrl = pulumi.interpolate`${protocol}localhost:${frontendPort}`
 export const backendUrl = pulumi.interpolate`${protocol}localhost:${backendPort}`
+export const databaseUrl = pulumi.interpolate`${protocol}localhost:${databasePort}`
