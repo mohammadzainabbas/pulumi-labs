@@ -38,5 +38,9 @@ const database = new docker.RemoteImage(`${projectName}-${databaseImageName}`, {
 const networkName = `network`;
 const network = new docker.Network(`${projectName}-${networkName}`, {
     name: `${networkName}-${stack}`,
+    labels: {
+        "pulumi:project": projectName,
+        "pulumi:stack": stack,
+    },
 });
 
