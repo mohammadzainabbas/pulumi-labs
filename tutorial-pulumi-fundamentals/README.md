@@ -65,7 +65,7 @@ pulumi up
 ```
 
 > [!NOTE]
-> If you are using Pulumi for the first time, you will be asked to login to your Pulumi account. Follow the instructions on the terminal to login.
+> **Pulumipus Boba Tea Shop** application is deployed to `http://localhost:3001` by default. You can change the port by setting the `PORT` environment variable.
 
 5. Access the application by open the following URL in the browser:
 
@@ -74,7 +74,7 @@ pulumi stack output frontendUrl
 ```
 
 > [!TIP]
-> By default, the application is deployed to `http://localhost:3001`.
+> By default, the application is deployed to `http://localhost:3001`. You can change the port by setting the `PORT` environment variable.
 
 6. Cleanup:
 
