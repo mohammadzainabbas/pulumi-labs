@@ -79,5 +79,3 @@ pulumi stack output frontendUrl
 pulumi destroy
 ```
 
-> [!NOTE]
-> You will be prompted to confirm the destruction of the stack `dev`. Select `yes` to proceed.
