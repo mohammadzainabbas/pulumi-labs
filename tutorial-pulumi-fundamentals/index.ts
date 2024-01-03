@@ -43,6 +43,7 @@ const network = new docker.Network(`${projectName}-${networkName}`, {
 /* Create the backend container */
 const backendContainerName = `backend-container`;
 const backendContainer = new docker.Container(`${projectName}-${backendContainerName}`, {
+    name: `${backendContainerName}-${stack}`,
     image: backend.name,
     networksAdvanced: [{
         name: network.name,
