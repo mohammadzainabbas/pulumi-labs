@@ -12,6 +12,10 @@ const frontendPort = config.requireNumber("frontendPort");
 const backendPort = config.requireNumber("backendPort");
 const databasePort = config.requireNumber("databasePort");
 
+const nodeEnvironment = config.require("nodeEnvironment")
+const databaseName = config.require("databaseName")
+const databaseHost = config.require("databaseHost")
+
 pulumi.log.info(`Frontend port: ${frontendPort}`);
 pulumi.log.info(`Backend port: ${backendPort}`);
 pulumi.log.info(`Database port: ${databasePort}`);
