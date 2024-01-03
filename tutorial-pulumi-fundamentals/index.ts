@@ -1,5 +1,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as docker from "@pulumi/docker";
+import exp = require("constants");
 
 const projectName = pulumi.getProject();
 const stack = pulumi.getStack();
@@ -93,3 +94,4 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
     networksAdvanced: [{ name: network.name, aliases: [frontendContainerName, `frontend`] }],
 });
 
+export const frontendUrl = pulumi.interpolate`${frontendContainerName}-${stack}:${frontendPort}`
