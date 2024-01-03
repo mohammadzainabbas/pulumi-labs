@@ -70,6 +70,9 @@ pulumi up
 pulumi stack output frontendUrl
 ```
 
+> [!NOTE]
+> By default, the application is deployed to `http://localhost:3001`.
+
 6. Cleanup:
 
 ```bash
