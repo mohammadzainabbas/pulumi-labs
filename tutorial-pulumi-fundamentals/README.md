@@ -64,6 +64,9 @@ npm install
 pulumi up
 ```
 
+> [!NOTE]
+> You will be prompted to confirm the creation of the stack. Type `yes` to proceed.
+
 5. Access the application by open the following URL in the browser:
 
 ```bash
