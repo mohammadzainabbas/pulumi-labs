@@ -55,9 +55,6 @@ const databaseContainer = new docker.Container(`${projectName}-${databaseContain
         internal: databasePort,
         external: databasePort,
     }],
-    envs: [
-        `MONGO_INITDB_DATABASE=${databaseName}`,
-    ],
     networksAdvanced: [{ name: network.name, aliases: [databaseContainerName, `mongodb`] }],
 });
 
