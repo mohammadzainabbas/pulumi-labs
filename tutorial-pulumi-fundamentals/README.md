@@ -86,6 +86,9 @@ pulumi config set frontendPort <port>
 pulumi destroy
 ```
 
+> [!WARNING]  
+> This will delete all the resources (_pulled images_, _containers_, _network_) created by this Pulumi program.
+
 ### Add new item
 
 If you want to add a new item to your app, you can do so by making a `POST` request like the following:
