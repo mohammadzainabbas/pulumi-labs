@@ -56,7 +56,7 @@ npm install
 ```
 
 > [!CAUTION]
-> If you are using `npm`, make sure to delete `yarn.lock` file first before running installing dependencies.
+> If you are using `npm`, make sure to delete `yarn.lock` file first before installing dependencies.
 
 4. Deploy via Pulumi:
 
