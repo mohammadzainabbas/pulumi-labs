@@ -17,7 +17,7 @@ const nodeEnvironment = config.require("nodeEnvironment")
 const databaseName = config.require("databaseName")
 const databaseHost = config.require("databaseHost")
 const protocol = config.require("protocol")
-// const dbHost = pulumi.interpolate`${databaseHost}:${databasePort}`
+const dbHost = `${databaseHost}:${databasePort}`
 
 pulumi.log.info(`Frontend port: ${frontendPort}`);
 pulumi.log.info(`Backend port: ${backendPort}`);
@@ -71,7 +71,7 @@ const backendContainer = new docker.Container(`${projectName}-${backendContainer
     envs: [
         `PORT=${backendPort}`,
         `DATABASE_NAME=${databaseName}`,
-        `DATABASE_HOST=${pulumi.interpolate`${databaseHost}:${databasePort}`}`,
+        `DATABASE_HOST=${dbHost}`,
         `NODE_ENV=${nodeEnvironment}`,
     ],
     networksAdvanced: [{ name: network.name, aliases: [backendContainerName, `backend`] }],
