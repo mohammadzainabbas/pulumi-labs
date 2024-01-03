@@ -78,7 +78,7 @@ const frontendContainer = new docker.Container(`${projectName}-${frontendContain
         `HTTP_PROXY=${backendContainerName}-${stack}:${backendPort}`,
         `PROXY_PROTOCOL=${frontendPort}`,
     ],
-    networksAdvanced: [{ name: network.name, aliases: [frontendContainerName] }],
+    networksAdvanced: [{ name: network.name, aliases: [frontendContainerName, `frontend`] }],
 });
 
 /* Create the database container */
