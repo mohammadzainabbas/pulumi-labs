@@ -58,7 +58,14 @@ npm install
 > [!CAUTION]
 > If you are using `npm`, make sure to delete `yarn.lock` file.
 
+4. Deploy via Pulumi:
 
 ```bash
 pulumi up
+```
+
+5. Access the application:
+
+```bash
+pulumi stack output url
 ```
