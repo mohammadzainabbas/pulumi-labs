@@ -74,7 +74,11 @@ pulumi stack output frontendUrl
 ```
 
 > [!TIP]
-> By default, the application is deployed to `http://localhost:3001`. You can change the port by setting the `PORT` environment variable.
+> By default, the application is deployed to `http://localhost:3001`. You can change the port by setting the `frontendPort` pulumi config variable.
+
+```bash
+pulumi set config frontendPort 3001
+```
 
 6. Cleanup:
 
