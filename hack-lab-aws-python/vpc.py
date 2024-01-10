@@ -371,12 +371,11 @@ class Vpcx(pulumi.ComponentResource):
         },
     ))
 
-    export("vpcId", net.vpc.id)
-    export("vpcPrivateSubnetIds", net.vpc.private_subnet_ids)
-    export("vpcPublicSubnetIds", net.vpc.public_subnet_ids)
-    export("vpcPublicSubnetIds", net.security_group.id)
+    export("vpc_id", net.vpc.id)
+    export("vpc_private_subnet_ids", net.vpc.private_subnet_ids)
+    export("vpc_public_subnet_ids", net.vpc.public_subnet_ids)
+    export("vpc_security_group_id", net.security_group.id)
     ```
-
 
     """
 
