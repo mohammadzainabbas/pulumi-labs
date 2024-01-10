@@ -53,6 +53,9 @@ pulumi config set keypair jarvis
 pulumi config set vpcNetworkCidr 192.168.110.0/24
 ```
 
+> [!IMPORTANT]
+> If you don't specify anything, everything will be deployed in `eu-west-3` region.
+
 
 ```bash
 cd hack-lab-aws-python
