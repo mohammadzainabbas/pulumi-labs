@@ -314,3 +314,4 @@ class Vpc(pulumi.ComponentResource):
                     opts=pulumi.ResourceOptions(
                         parent=self.flow_logs_role
                     ))
+
