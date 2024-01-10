@@ -315,29 +315,3 @@ class Vpc(pulumi.ComponentResource):
                         parent=self.flow_logs_role
                     ))
 
-class Vpcx(pulumi.ComponentResource):
-    """
-    Creates a good-practice AWS VPC using Pulumi. The VPC consists of:
-
-      - DHCP options for the given private hosted zone name
-      - An Internet gateway
-      - Subnets of appropriate sizes for public and private subnets, for each availability zone specified
-      - A route table routing traffic from public subnets to the internet gateway
-      - NAT gateways (and accoutrements) for each private subnet, and appropriate routing
-      - Optionally, S3 and DynamoDB endpoints
-
-    ### Example Usage
-
-    ```python
-    from vpc import Vpc, VpcArgs
-    from pulumi import export
-    from pulumi_aws import get_availability_zones
-
-    zones = get_availability_zones(state="available")
-
-    vpc = Vpc("example-vpc", VpcArgs(
-        description="Example VPC",
-        base_tags={
-            "Project": "Python Example VPC",
-        },
-        base_cidr="
