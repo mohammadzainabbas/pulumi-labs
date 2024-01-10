@@ -337,6 +337,7 @@ class VpcxArgs:
         self.vpc_cidr_block = vpc_cidr_block
         self.azs = azs
         self.aws_region = aws_region
+        self.sg_ingress_ports = sg_ingress_ports
         self.tags = tags
 
 class Vpcx(pulumi.ComponentResource):
