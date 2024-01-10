@@ -12,7 +12,7 @@ PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
 # ------------------------------
-# Logging
+# Logging & Run method
 # ------------------------------
 
 log() {
