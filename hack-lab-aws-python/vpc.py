@@ -410,6 +410,10 @@ class Vpcx(pulumi.ComponentResource):
         vpc_name = f"{project_name}-vpc"
         self.vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
             cidr_block=args.vpc_network_cidr,
+            number_of_availability_zones=len(args.azs.names),
+            subnet_specs=[
+                
+            ]
 
 
         self.vpc = aws.ec2.Vpc(vpc_name,
