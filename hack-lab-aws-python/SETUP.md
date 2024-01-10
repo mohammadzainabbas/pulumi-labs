@@ -1,10 +1,7 @@
-# Hackng Lab in AWS
+# How this project was setup ?
 
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/hack-lab-aws-python)
-
-## Overview
-
-A Pulumi IaC program written in Python to deploy a hacking lab in AWS.
+> [!NOTE]
+> Follow the steps below to setup this project from scratch.
 
 ## Key Concepts
 
