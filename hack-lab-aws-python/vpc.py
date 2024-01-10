@@ -2,7 +2,7 @@
 Contains a Pulumi ComponentResource for creating a good-practice AWS VPC.
 """
 import json
-from typing import Mapping, Sequence
+from typing import Mapping, Sequence, Optional
 
 import pulumi
 import pulumi_aws as aws
