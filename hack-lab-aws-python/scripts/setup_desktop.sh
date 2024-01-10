@@ -35,7 +35,7 @@ run() {
 # ------------------------------
 pre_setup() {
     sudo apt update -y && \
-    sudo apt install -y curl wget jq
+    sudo apt install -y wget jq tee bc
 }
 
 setup_instance() {
