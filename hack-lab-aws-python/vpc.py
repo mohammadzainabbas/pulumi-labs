@@ -423,7 +423,8 @@ class Vpcx(pulumi.ComponentResource):
                 strategy=awsx.ec2.NatGatewayStrategy.NONE,
             ),
             subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
-            tags={"Name": vpc_name, **args.base_tags}
+            tags={ "Name": vpc_name, **args.base_tags },
+            opts=pulumi.ResourceOptions( parent=self ),
         ))
 
 
