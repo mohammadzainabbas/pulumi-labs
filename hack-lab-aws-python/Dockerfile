@@ -3,6 +3,7 @@ FROM kalilinux/kali-rolling
 
 # Set environment variable for Kali user password
 ENV PWD=123
+ENV XRDP_PORT=3390
 
 # Update the package list and install necessary packages
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
