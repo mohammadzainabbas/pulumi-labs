@@ -320,7 +320,7 @@ class VpcxArgs:
 
     def __init__(self,
                  description: str,
-                 base_tags: Mapping[str, str],
+                 base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
                  base_cidr: str,
                  availability_zone_names: pulumi.Input[Sequence[pulumi.Input[str]]],
                  zone_name: pulumi.Input[str] = "",
