@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd || exit
+
 echo "[i] Updating and upgrading Kali (this will take a while)"
 apt-get update
 apt-get --yes --force-yes full-upgrade
