@@ -13,11 +13,21 @@
 
 ### Setup
 
-1. Configuring OpenID Connect for AWS:
+1. Create an empty directory and change directory:
 
-Follow the guideline [here](https://www.pulumi.com/docs/pulumi-cloud/oidc/aws/) to configure `Pulumi` to use OpenID Connect to authenticate with AWS.
+```bash
+mkdir hack-lab-aws-python
+cd hack-lab-aws-python
+```
 
-2. Clone the repo:
+2. Setup a pulumi project:
+
+```bash
+pulumi new python
+```
+
+> [!IMPORTANT]
+> Change anything if you need to, if you want to keep the default values, just press `Enter` and it'll be skipped.
 
 ```bash
 git clone https://github.com/mohammadzainabbas/pulumi-labs.git
