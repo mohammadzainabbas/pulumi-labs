@@ -21,7 +21,7 @@ ami = aws.ec2.get_ami(
         aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["amazon"]),
     ],
     include_deprecated=False,
-    owners=["amazon"],
+    owners=["aws-marketplace"],
     most_recent=True).id
 
 # Get all availability zones
