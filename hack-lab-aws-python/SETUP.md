@@ -10,14 +10,6 @@
 - [x] Define Launch Configuration with User Data
 - [x] Create Autoscaling Group with Launch Template and Spot Fleet
 
-## Prerequisites
-
-* `Python 3.9+`
-* `Pulumi`
-* `AWS CLI v2` _(with valid credentials configured)_
-* `AWS Native CLI`
-
-## Quick Start
 
 ### Setup
 
