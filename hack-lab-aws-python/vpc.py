@@ -336,7 +336,7 @@ class VpcxArgs:
         :param tags: Tags which are applied to all taggable resources.
         """
         self.vpc_cidr_block = vpc_cidr_block
-        self.azs = [azs] if isinstance(azs, pulumi.Input[str]) else pulumi.Input.from_input(azs)
+        self.azs = [azs] if isinstance(azs, pulumi.Input[str]) else azs
         self.aws_region = aws_region
         self.sg_ingress_ports = sg_ingress_ports
         self.tags = tags
