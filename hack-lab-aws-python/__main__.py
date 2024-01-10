@@ -33,7 +33,8 @@ vpc = Vpcx(
     project_name,
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
-        sg_ingress_ports=[22],
+        azs=azs.names[0],
+        sg_ingress_ports=[22, 80],
         tags={
             "Project": project_name,
             "Environment": "dev",
