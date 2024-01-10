@@ -42,6 +42,21 @@ vpc = Vpcx(
     ),
 )
 
+kali = aws.ec2.Instance(
+    "kali",
+    ami=ami,
+    instance_type="t2.micro",
+    key_name=keypair,
+    vpc_security_group_ids=[vpc.security_group.id],
+    subnet_id=vpc.vpc.public_subnet_ids[0],
+    user_data=base64.b64encode(open(user_data_file, "rb").read()).decode("ascii"),
+    tags={
+        "Name": "kali",
+        "Project": project_name,
+        "Environment": "dev",
+    },
+)
+
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
