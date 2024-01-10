@@ -36,8 +36,8 @@ source venv/bin/activate
 pip install pulumi-aws pulumi-awsx
 ```
 
-> [!NOTE]
-> If you're using `pipenv`, you can use `pipenv install pulumi-aws pulumi-awsx` instead.
+> [!CAUTION]
+> Manually add `pulumi-aws` and `pulumi-awsx` in `requirements.txt` file.
 
 3. Change directory:
 
