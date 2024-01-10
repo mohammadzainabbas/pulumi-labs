@@ -55,6 +55,8 @@ class Vpc(pulumi.ComponentResource):
       - A route table routing traffic from public subnets to the internet gateway
       - NAT gateways (and accoutrements) for each private subnet, and appropriate routing
       - Optionally, S3 and DynamoDB endpoints
+
+    
     """
 
     def __init__(self,
