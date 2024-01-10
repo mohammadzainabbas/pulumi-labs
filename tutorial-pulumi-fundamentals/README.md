@@ -1,6 +1,6 @@
 # Pulumi Fundamentals - Tutorial
 
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/tutorial-pulumi-fundamentals-ts)
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/tutorial-pulumi-fundamentals)
 
 ## Overview
 
@@ -40,7 +40,7 @@ gh repo clone mohammadzainabbas/pulumi-labs
 2. Change directory:
 
 ```bash
-cd tutorial-pulumi-fundamentals-ts
+cd tutorial-pulumi-fundamentals
 ```
 
 3. Install dependencies:
@@ -65,7 +65,7 @@ pulumi up
 ```
 
 > [!NOTE]
-> Source code of **Pulumipus Boba Tea Shop** application (_backend_, _frontend_ and _database_) is available [here](https://github.com/pulumi/tutorial-pulumi-fundamentals-ts/).
+> Source code of **Pulumipus Boba Tea Shop** application (_backend_, _frontend_ and _database_) is available [here](https://github.com/pulumi/tutorial-pulumi-fundamentals/).
 
 5. Access the application by open the following URL in the browser:
 
