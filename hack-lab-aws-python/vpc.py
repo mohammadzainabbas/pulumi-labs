@@ -403,7 +403,7 @@ class Vpcx(pulumi.ComponentResource):
         self.vpc = awsx.ec2.Vpc(
             vpc_name, 
             awsx.ec2.VpcArgs(
-                cidr_block=args.network_cidr,
+                cidr_block=args.vpc_cidr_block,
                 number_of_availability_zones=len(args.azs.names),
                 subnet_specs=[
                     awsx.ec2.SubnetSpecArgs(
