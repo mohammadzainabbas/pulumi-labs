@@ -417,7 +417,7 @@ class Vpcx(pulumi.ComponentResource):
                     strategy=awsx.ec2.NatGatewayStrategy.NONE,
                 ),
                 subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
-                tags={ "Name": vpc_name, **args.base_tags },
+                tags={ "Name": vpc_name, **args.tags },
             ),
             opts=pulumi.ResourceOptions( parent=self ),
         )
@@ -448,7 +448,7 @@ class Vpcx(pulumi.ComponentResource):
             vpc_id=self.vpc.vpc_id,
             ingress=ingress_sg,
             egress=egress_sg,
-            tags={ "Name": security_group_name, **args.base_tags },
+            tags={ "Name": security_group_name, **args.tags },
             opts=pulumi.ResourceOptions( parent=self ),
         )
 
