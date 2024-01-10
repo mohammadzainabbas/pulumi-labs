@@ -33,6 +33,10 @@ run() {
 # ------------------------------
 # Setup method
 # ------------------------------
+pre_setup() {
+    sudo apt-get update -y && sudo apt full-upgrade -y && \
+    sudo apt-get install -y curl wget jq
+}
 
 setup_instance() {
     # sudo apt-get update -y && sudo apt full-upgrade -y && \
