@@ -1,10 +1,10 @@
-# AWS Autoscaling Group with Spot Fleet
+# Hackng Lab in AWS
 
 [![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/hack-lab-aws-python)
 
 ## Overview
 
-A Pulumi IaC program written in Python to deploy AWS Autoscaling Group with Launch Template to request Spot Instances for multi-type instances.
+A Pulumi IaC program written in Python to deploy a hacking lab in AWS.
 
 ## Key Concepts
 
