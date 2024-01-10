@@ -328,15 +328,15 @@ class VpcxArgs:
         """
         Constructs a VpcxArgs.
 
-        :param tags: Tags which are applied to all taggable resources.
         :param vpc_cidr_block: The CIDR block representing the address space of the entire VPC.
         :param azs: A list of availability zone names in which to create subnets.
         :param aws_region: The name of a AWS Region for the VPC.
+        :param tags: Tags which are applied to all taggable resources.
         """
-        self.tags = tags
         self.vpc_cidr_block = vpc_cidr_block
         self.azs = azs
         self.aws_region = aws_region
+        self.tags = tags
 
 class Vpcx(pulumi.ComponentResource):
     """
@@ -396,7 +396,7 @@ class Vpcx(pulumi.ComponentResource):
         # Make base info available to other methods
         self.name = name
         self.description = args.description
-        self.base_tags = args.base_tags
+        self.base_tags = args.tags
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
