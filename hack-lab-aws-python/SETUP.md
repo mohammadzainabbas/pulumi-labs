@@ -57,11 +57,8 @@ pulumi config set vpcNetworkCidr 192.168.110.0/24
 > Also, add the following in `Pulumi.dev.yaml` file:
 
 ```yaml
-
-
-
-```bash
-cd hack-lab-aws-python
+environment:
+  - aws-jarvis
 ```
 
 4. Create a new Python virtualenv, activate it, and install dependencies:
