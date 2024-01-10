@@ -440,7 +440,7 @@ class Vpcx(pulumi.ComponentResource):
             for i, port in enumerate(args.sg_ingress_ports)
         ]
 
-        self.sg = 
+        security_group_name = f"{project_name}-security-group"
 
 
         self.vpc = aws.ec2.Vpc(vpc_name,
