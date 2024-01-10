@@ -412,8 +412,14 @@ class Vpcx(pulumi.ComponentResource):
             cidr_block=args.vpc_network_cidr,
             number_of_availability_zones=len(args.azs.names),
             subnet_specs=[
-                
-            ]
+                awsx.ec2.SubnetSpecArgs(
+                    type=awsx.ec2.SubnetType.PUBLIC,
+                ),
+                awsx.ec2.SubnetSpecArgs(
+                    type=awsx.ec2.SubnetType.PRIVATE,
+                ),
+            ],
+            
 
 
         self.vpc = aws.ec2.Vpc(vpc_name,
