@@ -88,7 +88,7 @@ class Vpc(pulumi.ComponentResource):
                            ))
 
         # Create VPC and Internet Gateway resources
-        self.internet_gateway = ec2.InternetGateway(f"{name}-igw",
+        self.internet_gateway = aws.ec2.InternetGateway(f"{name}-igw",
                                                     vpc_id=self.vpc.id,
                                                     tags={**args.base_tags,
                                                           "Name": f"{args.description} VPC Internet Gateway"},
@@ -99,7 +99,7 @@ class Vpc(pulumi.ComponentResource):
         # Calculate subnet CIDR blocks and create subnets
         subnet_distributor = SubnetDistributor(args.base_cidr, len(args.availability_zone_names))
 
-        self.public_subnets = [ec2.Subnet(f"{name}-public-subnet-{i}",
+        self.public_subnets = [aws.ec2.Subnet(f"{name}-public-subnet-{i}",
                                           vpc_id=self.vpc.id,
                                           cidr_block=cidr,
                                           availability_zone=args.availability_zone_names[i],
@@ -110,7 +110,7 @@ class Vpc(pulumi.ComponentResource):
                                           ))
                                for i, cidr in enumerate(subnet_distributor.public_subnets)]
 
-        self.private_subnets = [ec2.Subnet(f"{name}-private-subnet-{i}",
+        self.private_subnets = [aws.ec2.Subnet(f"{name}-private-subnet-{i}",
                                            vpc_id=self.vpc.id,
                                            cidr_block=cidr,
                                            availability_zone=args.availability_zone_names[i],
@@ -121,7 +121,7 @@ class Vpc(pulumi.ComponentResource):
                                 for i, cidr in enumerate(subnet_distributor.private_subnets)]
 
         # Adopt the default route table for this VPC and adapt it for use with public subnets
-        self.public_route_table = ec2.DefaultRouteTable(f"{name}-public-rt",
+        self.public_route_table = aws.ec2.DefaultRouteTable(f"{name}-public-rt",
                                                         default_route_table_id=self.vpc.default_route_table_id,
                                                         tags={**args.base_tags,
                                                               "Name": f"{args.description} Public Route Table"},
@@ -129,7 +129,7 @@ class Vpc(pulumi.ComponentResource):
                                                             parent=self.vpc,
                                                         ))
 
-        ec2.Route(f"{name}-route-public-sn-to-ig",
+        aws.ec2.Route(f"{name}-route-public-sn-to-ig",
                   route_table_id=self.public_route_table.id,
                   destination_cidr_block="0.0.0.0/0",
                   gateway_id=self.internet_gateway.id,
@@ -138,16 +138,16 @@ class Vpc(pulumi.ComponentResource):
                   ))
 
         for i, subnet in enumerate(self.public_subnets):
-            ec2.RouteTableAssociation(f"{name}-public-rta-{i + 1}",
+            aws.ec2.RouteTableAssociation(f"{name}-public-rta-{i + 1}",
                                       subnet_id=subnet.id,
                                       route_table_id=self.public_route_table,
                                       opts=pulumi.ResourceOptions(
                                           parent=self.public_route_table
                                       ))
 
-        self.nat_elastic_ip_addresses: [ec2.Eip] = list()
-        self.nat_gateways: [ec2.NatGateway] = list()
-        self.private_route_tables: [ec2.RouteTable] = list()
+        self.nat_elastic_ip_addresses: [aws.ec2.Eip] = list()
+        self.nat_gateways: [aws.ec2.NatGateway] = list()
+        self.private_route_tables: [aws.ec2.RouteTable] = list()
 
         # Create a NAT Gateway and appropriate route table for each private subnet
         for i, subnet in enumerate(self.private_subnets):
