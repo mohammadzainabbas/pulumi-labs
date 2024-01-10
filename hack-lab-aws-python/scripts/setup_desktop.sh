@@ -34,13 +34,13 @@ run() {
 # Setup method
 # ------------------------------
 pre_setup() {
-    sudo apt-get update -y && sudo apt full-upgrade -y && \
-    sudo apt-get install -y curl wget jq
+    sudo apt update -y && \
+    sudo apt install -y curl wget jq
 }
 
 setup_instance() {
     # sudo apt-get update -y && sudo apt full-upgrade -y && \
-    sudo apt-get update -y && \
+    # sudo apt-get update -y && \
     sudo apt install -y wget kali-linux-headless kali-desktop-xfce xorg xrdp && sudo apt autoremove -y && \
     sudo sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini && \
     sudo systemctl enable xrdp --now
