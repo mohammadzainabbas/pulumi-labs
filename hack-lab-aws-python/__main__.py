@@ -13,3 +13,16 @@ vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") 
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
 user_data_file = f"user_data.sh"
+
+# Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
+ami = aws.ec2.get_ami(
+    filters=[
+        aws.ec2.GetAmiFilterArgs(name="name", values=["AWS Deep Learning*AMI GPU CUDA*"]),
+        aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["amazon"]),
+    ],
+    include_deprecated=False,
+    owners=["amazon"],
+    most_recent=True).id
+
+# Get all availability zones
+azs = aws.get_availability_zones(state="available")
