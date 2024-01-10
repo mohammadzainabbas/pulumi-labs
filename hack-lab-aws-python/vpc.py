@@ -399,7 +399,7 @@ class Vpcx(pulumi.ComponentResource):
         :param opts: A pulumi.ResourceOptions object.
         """
         project_name = name if name else pulumi.get_project()
-        super().__init__(f"{project_name}:VPC", name, None, opts)
+        super().__init__(f"{project_name}:VPCx", name, None, opts)
 
         # Make base info available to other methods
         self.name = name
