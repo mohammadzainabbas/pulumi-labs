@@ -28,6 +28,22 @@ ami = aws.ec2.get_ami(
 # Get all availability zones
 azs = aws.get_availability_zones(state="available")
 
+# Create a VPC with a size /16 CIDR block
+vpc = Vpcx(
+    f"{project_name}-vpc",
+    VpcxArgs(
+        cidr_block=vpc_network_cidr,
+        enable_dns_hostnames=True,
+        enable_dns_support=True,
+        tags={
+            "Name": f"{project_name}-vpc",
+            "Project": project_name,
+            "Owner": "Jarvis",
+            "Environment": "Hack-Lab",
+        },
+    ),
+)
+
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("vpc_network_cidr", vpc_network_cidr)
 pulumi.export("aws_region", aws_region)
