@@ -76,7 +76,6 @@ class Vpc(pulumi.ComponentResource):
         self.description = args.description
         self.base_tags = args.base_tags
 
-        # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
         self.vpc = aws.ec2.Vpc(vpc_name,
                            cidr_block=args.base_cidr,
