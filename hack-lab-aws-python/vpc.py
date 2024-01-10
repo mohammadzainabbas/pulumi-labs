@@ -440,7 +440,14 @@ class Vpcx(pulumi.ComponentResource):
             for i, port in enumerate(args.sg_ingress_ports)
         ]
 
-        egress_sg = 
+        egress_sg = [
+            aws.ec2.SecurityGroupEgressArgs(
+                from_port=0,
+                to_port=0,
+                protocol="-1",
+                cidr_blocks=["0.0.0.0/0"],
+            )
+        ]
 
         # Create a security group allowing inbound access over "sg_ingress_ports" and outbound access to anywhere.
         security_group_name = f"{project_name}-security-group"
