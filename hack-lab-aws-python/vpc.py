@@ -437,7 +437,7 @@ class Vpcx(pulumi.ComponentResource):
                 protocol="tcp",
                 cidr_blocks=["0.0.0.0/0"],
             )
-            for i, port in enumerate(args.ingress_ports)
+            for i, port in enumerate(args.sg_ingress_ports)
         ]
 
         self.sg = 
