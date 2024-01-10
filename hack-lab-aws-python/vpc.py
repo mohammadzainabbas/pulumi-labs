@@ -452,4 +452,6 @@ class Vpcx(pulumi.ComponentResource):
             opts=pulumi.ResourceOptions( parent=self ),
         )
 
-        super().register_outputs({})
+        super().register_outputs({
+            
+        })
