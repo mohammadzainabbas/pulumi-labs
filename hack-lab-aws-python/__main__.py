@@ -14,7 +14,7 @@ keypair = config.get("keypair") if config.get("keypair") is not None else "jarvi
 
 user_data_file = f"user_data.sh"
 
-# Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
+# Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
 ami = aws.ec2.get_ami(
     filters=[
         aws.ec2.GetAmiFilterArgs(name="name", values=["AWS Deep Learning*AMI GPU CUDA*"]),
