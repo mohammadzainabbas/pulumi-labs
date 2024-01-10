@@ -332,6 +332,7 @@ class VpcxArgs:
         :param vpc_cidr_block: The CIDR block representing the address space of the entire VPC.
         :param azs: A list of availability zone names in which to create subnets.
         :param aws_region: The name of a AWS Region for the VPC.
+        :param sg_ingress_ports: Ingress ports for Security groups.
         :param tags: Tags which are applied to all taggable resources.
         """
         self.vpc_cidr_block = vpc_cidr_block
