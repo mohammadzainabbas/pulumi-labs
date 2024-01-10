@@ -453,5 +453,8 @@ class Vpcx(pulumi.ComponentResource):
         )
 
         super().register_outputs({
-            
+            "vpc_id": self.vpc.vpc_id,
+            "security_group_id": self.security_group.id,
+            "public_subnet_ids": self.vpc.public_subnet_ids,
+            "private_subnet_ids": self.vpc.private_subnet_ids,
         })
