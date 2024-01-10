@@ -43,7 +43,6 @@ class VpcArgs:
         self.create_s3_endpoint = create_s3_endpoint
         self.create_dynamodb_endpoint = create_dynamodb_endpoint
 
-
 class Vpc(pulumi.ComponentResource):
     """
     Creates a good-practice AWS VPC using Pulumi. The VPC consists of:
@@ -316,7 +315,7 @@ class Vpc(pulumi.ComponentResource):
 
 class VpcxArgs:
     """
-    The arguments necessary to construct a `Vpc` resource.
+    The arguments necessary to construct a `Vpcx` resource.
     """
 
     def __init__(self,
@@ -328,7 +327,7 @@ class VpcxArgs:
                  create_s3_endpoint: bool = True,
                  create_dynamodb_endpoint: bool = True):
         """
-        Constructs a VpcArgs.
+        Constructs a VpcxArgs.
 
         :param description: A human-readable description used to construct resource name tags.
         :param base_tags: Tags which are applied to all taggable resources.
