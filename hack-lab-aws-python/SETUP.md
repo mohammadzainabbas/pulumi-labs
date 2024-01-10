@@ -29,6 +29,13 @@ pulumi new python
 > [!IMPORTANT]
 > Change anything if you need to, if you want to keep the default values, just press <kbd> <br> Enter <br> </kbd> and it'll be skipped.
 
+3. Activate the virtual environment and install new dependencies:
+
+```bash
+source venv/bin/activate
+pip install pulumi-aws pulumi-awsx
+```
+
 
 3. Change directory:
 
@@ -40,7 +47,6 @@ cd hack-lab-aws-python
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
