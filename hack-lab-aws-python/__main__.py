@@ -26,3 +26,9 @@ ami = aws.ec2.get_ami(
 
 # Get all availability zones
 azs = aws.get_availability_zones(state="available")
+
+# Export the instance's publicly accessible IP address and hostname.
+pulumi.export("vpc_network_cidr", vpc_network_cidr)
+pulumi.export("aws_region", aws_region)
+pulumi.export("ami", ami)
+pulumi.export("azs", azs.names)
