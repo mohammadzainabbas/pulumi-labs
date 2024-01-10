@@ -321,7 +321,7 @@ class VpcxArgs:
     def __init__(
             self,
             base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
-            network_cidr: str | None = "10.0.0.0/16",
+            vpc_cidr_block: str | None = "10.0.0.0/16",
             availability_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = aws.get_availability_zones(state="available"),
             aws_region: pulumi.Input[str] = aws.get_region().name,
         ):
@@ -329,12 +329,12 @@ class VpcxArgs:
         Constructs a VpcxArgs.
 
         :param base_tags: Tags which are applied to all taggable resources.
-        :param network_cidr: The CIDR block representing the address space of the entire VPC.
+        :param vpc_cidr_block: The CIDR block representing the address space of the entire VPC.
         :param availability_zone_names: A list of availability zone names in which to create subnets.
         :param aws_region: The name of a AWS Region for the VPC.
         """
         self.base_tags = base_tags
-        self.network_cidr = network_cidr
+        self.vpc_cidr_block = vpc_cidr_block
         self.availability_zone_names = availability_zone_names
         self.aws_region = aws_region
 
