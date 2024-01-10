@@ -67,9 +67,11 @@ environment:
 pulumi up
 ```
 
-> [!IMPORTANT]
-> If you want to run the program in the background, use the following command:
+6. Run the following command in remote server to setup desktop gui:
 
 ```bash
-pulumi up --background
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mohammadzainabbas/pulumi-labs/main/hack-lab-aws-python/scripts/setup_desktop.sh)"
 ```
+
+> [!NOTE]
+> This will take some time, so be patient.
