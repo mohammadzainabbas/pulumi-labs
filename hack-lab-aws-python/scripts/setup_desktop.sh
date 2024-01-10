@@ -36,7 +36,8 @@ run() {
 
 setup_instance() {
     sudo apt-get update -y && sudo apt full-upgrade -y
-    sudo apt install -y wget kali-linux-headless xorg xrdp kali-desktop-xfce
+    sudo apt install -y wget kali-linux-headless kali-desktop-xfce xorg xrdp
+    
     
 }
 
