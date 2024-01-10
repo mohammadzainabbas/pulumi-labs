@@ -318,11 +318,13 @@ class VpcxArgs:
     The arguments necessary to construct a `Vpcx` resource.
     """
 
-    def __init__(self,
-                 base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
-                 network_cidr: str | None = "10.0.0.0/16",
-                 availability_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = aws.get_availability_zones(state="available"),
-                 aws_region: pulumi.Input[str] = aws.get_region().name,
+    def __init__(
+            self,
+            base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
+            network_cidr: str | None = "10.0.0.0/16",
+            availability_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = aws.get_availability_zones(state="available"),
+            aws_region: pulumi.Input[str] = aws.get_region().name
+        ):
         """
         Constructs a VpcxArgs.
 
