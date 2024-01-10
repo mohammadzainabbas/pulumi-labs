@@ -60,3 +60,16 @@ pulumi config set vpcNetworkCidr 192.168.110.0/24
 environment:
   - aws-jarvis
 ```
+
+5. Run the following command to run the program:
+
+```bash
+pulumi up
+```
+
+> [!IMPORTANT]
+> If you want to run the program in the background, use the following command:
+
+```bash
+pulumi up --background
+```
