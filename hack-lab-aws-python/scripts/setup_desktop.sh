@@ -12,7 +12,7 @@ PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
 setup_instance() {
-    
+    sudo apt update && sudo apt install -y kali-linux-headless
 }
 
 # ------------------------------
@@ -139,21 +139,6 @@ failure_notify() {
             ]
         }')
     send_to_ntfy "$json_data"
-}
-
-log() {
-    echo "[ log ] $1" | tee -a "$output_file"
-}
-
-run() {
-    start=$(date +%s.%N);
-    # shellcheck disable=SC2048
-    $* | tee -a "$output_file"
-    exit_code=$?
-    end=$(date +%s.%N);
-    _time_diff=$(echo "$end - $start" | bc);
-    echo "[ run ] $* took $_time_diff secs with exit code $exit_code" | tee -a "$output_file"
-    return $exit_code
 }
 
 main() {
