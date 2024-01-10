@@ -39,7 +39,7 @@ pip install pulumi-aws pulumi-awsx
 > [!CAUTION]
 > Manually, add `pulumi-aws` and `pulumi-awsx` (see below) in `requirements.txt` file, if you want to use `pip install -r requirements.txt` command later.
 
-```txt
+```console
 pulumi>=3.0.0,<4.0.0
 pulumi-aws>=6.0.0,<7.0.0
 pulumi-awsx>=1.0.0,<2.5.0
