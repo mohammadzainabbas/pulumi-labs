@@ -42,7 +42,7 @@ vpc = Vpcx(
 )
 
 # Export the instance's publicly accessible IP address and hostname.
-pulumi.export("vpc_network_cidr", vpc_network_cidr)
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
 pulumi.export("azs", azs.names)
+pulumi.export("vpc", vpc.vpc.vpc_id)
