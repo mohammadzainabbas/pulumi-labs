@@ -35,9 +35,9 @@ run() {
 # ------------------------------
 
 setup_instance() {
-    sudo apt-get update -y && sudo apt full-upgrade -y && sudo apt autoremove -y
-    sudo apt install -y wget kali-linux-headless kali-desktop-xfce xorg xrdp
-    sudo sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini
+    sudo apt-get update -y && sudo apt full-upgrade -y && \
+    sudo apt install -y wget kali-linux-headless kali-desktop-xfce xorg xrdp && sudo apt autoremove -y && \
+    sudo sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini && \
     sudo systemctl enable xrdp --now
 }
 
