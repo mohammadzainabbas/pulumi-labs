@@ -1,0 +1,4 @@
+config:
+  tutorial-pulumi-fundamentals-ts:backendPort: "3000"
+  tutorial-pulumi-fundamentals-ts:databasePort: "27017"
+  tutorial-pulumi-fundamentals-ts:frontendPort: "3001"
