@@ -455,12 +455,10 @@ class Vpcx(pulumi.ComponentResource):
             security_group_name,
             vpc_id=self.vpc.vpc_id,
             ingress=ingress_sg,
-            egress=[
-                aws.ec2.SecurityGroupEgressArgs(
-                    from_port=0,
-                    to_port=0,
-                    protocol="-1",
-                    cidr_blocks=["
+            egress=egress_sg,
+            tags={ "Name": security_group_name, **args.base_tags },
+            opts=pulumi.ResourceOptions( parent=self.vpc ),
+        )
 
 
         self.vpc = aws.ec2.Vpc(vpc_name,
