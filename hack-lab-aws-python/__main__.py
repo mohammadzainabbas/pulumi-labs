@@ -33,7 +33,7 @@ vpc = Vpcx(
     project_name,
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
-        azs=azs.names[0],
+        azs=azs.names,
         sg_ingress_ports=[22, 80],
         tags={
             "Project": project_name,
@@ -45,5 +45,5 @@ vpc = Vpcx(
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
-pulumi.export("azs", azs.names)
+pulumi.export("azs", azs)
 pulumi.export("vpc", vpc.vpc.vpc_id)
