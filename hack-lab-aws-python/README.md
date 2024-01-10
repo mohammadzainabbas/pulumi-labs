@@ -1,6 +1,6 @@
 # AWS Autoscaling Group with Spot Fleet
 
-[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/aws-fleet-python)
+[![Deploy](https://get.pulumi.com/new/button.svg)](https://app.pulumi.com/new?template=https://github.com/mohammadzainabbas/pulumi-labs/tree/main/hack-lab-aws-python)
 
 ## Overview
 
@@ -43,7 +43,7 @@ gh repo clone mohammadzainabbas/pulumi-labs
 3. Change directory:
 
 ```bash
-cd aws-fleet-python
+cd hack-lab-aws-python
 ```
 
 4. Create a new Python virtualenv, activate it, and install dependencies:
