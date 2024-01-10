@@ -430,6 +430,8 @@ class Vpcx(pulumi.ComponentResource):
             opts=pulumi.ResourceOptions( parent=self ),
         )
 
+        self.sg = 
+
 
         self.vpc = aws.ec2.Vpc(vpc_name,
                            cidr_block=args.base_cidr,
