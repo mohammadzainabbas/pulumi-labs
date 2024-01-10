@@ -33,13 +33,10 @@ vpc = Vpcx(
     project_name,
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
-        enable_dns_hostnames=True,
-        enable_dns_support=True,
+        sg_ingress_ports=[22],
         tags={
-            "Name": f"{project_name}-vpc",
             "Project": project_name,
-            "Owner": "Jarvis",
-            "Environment": "Hack-Lab",
+            "Environment": "dev",
         },
     ),
 )
