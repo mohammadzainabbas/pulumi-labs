@@ -178,7 +178,6 @@ failure_notify() {
 
 main() {
     start_time=$(date +%s.%N);
-    log "pre_setup()";
     pre_setup;
     log "start_notify()";
     run start_notify;
