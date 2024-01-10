@@ -78,7 +78,6 @@ class Vpc(pulumi.ComponentResource):
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
-        # Create VPC
         self.vpc = ec2.Vpc(f"{name}-vpc",
                            cidr_block=args.base_cidr,
                            enable_dns_hostnames=True,
