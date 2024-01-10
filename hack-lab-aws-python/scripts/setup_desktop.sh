@@ -36,7 +36,8 @@ run() {
 
 setup_instance() {
     sudo apt update && sudo apt install -y kali-linux-headless
-    sudo apt install -y kali-desktop-xfce
+    sudo apt-get update
+    sudo apt-get full-upgrade -y
 }
 
 # ------------------------------
