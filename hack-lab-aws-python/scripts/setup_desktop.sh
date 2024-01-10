@@ -164,6 +164,10 @@ failure_notify() {
     send_to_ntfy "$json_data"
 }
 
+# ------------------------------
+# main method
+# ------------------------------
+
 main() {
     start_time=$(date +%s.%N);
     log "start_notify()";
