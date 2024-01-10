@@ -21,14 +21,14 @@ RUN apt-get update && apt-get --yes --force-yes full-upgrade
 # Configure xrdp to use port "XRDP_PORT"
 RUN sed -i "s/port=3389/port=$XRDP_PORT/g" /etc/xrdp/xrdp.ini
 
-# Start xrdp service
-RUN /etc/init.d/xrdp start
-
 # Create a non-root user 'kali' and add to sudo group
 RUN useradd -m -s /bin/bash -G sudo kali
 
 # Set the password for the 'kali' user
 RUN echo "kali:$PWD" | chpasswd
+
+# Start xrdp service
+RUN /etc/init.d/xrdp start
 
 # Set up home directory for the 'kali' user
 USER kali
