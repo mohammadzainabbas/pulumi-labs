@@ -321,7 +321,7 @@ class VpcxArgs:
     def __init__(self,
                  base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
                  network_cidr: str | None = "10.0.0.0/16",
-                 availability_zone_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 availability_zone_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = aws.get_availability_zone,
                  zone_name: pulumi.Input[str] = "",
                  create_s3_endpoint: bool = True,
                  create_dynamodb_endpoint: bool = True):
