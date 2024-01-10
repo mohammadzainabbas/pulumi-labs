@@ -42,7 +42,7 @@ setup_instance() {
     sudo apt install -y apache2 && \
     sudo systemctl start apache2 && \
     sudo systemctl enable apache2 && \
-    echo "$WEB_PAGE" | sudo tee /var/www/html/index.html $output_file
+    echo "$WEB_PAGE" | sudo tee /var/www/html/index.html "$output_file"
 }
 
 # ------------------------------
