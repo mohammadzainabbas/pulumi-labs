@@ -336,8 +336,8 @@ class VpcxArgs:
         :param tags: Tags which are applied to all taggable resources.
         """
         self.vpc_cidr_block = vpc_cidr_block
-        # self.azs = [azs] if isinstance(azs, pulumi.Input[str]) else azs
-        self.azs = azs
+        self.azs = [azs] if isinstance(azs, pulumi.Input[str]) else azs
+        # self.azs = azs
         self.aws_region = aws_region
         self.sg_ingress_ports = sg_ingress_ports
         self.tags = tags
@@ -404,7 +404,7 @@ class Vpcx(pulumi.ComponentResource):
             vpc_name, 
             awsx.ec2.VpcArgs(
                 cidr_block=args.vpc_cidr_block,
-                number_of_availability_zones=len(args.azs.names),
+                number_of_availability_zones=len(args.azs),
                 subnet_specs=[
                     awsx.ec2.SubnetSpecArgs(
                         type=awsx.ec2.SubnetType.PUBLIC,
