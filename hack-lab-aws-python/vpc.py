@@ -68,14 +68,14 @@ class Vpc(pulumi.ComponentResource):
         :param args: A VpcArgs object containing the arguments for VPC constructin.
         :param opts: A pulumi.ResourceOptions object.
         """
-        super().__init__(f"{pulumi.get_project()}:Vpc", name, None, opts)
+        super().__init__(f"{pulumi.get_project()}:VPC", name, None, opts)
 
         # Make base info available to other methods
         self.name = name
         self.description = args.description
         self.base_tags = args.base_tags
 
-        # Create VPC and Internet Gateway resources
+        # Create VPC
         self.vpc = ec2.Vpc(f"{name}-vpc",
                            cidr_block=args.base_cidr,
                            enable_dns_hostnames=True,
@@ -85,6 +85,7 @@ class Vpc(pulumi.ComponentResource):
                                parent=self,
                            ))
 
+        # Create VPC and Internet Gateway resources
         self.internet_gateway = ec2.InternetGateway(f"{name}-igw",
                                                     vpc_id=self.vpc.id,
                                                     tags={**args.base_tags,
