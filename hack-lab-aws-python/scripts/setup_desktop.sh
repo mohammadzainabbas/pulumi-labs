@@ -12,32 +12,6 @@ PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
 setup_instance() {
-    local WEB_PAGE="""
-<!doctype html>
-<html>
-<head>
-  <meta charset='utf-8'>
-  <title>Super-amazing static website!</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
-
-  <style>
-      body {
-        background-color: lightblue;
-      }
-  </style>
-</head>
-
-<body>
-<h1>Deployed via Pulumi</h1>
-<p>Instance Type: $INSTANCE_TYPE</p>
-<p>Instance ID: $INSTANCE_ID</p>
-<p>Hostname: $HOSTNAME</p>
-<p>Region: $AWS_REGION</p>
-<p>AMI ID: $AMI_ID</p>
-<p>Made with ♥ using <a href='https://pulumi.com'>Pulumi</a>.</p>
-</body>
-</html>
-"""
     sudo apt update -y && \
     sudo apt install -y apache2 && \
     sudo systemctl start apache2 && \
