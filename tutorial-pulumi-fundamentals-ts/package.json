@@ -1,5 +1,5 @@
 {
-    "name": "tutorial-pulumi-fundamentals",
+    "name": "tutorial-pulumi-fundamentals-ts",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18"
