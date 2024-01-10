@@ -1,0 +1,6 @@
+name: hack-lab-aws-python
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: A Python program to deploy a hacking lab in AWS.
