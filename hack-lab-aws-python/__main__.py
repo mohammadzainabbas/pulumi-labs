@@ -17,7 +17,7 @@ user_data_file = f"user_data.sh"
 # Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
 ami = aws.ec2.get_ami(
     filters=[
-        aws.ec2.GetAmiFilterArgs(name="name", values=["AWS Deep Learning*AMI GPU CUDA*"]),
+        aws.ec2.GetAmiFilterArgs(name="name", values=["kali-last-snapshot-*"]),
         aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["aws-marketplace"]),
     ],
     include_deprecated=False,
