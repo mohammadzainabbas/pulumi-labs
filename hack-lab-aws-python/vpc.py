@@ -408,6 +408,10 @@ class Vpcx(pulumi.ComponentResource):
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
+        self.vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
+            cidr_block=args.vpc_network_cidr,
+
+
         self.vpc = aws.ec2.Vpc(vpc_name,
                            cidr_block=args.base_cidr,
                            enable_dns_hostnames=True,
