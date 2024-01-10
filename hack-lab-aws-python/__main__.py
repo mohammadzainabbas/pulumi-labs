@@ -18,10 +18,10 @@ user_data_file = f"user_data.sh"
 ami = aws.ec2.get_ami(
     filters=[
         aws.ec2.GetAmiFilterArgs(name="name", values=["AWS Deep Learning*AMI GPU CUDA*"]),
-        aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["amazon"]),
+        aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["aws-marketplace"]),
     ],
     include_deprecated=False,
-    owners=["aws-marketplace"],
+    owners=["679593333241"], # kali linux marketplace owner id
     most_recent=True).id
 
 # Get all availability zones
