@@ -46,4 +46,7 @@ vpc = Vpcx(
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
 pulumi.export("azs", azs)
-pulumi.export("vpc", vpc.vpc.vpc_id)
+pulumi.export("vpc_id", vpc.vpc.vpc_id)
+pulumi.export("security_group_id", vpc.security_group.id)
+pulumi.export("public_subnet_ids", vpc.vpc.public_subnet_ids)
+pulumi.export("private_subnet_ids", vpc.vpc.private_subnet_ids)
