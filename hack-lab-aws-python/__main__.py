@@ -51,7 +51,7 @@ hacker_instance = aws.ec2.Instance(
     instance_market_options=aws.ec2.InstanceInstanceMarketOptionsArgs(
         market_type="spot",
         spot_options=aws.ec2.InstanceInstanceMarketOptionsSpotOptionsArgs(
-            max_price="0.1",
+            max_price="0.5",
             spot_instance_type="one-time",
         ),
     ),
