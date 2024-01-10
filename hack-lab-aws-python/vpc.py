@@ -6,7 +6,10 @@ from typing import Mapping, Sequence
 
 import pulumi
 from pulumi import Input
-from pulumi_aws import cloudwatch, config, ec2, iam
+# from pulumi_aws import cloudwatch, config, ec2, iam
+
+import pulumi_aws as aws
+import pulumi_awsx as awsx
 
 from .iam_helpers import assume_role_policy_for_principal
 from .subnet_distributor import SubnetDistributor
