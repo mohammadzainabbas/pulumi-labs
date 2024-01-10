@@ -238,7 +238,7 @@ class Vpc(pulumi.ComponentResource):
         :param trafficType: The traffic type to log: "ALL", "ACCEPT" or "REJECT"
         :return: None
         """
-        self.flow_logs_role = iam.Role(f"{self.name}-flow-logs-role",
+        self.flow_logs_role = aws.iam.Role(f"{self.name}-flow-logs-role",
                                        tags={**self.base_tags,
                                              "Name": f"{self.description} VPC Flow Logs"},
                                        assume_role_policy=assume_role_policy_for_principal({
@@ -248,14 +248,14 @@ class Vpc(pulumi.ComponentResource):
                                            parent=self.vpc,
                                        ))
 
-        self.flow_logs_group = cloudwatch.LogGroup(f"{self.name}-vpc-flow-logs",
+        self.flow_logs_group = aws.cloudwatch.LogGroup(f"{self.name}-vpc-flow-logs",
                                                    tags={**self.base_tags,
                                                          "Name": f"{self.description} VPC Flow Logs"},
                                                    opts=pulumi.ResourceOptions(
                                                        parent=self.vpc,
                                                    ))
 
-        iam.RolePolicy(f"{self.name}-flow-log-policy",
+        aws.iam.RolePolicy(f"{self.name}-flow-log-policy",
                        name="vpc-flow-logs",
                        role=self.flow_logs_role.id,
                        policy=json.dumps({
@@ -278,7 +278,7 @@ class Vpc(pulumi.ComponentResource):
                            parent=self.flow_logs_role
                        ))
 
-        ec2.FlowLog(f"{self.name}-flow-logs",
+        aws.ec2.FlowLog(f"{self.name}-flow-logs",
                     log_destination=self.flow_logs_group.arn,
                     iam_role_arn=self.flow_logs_role.arn,
                     vpc_id=self.vpc.id,
