@@ -1,6 +1,6 @@
 #!/bin/bash
 
-home_dir="/home/ubuntu"
+home_dir="$HOME"
 output_file="$home_dir/output.log"
 
 AMI_ID=$(curl http://169.254.169.254/latest/meta-data/ami-id)
