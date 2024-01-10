@@ -35,9 +35,9 @@ run() {
 # ------------------------------
 
 setup_instance() {
-    sudo apt update && sudo apt install -y kali-linux-headless
-    sudo apt-get update
-    sudo apt-get full-upgrade -y
+    sudo apt-get update -y && sudo apt full-upgrade -y
+    sudo apt install -y wget kali-linux-headless xorg xrdp kali-desktop-xfce
+    
 }
 
 # ------------------------------
