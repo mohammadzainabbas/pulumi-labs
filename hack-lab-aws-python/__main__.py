@@ -47,11 +47,11 @@ hacker_instance_name = f"{project_name}-kali"
 hacker_instance = aws.ec2.Instance(
     hacker_instance_name,
     ami=ami,
-    instance_type="r5dn.large",
+    instance_type="r5dn.4xlarge",
     instance_market_options=aws.ec2.InstanceInstanceMarketOptionsArgs(
         market_type="spot",
         spot_options=aws.ec2.InstanceInstanceMarketOptionsSpotOptionsArgs(
-            max_price="0.05",
+            max_price="0.1",
             spot_instance_type="one-time",
         ),
     ),
