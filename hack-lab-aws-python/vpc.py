@@ -321,7 +321,7 @@ class VpcxArgs:
     def __init__(
             self,
             vpc_cidr_block: str | None = "10.0.0.0/16",
-            azs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = aws.get_availability_zones(state="available"),
+            azs: pulumi.Input[Sequence[pulumi.Input[str]]] | pulumi.Input[str]  = aws.get_availability_zones(state="available"),
             aws_region: pulumi.Input[str] = aws.get_region().name,
             sg_ingress_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = [22, 80, 443],
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
