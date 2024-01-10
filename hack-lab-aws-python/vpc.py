@@ -360,13 +360,13 @@ class Vpcx(pulumi.ComponentResource):
     ### Example Usage
 
     ```python
-    from vpc import Vpc, VpcArgs
+    from vpc import Vpcx, VpcxArgs
     from pulumi import export
     from pulumi_aws import get_availability_zones
 
     zones = get_availability_zones(state="available")
 
-    vpc = Vpc("example-vpc", VpcArgs(
+    vpc = Vpcx("example-vpc", VpcxArgs(
         description="Example VPC",
         base_tags={
             "Project": "Python Example VPC",
@@ -389,7 +389,7 @@ class Vpcx(pulumi.ComponentResource):
 
     def __init__(self,
                  name: str,
-                 args: VpcArgs,
+                 args: VpcxArgs,
                  opts: pulumi.ResourceOptions = None):
         """
         Constructs a Vpc.
