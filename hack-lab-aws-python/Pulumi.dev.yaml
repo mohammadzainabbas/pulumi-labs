@@ -1,3 +1,5 @@
 config:
   aws:region: eu-west-3
   hack-lab-aws-python:keypair: jarvis
+environment:
+  - aws-jarvis
