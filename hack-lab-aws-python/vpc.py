@@ -319,9 +319,8 @@ class VpcxArgs:
     """
 
     def __init__(self,
-                 description: str,
                  base_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
-                 base_cidr: str,
+                 network_cidr: str | None,
                  availability_zone_names: pulumi.Input[Sequence[pulumi.Input[str]]],
                  zone_name: pulumi.Input[str] = "",
                  create_s3_endpoint: bool = True,
