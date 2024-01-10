@@ -194,7 +194,7 @@ class Vpc(pulumi.ComponentResource):
         if args.create_s3_endpoint:
             aws.ec2.VpcEndpoint(f"{name}-s3-endpoint",
                             vpc_id=self.vpc.id,
-                            service_name=f"com.amazonaws.{config.region}.s3",
+                            service_name=f"com.amazonaws.{aws.config.region}.s3",
                             route_table_ids=[self.public_route_table.id,
                                              *[rt.id for rt in self.private_route_tables]],
                             opts=pulumi.ResourceOptions(
@@ -205,7 +205,7 @@ class Vpc(pulumi.ComponentResource):
         if args.create_dynamodb_endpoint:
             aws.ec2.VpcEndpoint(f"{name}-dynamodb-endpoint",
                             vpc_id=self.vpc.id,
-                            service_name=f"com.amazonaws.{config.region}.dynamodb",
+                            service_name=f"com.amazonaws.{aws.config.region}.dynamodb",
                             route_table_ids=[self.public_route_table.id,
                                              *[rt.id for rt in self.private_route_tables]],
                             opts=pulumi.ResourceOptions(
