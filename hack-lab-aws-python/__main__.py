@@ -30,7 +30,7 @@ azs = aws.get_availability_zones(state="available")
 
 # Create a VPC with a size /16 CIDR block
 vpc = Vpcx(
-    f"{project_name}-vpc",
+    project_name,
     VpcxArgs(
         cidr_block=vpc_network_cidr,
         enable_dns_hostnames=True,
