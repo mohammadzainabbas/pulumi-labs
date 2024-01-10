@@ -39,7 +39,12 @@ pip install pulumi-aws pulumi-awsx
 > [!CAUTION]
 > Manually add `pulumi-aws` and `pulumi-awsx` in `requirements.txt` file, if you want to use `pip install -r requirements.txt` command later.
 
-3. Change directory:
+4. Create a new Pulumi stack, which is an isolated deployment target for this example:
+
+```bash
+pulumi stack init
+```
+
 
 ```bash
 cd hack-lab-aws-python
