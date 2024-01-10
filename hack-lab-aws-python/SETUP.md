@@ -45,10 +45,11 @@ pulumi-aws>=6.0.0,<7.0.0
 pulumi-awsx>=1.0.0,<2.5.0
 ```
 
-4. Create a new Pulumi stack, which is an isolated deployment target for this example:
+4. Add configuration variables:
 
 ```bash
-pulumi stack init
+pulumi config set aws:region eu-west-3
+pulumi config set aws:profile default
 ```
 
 
