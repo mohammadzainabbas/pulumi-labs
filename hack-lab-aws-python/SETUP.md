@@ -29,15 +29,6 @@ pulumi new python
 > [!IMPORTANT]
 > Change anything if you need to, if you want to keep the default values, just press <kbd> <br> Enter <br> </kbd> and it'll be skipped.
 
-```bash
-git clone https://github.com/mohammadzainabbas/pulumi-labs.git
-```
-
-or if GitHub CLI is installed:
-
-```bash
-gh repo clone mohammadzainabbas/pulumi-labs
-```
 
 3. Change directory:
 
