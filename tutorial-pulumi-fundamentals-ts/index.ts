@@ -1,6 +1,5 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as docker from "@pulumi/docker";
-import exp = require("constants");
 
 const projectName = pulumi.getProject();
 const stack = pulumi.getStack();
