@@ -12,11 +12,7 @@ PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
 setup_instance() {
-    sudo apt update -y && \
-    sudo apt install -y apache2 && \
-    sudo systemctl start apache2 && \
-    sudo systemctl enable apache2 && \
-    echo "$WEB_PAGE" | sudo tee /var/www/html/index.html "$output_file"
+    
 }
 
 # ------------------------------
