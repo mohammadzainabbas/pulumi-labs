@@ -18,11 +18,11 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 # Upgrade the installed packages
 RUN apt-get update && apt-get --yes --force-yes full-upgrade
 
-# Configure xrdp to use port 3390
-RUN sed -i 's/port=3389/port=3390/g' /etc/xrdp/xrdp.ini
+# Configure xrdp to use port "XRDP_PORT"
+RUN sed -i "s/port=3389/port=$XRDP_PORT/g" /etc/xrdp/xrdp.ini
 
 # Start xrdp service
-CMD ["/etc/init.d/xrdp", "start"]
+RUN /etc/init.d/xrdp start
 
 # Create a non-root user 'kali' and add to sudo group
 RUN useradd -m -s /bin/bash -G sudo kali
