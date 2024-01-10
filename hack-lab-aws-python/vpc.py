@@ -78,19 +78,14 @@ class Vpc(pulumi.ComponentResource):
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
-        self.vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
-            cidr_block=args.base_cidr,
-            number_of_availability_zones=len(args.availability_zone_names),
-            subnet_specs=[
-
-        # self.vpc = ec2.Vpc(f"{name}-vpc",
-        #                    cidr_block=args.base_cidr,
-        #                    enable_dns_hostnames=True,
-        #                    enable_dns_support=True,
-        #                    tags={**args.base_tags, "Name": f"{args.description} VPC"},
-        #                    opts=pulumi.ResourceOptions(
-        #                        parent=self,
-        #                    ))
+        self.vpc = aws.ec2.Vpc(f"{name}-vpc",
+                           cidr_block=args.base_cidr,
+                           enable_dns_hostnames=True,
+                           enable_dns_support=True,
+                           tags={**args.base_tags, "Name": f"{args.description} VPC"},
+                           opts=pulumi.ResourceOptions(
+                               parent=self,
+                           ))
 
         # Create VPC and Internet Gateway resources
         self.internet_gateway = ec2.InternetGateway(f"{name}-igw",
