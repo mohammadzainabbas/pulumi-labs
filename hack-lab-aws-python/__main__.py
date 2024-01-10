@@ -26,14 +26,14 @@ ami = aws.ec2.get_ami(
     most_recent=True).id
 
 # Get all availability zones
-azs = aws.get_availability_zones(state="available")
+azs = aws.get_availability_zones(state="available").names
 
 # Create a VPC with a size /16 CIDR block
 vpc = Vpcx(
     project_name,
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
-        # azs=azs.names,
+        azs=azs.names,
         sg_ingress_ports=[22, 80],
         tags={
             "Project": project_name,
