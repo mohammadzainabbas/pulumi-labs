@@ -364,6 +364,7 @@ class Vpcx(pulumi.ComponentResource):
     vpc = Vpcx("example-vpc", VpcxArgs(
         vpc_cidr_block="192.168.0.0/16",
         azs=zones.names,
+        aws_region=aws.get_region().name,
         sg_ingress_ports=[22, 80, 443],
         tags={
             "Project": "Python Example VPC",
