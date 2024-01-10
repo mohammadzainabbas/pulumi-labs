@@ -372,8 +372,9 @@ class Vpcx(pulumi.ComponentResource):
     ))
 
     export("vpcId", net.vpc.id)
-    export("publicSubnetIds", [subnet.id for subnet in net.public_subnets])
-    export("privateSubnetIds", [subnet.id for subnet in net.private_subnets])
+    export("vpcPrivateSubnetIds", net.vpc.private_subnet_ids)
+    export("vpcPublicSubnetIds", net.vpc.public_subnet_ids)
+    export("vpcPublicSubnetIds", net.vpc.public_subnet_ids)
     ```
 
 
