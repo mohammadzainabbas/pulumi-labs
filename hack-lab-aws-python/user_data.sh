@@ -50,7 +50,7 @@ setup_instance() {
 # ------------------------------
 topic="mohammadzainabbas-aws"
 github="https://github.com/mohammadzainabbas/pulumi-labs"
-project="aws-fleet-python"
+project="hack-lab-aws-python"
 _project_link="$github/tree/main/$project"
 _click="$_project_link"
 _attach="https://get.pulumi.com/new/button.svg"
