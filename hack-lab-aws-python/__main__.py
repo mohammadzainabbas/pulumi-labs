@@ -43,8 +43,9 @@ vpc = Vpcx(
 )
 
 # Create a hacker machine
-kali = aws.ec2.Instance(
-    "kali",
+hacker_instance_name = f"{project_name}-kali"
+hacker_instance = aws.ec2.Instance(
+    hacker_instance_name,
     ami=ami,
     instance_type="t2.micro",
     key_name=keypair,
