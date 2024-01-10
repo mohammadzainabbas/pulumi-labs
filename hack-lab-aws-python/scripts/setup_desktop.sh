@@ -11,6 +11,10 @@ INSTANCE_TYPE=$(curl http://169.254.169.254/latest/meta-data/instance-type)
 PUBLIC_IP=$(curl http://169.254.169.254/latest/meta-data/public-ipv4)
 ACCOUNT_ID=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/info | jq -r .AccountId)
 
+# ------------------------------
+# Logging
+# ------------------------------
+
 log() {
     echo "[ log ] $1" | tee -a "$output_file"
 }
@@ -25,6 +29,10 @@ run() {
     echo "[ run ] $* took $_time_diff secs with exit code $exit_code" | tee -a "$output_file"
     return $exit_code
 }
+
+# ------------------------------
+# Setup method
+# ------------------------------
 
 setup_instance() {
     sudo apt update && sudo apt install -y kali-linux-headless
