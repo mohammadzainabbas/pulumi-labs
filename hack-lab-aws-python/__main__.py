@@ -42,6 +42,7 @@ vpc = Vpcx(
     ),
 )
 
+# Create a hacking machine
 kali = aws.ec2.Instance(
     "kali",
     ami=ami,
