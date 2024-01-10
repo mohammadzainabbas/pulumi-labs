@@ -356,10 +356,10 @@ class Vpcx(pulumi.ComponentResource):
 
     ```python
     from vpc import Vpcx, VpcxArgs
-    from pulumi import export
-    from pulumi_aws import get_availability_zones
+    import pulumi
+    import pulumi_aws as aws
 
-    zones = get_availability_zones(state="available")
+    zones = aws.get_availability_zones(state="available")
 
     net = Vpcx("example-vpc", VpcxArgs(
         vpc_cidr_block="192.168.0.0/16",
@@ -371,10 +371,10 @@ class Vpcx(pulumi.ComponentResource):
         },
     ))
 
-    export("vpc_id", net.vpc.id)
-    export("vpc_private_subnet_ids", net.vpc.private_subnet_ids)
-    export("vpc_public_subnet_ids", net.vpc.public_subnet_ids)
-    export("vpc_security_group_id", net.security_group.id)
+    pulumi.export("vpc_id", net.vpc.id)
+    pulumi.export("vpc_private_subnet_ids", net.vpc.private_subnet_ids)
+    pulumi.export("vpc_public_subnet_ids", net.vpc.public_subnet_ids)
+    pulumi.export("vpc_security_group_id", net.security_group.id)
     ```
 
     """
