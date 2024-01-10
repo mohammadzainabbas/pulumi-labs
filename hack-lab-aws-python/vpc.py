@@ -457,7 +457,7 @@ class Vpcx(pulumi.ComponentResource):
             ingress=ingress_sg,
             egress=egress_sg,
             tags={ "Name": security_group_name, **args.base_tags },
-            opts=pulumi.ResourceOptions( parent=self.vpc ),
+            opts=pulumi.ResourceOptions( parent=self ),
         )
 
 
