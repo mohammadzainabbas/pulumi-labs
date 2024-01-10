@@ -336,14 +336,10 @@ class VpcxArgs:
         :param create_s3_endpoint: Whether or not to create a VPC endpoint and routes for S3 access.
         :param create_dynamodb_endpoint:  Whether or not to create a VPC endpoint and routes for DynamoDB access.
         """
-        self.description = description
         self.base_tags = base_tags
-        self.base_cidr = base_cidr
+        self.network_cidr = network_cidr
         self.availability_zone_names = availability_zone_names
-        self.zone_name = zone_name
-        self.create_s3_endpoint = create_s3_endpoint
-        self.create_dynamodb_endpoint = create_dynamodb_endpoint
-
+        self.aws_region = aws_region
 
 class Vpcx(pulumi.ComponentResource):
     """
