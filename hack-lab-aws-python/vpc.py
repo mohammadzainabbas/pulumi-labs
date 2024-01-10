@@ -398,7 +398,6 @@ class Vpcx(pulumi.ComponentResource):
 
         # Make base info available to other methods
         self.name = name
-        self.description = args.description
         self.base_tags = args.tags
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
