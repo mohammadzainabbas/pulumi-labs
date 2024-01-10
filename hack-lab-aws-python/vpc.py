@@ -214,7 +214,7 @@ class Vpc(pulumi.ComponentResource):
 
         super().register_outputs({})
 
-    def enableFlowLoggingToS3(self, bucketArn: Input[str], trafficType: Input[str]):
+    def enableFlowLoggingToS3(self, bucketArn: pulumi.Input[str], trafficType: pulumi.Input[str]):
         """
         Enable VPC flow logging to S3, for the specified traffic type
         :param self: VPC instance
@@ -222,7 +222,7 @@ class Vpc(pulumi.ComponentResource):
         :param trafficType: The traffic type to log: "ALL", "ACCEPT" or "REJECT"
         :return: None
         """
-        ec2.FlowLog(f"{self.name}-flow-logs",
+        aws.ec2.FlowLog(f"{self.name}-flow-logs",
                     log_destination=bucketArn,
                     log_destination_type="s3",
                     vpc_id=self.vpc.id,
@@ -231,7 +231,7 @@ class Vpc(pulumi.ComponentResource):
                        parent=self.vpc,
                     ))
 
-    def enableFlowLoggingToCloudWatchLogs(self, trafficType: Input[str]):
+    def enableFlowLoggingToCloudWatchLogs(self, trafficType: pulumi.Input[str]):
         """
         Enable VPC flow logging to CloudWatch Logs, for the specified traffic type
         :param self: VPC instance
