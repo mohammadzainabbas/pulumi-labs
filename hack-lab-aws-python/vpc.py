@@ -68,7 +68,7 @@ class Vpc(pulumi.ComponentResource):
         :param args: A VpcArgs object containing the arguments for VPC constructin.
         :param opts: A pulumi.ResourceOptions object.
         """
-        project_name = pulumi.get_project()
+        project_name = name if name else pulumi.get_project()
         super().__init__(f"{project_name}:VPC", name, None, opts)
 
         # Make base info available to other methods
