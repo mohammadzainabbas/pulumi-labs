@@ -35,4 +35,4 @@ USER kali
 WORKDIR /home/kali
 
 # Expose the default xrdp port
-EXPOSE 3390
+EXPOSE $XRDP_PORT
