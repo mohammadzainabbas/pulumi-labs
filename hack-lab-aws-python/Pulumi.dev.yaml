@@ -1,5 +1,6 @@
 config:
   aws:region: eu-west-3
   hack-lab-aws-python:keypair: jarvis
+  hack-lab-aws-python:vpcNetworkCidr: 192.168.110.0/24
 environment:
   - aws-jarvis
