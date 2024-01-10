@@ -1,8 +1,0 @@
-config:
-  tutorial-pulumi-fundamentals-ts:backendPort: "3000"
-  tutorial-pulumi-fundamentals-ts:databaseHost: 'mongodb://mongo'
-  tutorial-pulumi-fundamentals-ts:databaseName: cart
-  tutorial-pulumi-fundamentals-ts:databasePort: "27017"
-  tutorial-pulumi-fundamentals-ts:frontendPort: "3001"
-  tutorial-pulumi-fundamentals-ts:nodeEnvironment: development
-  tutorial-pulumi-fundamentals-ts:protocol: http://
