@@ -430,7 +430,15 @@ class Vpcx(pulumi.ComponentResource):
             opts=pulumi.ResourceOptions( parent=self ),
         )
 
-        ingress_sg = []
+        ingress_sg = [
+            aws.ec2.SecurityGroupIngressArgs(
+                from_port=port,
+                to_port=port,
+                protocol="tcp",
+                cidr_blocks=["0.0.0.0/0"],
+            )
+            for i, port in enumerate(args.ingress_ports)
+        ]
 
         self.sg = 
 
