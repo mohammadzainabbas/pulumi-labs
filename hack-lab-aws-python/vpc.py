@@ -430,6 +430,8 @@ class Vpcx(pulumi.ComponentResource):
             opts=pulumi.ResourceOptions( parent=self ),
         )
 
+        ingress_sg = []
+
         self.sg = 
 
 
