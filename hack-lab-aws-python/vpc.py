@@ -11,7 +11,6 @@ import pulumi_awsx as awsx
 from .iam_helpers import assume_role_policy_for_principal
 from .subnet_distributor import SubnetDistributor
 
-
 class VpcArgs:
     """
     The arguments necessary to construct a `Vpc` resource.
@@ -315,7 +314,40 @@ class Vpc(pulumi.ComponentResource):
                         parent=self.flow_logs_role
                     ))
 
-class Vpcs(pulumi.ComponentResource):
+class VpcxArgs:
+    """
+    The arguments necessary to construct a `Vpc` resource.
+    """
+
+    def __init__(self,
+                 description: str,
+                 base_tags: Mapping[str, str],
+                 base_cidr: str,
+                 availability_zone_names: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 zone_name: pulumi.Input[str] = "",
+                 create_s3_endpoint: bool = True,
+                 create_dynamodb_endpoint: bool = True):
+        """
+        Constructs a VpcArgs.
+
+        :param description: A human-readable description used to construct resource name tags.
+        :param base_tags: Tags which are applied to all taggable resources.
+        :param base_cidr: The CIDR block representing the address space of the entire VPC.
+        :param availability_zone_names: A list of availability zone names in which to create subnets.
+        :param zone_name: The name of a private Route 53 zone to create and set in a DHCP Option Set for the VPC.
+        :param create_s3_endpoint: Whether or not to create a VPC endpoint and routes for S3 access.
+        :param create_dynamodb_endpoint:  Whether or not to create a VPC endpoint and routes for DynamoDB access.
+        """
+        self.description = description
+        self.base_tags = base_tags
+        self.base_cidr = base_cidr
+        self.availability_zone_names = availability_zone_names
+        self.zone_name = zone_name
+        self.create_s3_endpoint = create_s3_endpoint
+        self.create_dynamodb_endpoint = create_dynamodb_endpoint
+
+
+class Vpcx(pulumi.ComponentResource):
     """
     Creates a good-practice AWS VPC using Pulumi. The VPC consists of:
 
