@@ -340,7 +340,7 @@ class VpcxArgs:
 
 class Vpcx(pulumi.ComponentResource):
     """
-    Creates a good-practice AWS VPC using Pulumi. The VPC consists of:
+    Creates a AWS VPC using Pulumi. The VPC consists of:
 
       - DHCP options for the given private hosted zone name
       - An Internet gateway
@@ -403,7 +403,7 @@ class Vpcx(pulumi.ComponentResource):
         self.vpc = awsx.ec2.Vpc(
             vpc_name, 
             awsx.ec2.VpcArgs(
-                cidr_block=args.vpc_network_cidr,
+                cidr_block=args.network_cidr,
                 number_of_availability_zones=len(args.azs.names),
                 subnet_specs=[
                     awsx.ec2.SubnetSpecArgs(
