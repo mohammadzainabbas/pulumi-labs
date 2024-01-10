@@ -49,7 +49,8 @@ pulumi-awsx>=1.0.0,<2.5.0
 
 ```bash
 pulumi config set aws:region eu-west-3
-pulumi config set aws:profile default
+pulumi config set keypair jarvis
+pulumi config set vpcNetworkCidr 192.168.110.0/24
 ```
 
 
