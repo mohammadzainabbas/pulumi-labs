@@ -329,9 +329,9 @@ class VpcxArgs:
         Constructs a VpcxArgs.
 
         :param base_tags: Tags which are applied to all taggable resources.
-        :param base_cidr: The CIDR block representing the address space of the entire VPC.
+        :param network_cidr: The CIDR block representing the address space of the entire VPC.
         :param availability_zone_names: A list of availability zone names in which to create subnets.
-        :param zone_name: The name of a private Route 53 zone to create and set in a DHCP Option Set for the VPC.
+        :param aws_region: The name of a AWS Region for the VPC.
         """
         self.base_tags = base_tags
         self.network_cidr = network_cidr
