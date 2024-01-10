@@ -408,24 +408,27 @@ class Vpcx(pulumi.ComponentResource):
 
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
-        self.vpc = awsx.ec2.Vpc(vpc_name, awsx.ec2.VpcArgs(
-            cidr_block=args.vpc_network_cidr,
-            number_of_availability_zones=len(args.azs.names),
-            subnet_specs=[
-                awsx.ec2.SubnetSpecArgs(
-                    type=awsx.ec2.SubnetType.PUBLIC,
+        self.vpc = awsx.ec2.Vpc(
+            vpc_name, 
+            awsx.ec2.VpcArgs(
+                cidr_block=args.vpc_network_cidr,
+                number_of_availability_zones=len(args.azs.names),
+                subnet_specs=[
+                    awsx.ec2.SubnetSpecArgs(
+                        type=awsx.ec2.SubnetType.PUBLIC,
+                    ),
+                    awsx.ec2.SubnetSpecArgs(
+                        type=awsx.ec2.SubnetType.PRIVATE,
+                    ),
+                ],
+                nat_gateways=awsx.ec2.NatGatewayConfigurationArgs(
+                    strategy=awsx.ec2.NatGatewayStrategy.NONE,
                 ),
-                awsx.ec2.SubnetSpecArgs(
-                    type=awsx.ec2.SubnetType.PRIVATE,
-                ),
-            ],
-            nat_gateways=awsx.ec2.NatGatewayConfigurationArgs(
-                strategy=awsx.ec2.NatGatewayStrategy.NONE,
+                subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
+                tags={ "Name": vpc_name, **args.base_tags },
             ),
-            subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
-            tags={ "Name": vpc_name, **args.base_tags },
             opts=pulumi.ResourceOptions( parent=self ),
-        ))
+        )
 
 
         self.vpc = aws.ec2.Vpc(vpc_name,
