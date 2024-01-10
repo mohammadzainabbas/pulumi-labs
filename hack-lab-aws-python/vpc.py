@@ -151,14 +151,14 @@ class Vpc(pulumi.ComponentResource):
 
         # Create a NAT Gateway and appropriate route table for each private subnet
         for i, subnet in enumerate(self.private_subnets):
-            self.nat_elastic_ip_addresses.append(ec2.Eip(f"{name}-nat-{i + 1}",
+            self.nat_elastic_ip_addresses.append(aws.ec2.Eip(f"{name}-nat-{i + 1}",
                                                          tags={**args.base_tags,
                                                                "Name": f"{args.description} NAT Gateway EIP {i + 1}"},
                                                          opts=pulumi.ResourceOptions(
                                                              parent=subnet
                                                          )))
 
-            self.nat_gateways.append(ec2.NatGateway(f"{name}-nat-gateway-{i + 1}",
+            self.nat_gateways.append(aws.ec2.NatGateway(f"{name}-nat-gateway-{i + 1}",
                                                     allocation_id=self.nat_elastic_ip_addresses[i].id,
                                                     subnet_id=self.public_subnets[i].id,
                                                     tags={**args.base_tags,
@@ -167,7 +167,7 @@ class Vpc(pulumi.ComponentResource):
                                                         parent=subnet
                                                     )))
 
-            self.private_route_tables.append(ec2.RouteTable(f"{name}-private-rt-{i + 1}",
+            self.private_route_tables.append(aws.ec2.RouteTable(f"{name}-private-rt-{i + 1}",
                                                             vpc_id=self.vpc.id,
                                                             tags={**args.base_tags,
                                                                   "Name": f"{args.description} Private RT {i + 1}"},
@@ -175,7 +175,7 @@ class Vpc(pulumi.ComponentResource):
                                                                 parent=subnet
                                                             )))
 
-            ec2.Route(f"{name}-route-private-sn-to-nat-{i + 1}",
+            aws.ec2.Route(f"{name}-route-private-sn-to-nat-{i + 1}",
                       route_table_id=self.private_route_tables[i].id,
                       destination_cidr_block="0.0.0.0/0",
                       nat_gateway_id=self.nat_gateways[i].id,
@@ -183,7 +183,7 @@ class Vpc(pulumi.ComponentResource):
                           parent=self.private_route_tables[i]
                       ))
 
-            ec2.RouteTableAssociation(f"{name}-private-rta-{i + 1}",
+            aws.ec2.RouteTableAssociation(f"{name}-private-rta-{i + 1}",
                                       subnet_id=subnet.id,
                                       route_table_id=self.private_route_tables[i].id,
                                       opts=pulumi.ResourceOptions(
@@ -192,7 +192,7 @@ class Vpc(pulumi.ComponentResource):
 
         # Create S3 endpoint if necessary
         if args.create_s3_endpoint:
-            ec2.VpcEndpoint(f"{name}-s3-endpoint",
+            aws.ec2.VpcEndpoint(f"{name}-s3-endpoint",
                             vpc_id=self.vpc.id,
                             service_name=f"com.amazonaws.{config.region}.s3",
                             route_table_ids=[self.public_route_table.id,
@@ -203,7 +203,7 @@ class Vpc(pulumi.ComponentResource):
 
         # Create DynamoDB endpoint if necessary
         if args.create_dynamodb_endpoint:
-            ec2.VpcEndpoint(f"{name}-dynamodb-endpoint",
+            aws.ec2.VpcEndpoint(f"{name}-dynamodb-endpoint",
                             vpc_id=self.vpc.id,
                             service_name=f"com.amazonaws.{config.region}.dynamodb",
                             route_table_ids=[self.public_route_table.id,
