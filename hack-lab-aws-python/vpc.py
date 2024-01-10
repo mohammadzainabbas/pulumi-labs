@@ -56,7 +56,7 @@ class Vpc(pulumi.ComponentResource):
       - NAT gateways (and accoutrements) for each private subnet, and appropriate routing
       - Optionally, S3 and DynamoDB endpoints
 
-    #### Example Usage
+    ### Example Usage
 
     ```python
     from vpc import Vpc, VpcArgs
