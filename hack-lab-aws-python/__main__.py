@@ -46,4 +46,5 @@ vpc = Vpcx(
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
 pulumi.export("azs", azs)
-pulumi.export("vpc", vpc.vpc.vpc_id)
+pulumi.export("vpc", vpc)
+# pulumi.export("vpc", vpc.vpc.vpc_id)
