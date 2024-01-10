@@ -48,6 +48,13 @@ hacker_instance = aws.ec2.Instance(
     hacker_instance_name,
     ami=ami,
     instance_type="t2.micro",
+    instance_market_options=aws.ec2.InstanceInstanceMarketOptionsArgs(
+        market_type="spot",
+        spot_options=aws.ec2.InstanceInstanceMarketOptionsSpotOptionsArgs(
+            max_price="0.05",
+            spot_instance_type="one-time",
+        ),
+    ),
     key_name=keypair,
     vpc_security_group_ids=[vpc.security_group.id],
     subnet_id=vpc.vpc.public_subnet_ids[0],
