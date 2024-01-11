@@ -89,6 +89,10 @@ class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     name: str = ""
     ova_filename: str | None = None
     extract_dir: Union[str, pathlib.Path] | None = None
+    @classmethod
+    def from_dict(cls, input_dict: dict):
+        filtered_dict = {key: value for key, value in input_dict.items() if hasattr(cls, key)}
+        return cls(**filtered_dict)
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     """
