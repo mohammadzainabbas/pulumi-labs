@@ -91,6 +91,33 @@ class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
         super().__init__(url, output_dir, filename)
         self.name = name
 
+class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
+    """
+    Custom dynamic provider to download and unzip the file.
+    """
+    def create(self, props):
+        url, output_dir, filename = props["url"], props["output_dir"], props["filename"]
+        if not filename: filename = os.path.basename(url)
+        try:
+            # Downloading zip file.
+            file_path = f"{output_dir}/{filename}"
+            download_url(url, output_dir, filename)
+            import zipfile
+            # Unzipping to extract the .ova file.
+            with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                zip_ref.extractall(output_dir)
+                for filename in os.listdir(output_dir):
+                    if filename.endswith('.ova'):
+                        ova_file_path = f"{output_dir}/{filename}"
+                        break
+            if ova_file_path:
+                return pulumi.dynamic.CreateResult(ova_file_path, {})
+        except Exception as e:
+            raise Exception(f"Failed to download and unzip: {str(e)}")
+
+        return pulumi.dynamic.CreateResult(id_="", outs={})
+
+
 class DownloadUnzip(pulumi.dynamic.Resource):
     def __init__(
             self,
