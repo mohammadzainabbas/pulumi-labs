@@ -4,6 +4,7 @@ import pulumi_awsx as awsx
 from vpc import Vpcx, VpcxArgs
 import base64
 from json import loads
+from utils import DownloadUnzip
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
