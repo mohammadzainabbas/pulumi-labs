@@ -109,6 +109,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         required_props: str = ["url", "output_dir"]
         for prop in required_props:
             if not getattr(news, prop): failures.append(pulumi.dynamic.CheckFailure(property=prop, reason=f"'{prop}' is required"))
+        _olds = { **_olds, **vars(olds) }
         return pulumi.dynamic.CheckResult(inputs=_olds if len(failures) else _news, failures=failures)
 
     def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
