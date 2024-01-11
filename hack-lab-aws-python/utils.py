@@ -81,6 +81,7 @@ class DownloadUnzipInputArgs:
 @dataclass
 class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     name: str
+    extract_dir: Union[str, pathlib.Path]
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     """
