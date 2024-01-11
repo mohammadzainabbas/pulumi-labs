@@ -78,7 +78,7 @@ bucket = aws.s3.BucketV2(
 )
 
 public_access_block = aws.s3.BucketPublicAccessBlock(
-    bucket_name,
+    f"{bucket_name}-public-access-block",
     block_public_acls=False,
     block_public_policy=True,
     ignore_public_acls=True,
