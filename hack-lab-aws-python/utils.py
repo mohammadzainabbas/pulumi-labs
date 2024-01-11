@@ -146,8 +146,8 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         outs = DownloadUnzipOutputArgs.from_dict(_olds)
         _props: List[str] = ["url", "output_dir", "filename"]
         for prop in _props:
-            if getattr(_olds, prop) != getattr(_news, prop): setattr(_outs, prop, getattr(_news, prop))
-        return pulumi.dynamic.UpdateResult(id=id, outs=_outs)
+            if getattr(_olds, prop) != getattr(_news, prop): setattr(outs, prop, getattr(_news, prop))
+        return pulumi.dynamic.UpdateResult(id=id, outs=vars(outs))
     
     def delete(self, id: str, _props: DownloadUnzipOutputArgs | dict) -> None:
         print(f"Deleting {_props.name}({id}) ...")
