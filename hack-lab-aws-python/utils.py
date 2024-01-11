@@ -1,7 +1,22 @@
+import bz2
+import contextlib
+import gzip
 import hashlib
+import itertools
+import lzma
 import os
-from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
+import os.path
 import pathlib
+import re
+import sys
+import tarfile
+import urllib
+import urllib.error
+import urllib.request
+import warnings
+import zipfile
+from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
+from urllib.parse import urlparse
 
 def calculate_md5(fpath: str, chunk_size: int = 1024 * 1024) -> str:
     # Setting the `usedforsecurity` flag does not change anything about the functionality, but indicates that we are
