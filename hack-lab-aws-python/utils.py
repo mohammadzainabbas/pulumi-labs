@@ -25,6 +25,22 @@ def _download_file_from_remote_location(fpath: str, url: str) -> None:
 def _is_remote_location_available() -> bool:
     return False
 
+def _get_redirect_url(url: str, max_hops: int = 3) -> str:
+    initial_url = url
+    headers = {"Method": "HEAD", "User-Agent": USER_AGENT}
+
+    for _ in range(max_hops + 1):
+        with urllib.request.urlopen(urllib.request.Request(url, headers=headers)) as response:
+            if response.url == url or response.url is None:
+                return url
+
+            url = response.url
+    else:
+        raise RecursionError(
+            f"Request to {initial_url} exceeded {max_hops} redirects. The last redirect points to {url}."
+        )
+
+
 def calculate_md5(fpath: str, chunk_size: int = 1024 * 1024) -> str:
     # Setting the `usedforsecurity` flag does not change anything about the functionality, but indicates that we are
     # not using the MD5 checksum for cryptography. This enables its usage in restricted environments like FIPS. Without
