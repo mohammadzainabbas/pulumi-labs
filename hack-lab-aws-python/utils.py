@@ -72,8 +72,8 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
     Custom dynamic provider to download and unzip the file.
     """
     def create(self, props):
-        dest_path = props['dest_path']
-        file_url = props['file_url']
+        dest_path = props['output_dir']
+        file_url = props['url']
         try:
             # Downloading zip file.
             zip_file_path = f"{dest_path}/Breach-1.0.zip"
