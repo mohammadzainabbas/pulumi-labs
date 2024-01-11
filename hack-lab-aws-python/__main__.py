@@ -93,7 +93,7 @@ vuln_os_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
 vuln_os_name = f"{project_name}-vuln_os-{vuln_os_file}"
 vuln_os = DownloadUnzip(
     vuln_os_name,
-    args=DownloadUnzip(
+    args=DownloadUnzipInputArgs(
         url=vuln_os_url,
         output_dir=vuln_os_output_dir,
         filename=vuln_os_file,
