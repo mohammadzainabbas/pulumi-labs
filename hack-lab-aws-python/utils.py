@@ -82,7 +82,6 @@ class DownloadUnzipInputArgs:
     def from_dict(cls, input_dict: dict):
         filtered_dict = {key: value for key, value in input_dict.items() if hasattr(cls, key)}
         return cls(**filtered_dict)
-
 @dataclass
 class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     id: str = ""
