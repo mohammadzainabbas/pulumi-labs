@@ -66,6 +66,17 @@ hacker_instance = aws.ec2.Instance(
     },
 )
 
+# Create a s3 bucket
+bucket_name = f"{project_name}-bucket"
+bucket = aws.s3.Bucket(
+    bucket_name,
+    acl="private",
+    tags={
+        "Project": project_name,
+        "Environment": "dev",
+    },
+)
+
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
