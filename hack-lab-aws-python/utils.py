@@ -67,7 +67,7 @@ def download_url(
             raise e
 
 #----------------------------------------------
-# DownloadUnzip Dynamic Provider
+# DownloadUnzip - Pulumi Dynamic Provider
 #----------------------------------------------
 class DownloadUnzipInputArgs:
     def __init__(
