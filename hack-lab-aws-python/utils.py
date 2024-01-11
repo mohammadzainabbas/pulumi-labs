@@ -112,10 +112,9 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                 )
                 _id = random.RandomId(
                     "id",
-                    keepers={
-                        "file": ova_file_path,
-                    },
-                    byte_length=4)
+                    keepers={ "file": ova_file_path },
+                    byte_length=4
+                )
                 return pulumi.dynamic.CreateResult(id=_id, outs=_outs)
         except Exception as e:
             raise Exception(f"Failed to download and unzip: {str(e)}")
