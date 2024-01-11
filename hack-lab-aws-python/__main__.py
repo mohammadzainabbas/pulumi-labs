@@ -4,7 +4,7 @@ import pulumi_awsx as awsx
 from vpc import Vpcx, VpcxArgs
 import base64
 from json import loads
-from utils import DownloadUnzip
+from utils import DownloadUnzip, DownloadUnzipInputArgs
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
@@ -93,9 +93,11 @@ vuln_os_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
 vuln_os_name = f"{project_name}-vuln_os-{vuln_os_file}"
 vuln_os = DownloadUnzip(
     vuln_os_name,
-    url=vuln_os_url,
-    output_dir=vuln_os_output_dir,
-    filename=vuln_os_file,
+    args=DownloadUnzip(
+        url=vuln_os_url,
+        output_dir=vuln_os_output_dir,
+        filename=vuln_os_file,
+    ),
 )
 
 # Export the instance's publicly accessible IP address and hostname.
