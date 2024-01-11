@@ -78,6 +78,7 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
             # Downloading zip file.
             zip_file_path = f"{dest_path}/Breach-1.0.zip"
             download_url(props["url"], props["output_dir"], props["filename"])
+            # download_url(props["url"], props["output_dir"], props["filename"])
 
             # Unzipping to extract the .ova file.
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
