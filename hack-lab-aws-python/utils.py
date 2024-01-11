@@ -74,8 +74,8 @@ def download_url(
 #----------------------------------------------
 @dataclass
 class DownloadUnzipInputArgs:
-    url: str
-    output_dir: Union[str, pathlib.Path]
+    url: str = ""
+    output_dir: Union[str, pathlib.Path] | None = None
     filename: Optional[str] = None
 
 @dataclass
