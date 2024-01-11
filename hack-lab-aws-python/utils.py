@@ -92,8 +92,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     def __init__(self, name: str) -> None:
         self.name = name
     
-    def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
-        
+    def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:        
         failures: List[pulumi.dynamic.CheckFailure] = []
         if not _news.url:
             failures.append(pulumi.dynamic.CheckFailure(property="url", reason="url is required"))
