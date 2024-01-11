@@ -78,6 +78,8 @@ bucket = aws.s3.Bucket(
     },
 )
 
+
+
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
 pulumi.export("ami", ami)
