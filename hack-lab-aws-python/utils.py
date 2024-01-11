@@ -112,7 +112,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                 zip_ref.extractall(temp_dir)
                 for filename in os.listdir(temp_dir):
                     if filename.endswith('.ova'):
-                        ova_file_path = f"{output_dir}/{filename}"
+                        ova_file_path = os.path.join(temp_dir, filename)
                         break
             if ova_file_path:
                 _id = random.RandomId("id", keepers={ "file": ova_file_path }, byte_length=4).hex
