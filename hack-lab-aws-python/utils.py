@@ -53,7 +53,13 @@ def _urlretrieve(url: str, filename: str, chunk_size: int = 1024 * 32) -> None:
         _save_response_content(iter(lambda: response.read(chunk_size), b""), filename, length=response.length)
 
 
-def download_url(url, root, filename=None):
+def download_url(
+        url: str,
+        root: Union[str, pathlib.Path],
+        filename: Optional[str] = None,
+        md5: Optional[str] = None,
+        max_redirect_hops: int = 3
+        ):
     """Download a file from a url and place it in root.
     Args:
         url (str): URL to download file from
