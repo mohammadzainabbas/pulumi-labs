@@ -103,6 +103,12 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                         ova_file_path = f"{output_dir}/{filename}"
                         break
             if ova_file_path:
+                outs = DownloadUnzipOutputArgs(
+                    name=self.name,
+                    url=url,
+                    output_dir=output_dir,
+                    filename=filename,
+                )
                 return pulumi.dynamic.CreateResult(ova_file_path, {})
         except Exception as e:
             raise Exception(f"Failed to download and unzip: {str(e)}")
