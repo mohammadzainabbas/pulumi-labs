@@ -4,11 +4,11 @@ import urllib.error
 import urllib.request
 from typing import Iterator, Optional, Union
 
-__USER_AGENT__ = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 def _get_redirect_url(url: str, max_hops: int = 3) -> str:
     initial_url = url
-    headers = {"Method": "HEAD", "User-Agent": __USER_AGENT__}
+    headers = {"Method": "HEAD", "User-Agent": USER_AGENT}
 
     for _ in range(max_hops + 1):
         with urllib.request.urlopen(urllib.request.Request(url, headers=headers)) as response:
