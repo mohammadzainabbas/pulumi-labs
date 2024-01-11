@@ -146,7 +146,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         print(f"Deleting {_props.name}({id}) ...")
         if os.path.exists(_props.extract_dir):
             print(f"Deleting {_props.extract_dir}...")
-            os.remove(_props.extract_dir)
+            shutil.rmtree(_props.extract_dir)
         if os.path.exists(_props.extract_dir):
             print(f"Deleting {_props.filename}({id}) from {_props.extract_dir}...")
             os.remove(f"{_props.output_dir}/{_props.filename}")
