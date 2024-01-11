@@ -69,4 +69,9 @@ def download_url(
 #------------------
 # Pulumi functions 
 #------------------
-class DownloadUnzip
+# Custom dynamic provider to download and unzip the file.
+class DownloadUnzipProvider(pulumi.ResourceProvider):
+    def create(self, inputs):
+        # Download the file
+        download_url(inputs["url"], inputs["root"], inputs["filename"])
+        return {"status": "Downloaded successfully!"}
