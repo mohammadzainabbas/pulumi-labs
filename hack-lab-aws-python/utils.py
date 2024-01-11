@@ -1,6 +1,7 @@
 import os
 import pathlib
-import urllib
+import urllib.error
+import urllib.request
 from typing import Iterator, Optional, Union
 
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
@@ -23,7 +24,6 @@ def _get_redirect_url(url: str, max_hops: int = 3) -> str:
 def _save_response_content(
     content: Iterator[bytes],
     destination: str,
-    length: Optional[int] = None,
 ) -> None:
     with open(destination, "wb") as fh:
         for chunk in content:
