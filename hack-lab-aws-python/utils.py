@@ -37,23 +37,23 @@ def _urlretrieve(url: str, filename: str, chunk_size: int = 1024 * 32) -> None:
 
 def download_url(
         url: str,
-        root: Union[str, pathlib.Path],
+        output_dir: Union[str, pathlib.Path],
         filename: Optional[str] = None,
         max_redirect_hops: int = 3
     ):
     """
-    Download a file from a url and place it in root.
+    Download a file from a url and place it in output_dir.
 
     Args:
         url (str): URL to download file from
-        root (str): Directory to place downloaded file in
+        output_dir (str): Directory to place downloaded file in
         filename (str, optional): Name to save the file under. If None, use the basename of the URL
         max_redirect_hops (int, optional): Maximum number of redirect hops allowed
     """
-    root = os.path.expanduser(root)
+    output_dir = os.path.expanduser(output_dir)
     if not filename: filename = os.path.basename(url)
-    fpath = os.fspath(os.path.join(root, filename))
-    os.makedirs(root, exist_ok=True)
+    fpath = os.fspath(os.path.join(output_dir, filename))
+    os.makedirs(output_dir, exist_ok=True)
     url = _get_redirect_url(url, max_hops=max_redirect_hops) # expand redirect chain if needed
     try: # download the file
         print("Downloading " + url + " to " + fpath)
@@ -82,8 +82,8 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
         try:
             # Downloading zip file.
             zip_file_path = f"{dest_path}/Breach-1.0.zip"
-            download_url(props["url"], props["root"], props["filename"])
-            
+            download_url(props["url"], props["output_dir"], props["filename"])
+
             # Unzipping to extract the .ova file.
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
                 zip_ref.extractall(dest_path)
