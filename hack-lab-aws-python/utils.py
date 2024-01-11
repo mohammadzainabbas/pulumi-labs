@@ -67,6 +67,17 @@ def check_integrity(fpath: str, md5: Optional[str] = None) -> bool:
         return True
     return check_md5(fpath, md5)
 
+def _get_google_drive_file_id(url: str) -> Optional[str]:
+    parts = urlparse(url)
+
+    if re.match(r"(drive|docs)[.]google[.]com", parts.netloc) is None:
+        return None
+
+    match = re.match(r"/file/d/(?P<id>[^/]*)", parts.path)
+    if match is None:
+        return None
+
+    return match.group("id")
 def download_url(
     url: str,
     root: Union[str, pathlib.Path],
