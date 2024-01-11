@@ -70,6 +70,7 @@ hacker_instance = aws.ec2.Instance(
 bucket_name = f"{project_name}-bucket"
 bucket = aws.s3.Bucket(
     bucket_name,
+    acl="public-read",
     tags={
         "Name": bucket_name,
         "Project": project_name,
