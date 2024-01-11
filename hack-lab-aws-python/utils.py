@@ -117,6 +117,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                         ova_file_path = os.path.join(extract_dir, filename)
                         break
             if ova_file_path:
+                _outs.extract_dir = extract_dir
                 _id = random.RandomId("id", keepers={ "file": ova_file_path }, byte_length=4).hex
                 return pulumi.dynamic.CreateResult(id=_id, outs=_outs)
         except Exception as e: raise Exception(f"Failed to download and unzip: {str(e)}")
