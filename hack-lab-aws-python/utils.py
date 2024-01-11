@@ -73,5 +73,27 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
     """
     def create(self, props):
         
-        download_url(props["url"], props["root"], props["filename"])
+
         return {"status": "Downloaded successfully!"}
+    
+    def create(self, props):
+        dest_path = props['dest_path']
+        file_url = props['file_url']
+        try:
+            # Downloading zip file.
+            zip_file_path = f"{dest_path}/Breach-1.0.zip"
+            download_url(props["url"], props["root"], props["filename"])
+            
+            # Unzipping to extract the .ova file.
+            with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
+                zip_ref.extractall(dest_path)
+                for filename in os.listdir(dest_path):
+                    if filename.endswith('.ova'):
+                        ova_file_path = f"{dest_path}/{filename}"
+                        break
+            if ova_file_path:
+                return CreateResult(ova_file_path, {})
+        except Exception as e:
+            raise Exception(f"Failed to download and unzip: {str(e)}")
+
+        return CreateResult(id_="", outs={})
