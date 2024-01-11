@@ -17,7 +17,7 @@ import warnings
 import zipfile
 from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
 from urllib.parse import urlparse
-import tqdm
+from tqdm import tqdm
 
 def _save_response_content(
     content: Iterator[bytes],
