@@ -72,11 +72,6 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
     Custom dynamic provider to download and unzip the file.
     """
     def create(self, props):
-        
-
-        return {"status": "Downloaded successfully!"}
-    
-    def create(self, props):
         dest_path = props['dest_path']
         file_url = props['file_url']
         try:
