@@ -116,9 +116,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                     byte_length=4
                 ).hex
                 return pulumi.dynamic.CreateResult(id=_id, outs=_outs)
-        except Exception as e:
-            raise Exception(f"Failed to download and unzip: {str(e)}")
-
+        except Exception as e: raise Exception(f"Failed to download and unzip: {str(e)}")
         return pulumi.dynamic.CreateResult(id_="", outs=_outs)
 
 
