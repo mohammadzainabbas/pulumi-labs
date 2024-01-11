@@ -116,12 +116,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     def create(self, inputs: DownloadUnzipInputArgs | dict) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
         if not filename: filename = os.path.basename(url)
-        _outs = DownloadUnzipOutputArgs(
-            name=self.name,
-            url=url,
-            output_dir=output_dir,
-            filename=filename,
-        )
+        _outs = DownloadUnzipOutputArgs.from_dict({ "name": self.name, **vars(inputs) })
         try:
             # Downloading zip file.
             download_url(url, output_dir, filename)
