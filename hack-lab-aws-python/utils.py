@@ -92,6 +92,17 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
 
         return pulumi.dynamic.CreateResult(id_="", outs={})
 
+class DownloadUnzipArgs:
+    def __init__(
+            self,
+            url: str,
+            output_dir: Union[str, pathlib.Path],
+            filename: Optional[str] = None,
+        ):
+        self.url = url
+        self.output_dir = output_dir
+        self.filename = filename
+
 class DownloadUnzip(pulumi.dynamic.Resource):
     def __init__(
             self,
