@@ -80,11 +80,11 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
             # download_url(props["url"], props["output_dir"], props["filename"])
             import zipfile
             # Unzipping to extract the .ova file.
-            with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-                zip_ref.extractall(dest_path)
-                for filename in os.listdir(dest_path):
+            with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                zip_ref.extractall(output_dir)
+                for filename in os.listdir(output_dir):
                     if filename.endswith('.ova'):
-                        ova_file_path = f"{dest_path}/{filename}"
+                        ova_file_path = f"{output_dir}/{filename}"
                         break
             if ova_file_path:
                 return CreateResult(ova_file_path, {})
