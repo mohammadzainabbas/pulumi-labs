@@ -135,6 +135,9 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     
     def update(self, id: str, _olds: DownloadUnzipOutputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.UpdateResult:
         _outs: DownloadUnzipOutputArgs = _olds
+        _props: List[str] = ["url", "output_dir", "filename"]
+        for prop in _props:
+            if getattr(_olds, prop) != getattr(_news, prop): setattr(_outs, prop, getattr(_news, prop)) 
         if _olds.url != _news.url: _outs.url = _news.url
         if _olds.output_dir != _news.output_dir: _outs.output_dir = _news.output_dir
         if _olds.filename != _news.filename: _outs.filename = _news.filename
