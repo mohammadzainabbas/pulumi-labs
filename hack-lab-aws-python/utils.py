@@ -72,12 +72,11 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
     Custom dynamic provider to download and unzip the file.
     """
     def create(self, props):
-        dest_path = props['output_dir']
-        file_url = props['url']
+        url, output_dir, filename = props["url"], props["output_dir"], props["filename"]
         try:
             # Downloading zip file.
             zip_file_path = f"{dest_path}/Breach-1.0.zip"
-            download_url(props["url"], props["output_dir"], props["filename"])
+            download_url(url, output_dir, filename)
             # download_url(props["url"], props["output_dir"], props["filename"])
 
             # Unzipping to extract the .ova file.
