@@ -65,3 +65,8 @@ def download_url(
             _urlretrieve(url, fpath)
         else:
             raise e
+
+#------------------
+# Pulumi functions 
+#------------------
+class DownloadUnzip
