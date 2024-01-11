@@ -120,8 +120,8 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                         _outs.ova_filename = os.path.join(extract_dir, filename)
                         _outs.is_ova = True
                         break
-            if ova_file_path:
-                _id = random.RandomId("id", keepers={ "file": ova_file_path }, byte_length=4).hex
+            if _outs.ova_filename:
+                _id = random.RandomId("id", keepers={ "file": _outs.ova_filename }, byte_length=4).hex
                 _outs.id = _id
                 _outs.extract_dir = extract_dir
                 return pulumi.dynamic.CreateResult(id=_id, outs=_outs)
