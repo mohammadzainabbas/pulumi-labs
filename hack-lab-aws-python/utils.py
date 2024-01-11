@@ -84,6 +84,9 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     """
     Custom dynamic provider to download and unzip the file.
     """
+    def __init__(self, name: str) -> None:
+        super().__init__()
+        self.name = name
     def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
         if not filename: filename = os.path.basename(url)
