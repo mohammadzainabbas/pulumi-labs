@@ -79,7 +79,7 @@ class DownloadUnzipInputArgs:
     output_dir: Union[str, pathlib.Path] | None = None
     filename: Optional[str] = None
     @classmethod
-    def from_dict(cls, input_dict: dict) -> "DownloadUnzipInputArgs":
+    def from_dict(cls, input_dict: dict):
         filtered_dict = {key: value for key, value in input_dict.items() if hasattr(cls, key)}
         return cls(**filtered_dict)
 
