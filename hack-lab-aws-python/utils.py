@@ -83,6 +83,7 @@ class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     id: str = ""
     name: str = ""
     is_ova: bool = False
+    ova_filename: str | None = None
     extract_dir: Union[str, pathlib.Path] | None = None
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
