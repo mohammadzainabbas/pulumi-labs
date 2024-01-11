@@ -78,7 +78,14 @@ bucket = aws.s3.Bucket(
     },
 )
 
-
+public_access_block = aws.s3.BucketPublicAccessBlock(
+    bucket_name,
+    block_public_acls=True,
+    block_public_policy=True,
+    ignore_public_acls=True,
+    restrict_public_buckets=True,
+    bucket=bucket.id,
+)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
