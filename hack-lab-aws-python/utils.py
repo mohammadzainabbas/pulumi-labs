@@ -135,7 +135,8 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     
     def update(self, id: str, _olds: DownloadUnzipOutputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.UpdateResult:
         _outs: DownloadUnzipOutputArgs = _olds
-        if 
+        if _olds.url != _news.url:
+            _outs.url = _news.url
         return pulumi.dynamic.UpdateResult(id=id, outs=_outs)
     
     def delete(self, id: str, _props: DownloadUnzipOutputArgs) -> None:
