@@ -106,7 +106,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
             file_path = os.path.join(output_dir, filename)
             # Unzipping to extract the .ova file.
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
-                file_name_without_ext = os.path.splitext(filename)[0]
+                file_name_without_ext, _ = os.path.splitext(filename)
                 extract_dir = os.path.join(output_dir, file_name_without_ext)
                 if not os.path.exists(extract_dir):
                     os.makedirs(extract_dir)
