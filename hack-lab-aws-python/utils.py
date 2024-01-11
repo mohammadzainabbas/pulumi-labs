@@ -2,6 +2,7 @@ import os
 import pathlib
 import urllib.error
 import urllib.request
+from dataclasses import dataclass
 from typing import Iterator, Optional, Union
 import pulumi
 
