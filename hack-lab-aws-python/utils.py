@@ -91,6 +91,12 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
         if not filename: filename = os.path.basename(url)
+        _outs = DownloadUnzipOutputArgs(
+            name=self.name,
+            url=url,
+            output_dir=output_dir,
+            filename=filename,
+        )
         try:
             # Downloading zip file.
             file_path = f"{output_dir}/{filename}"
@@ -113,7 +119,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         except Exception as e:
             raise Exception(f"Failed to download and unzip: {str(e)}")
 
-        return pulumi.dynamic.CreateResult(id_="", outs={})
+        return pulumi.dynamic.CreateResult(id_="", outs=_outs)
 
 
 class DownloadUnzip(pulumi.dynamic.Resource):
