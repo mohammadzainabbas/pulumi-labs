@@ -103,6 +103,17 @@ class DownloadUnzipInputArgs:
         self.output_dir = output_dir
         self.filename = filename
 
+class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
+    def __init__(
+            self,
+            name: str,
+            url: str,
+            output_dir: Union[str, pathlib.Path],
+            filename: Optional[str] = None,
+        ):
+        super().__init__(url, output_dir, filename)
+        self.name = name
+
 class DownloadUnzip(pulumi.dynamic.Resource):
     def __init__(
             self,
