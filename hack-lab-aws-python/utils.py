@@ -94,6 +94,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         self.name = name
     
     def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
+        print(f"Checking {_news.name} ...")
         failures: List[pulumi.dynamic.CheckFailure] = []
         required_props: str = ["url", "output_dir"]
         for prop in required_props:
