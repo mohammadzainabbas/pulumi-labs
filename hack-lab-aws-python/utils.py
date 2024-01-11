@@ -104,12 +104,6 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                         ova_file_path = f"{output_dir}/{filename}"
                         break
             if ova_file_path:
-                _outs = DownloadUnzipOutputArgs(
-                    name=self.name,
-                    url=url,
-                    output_dir=output_dir,
-                    filename=filename,
-                )
                 _id = random.RandomId(
                     "id",
                     keepers={ "file": ova_file_path },
