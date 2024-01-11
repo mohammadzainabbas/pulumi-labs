@@ -18,7 +18,7 @@ import zipfile
 from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
 from urllib.parse import urlparse
 
-USER_AGENT = "pytorch/vision"
+USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
 def _get_redirect_url(url: str, max_hops: int = 3) -> str:
     initial_url = url
