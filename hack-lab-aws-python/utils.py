@@ -92,3 +92,10 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
             raise Exception(f"Failed to download and unzip: {str(e)}")
 
         return pulumi.dynamic.CreateResult(id_="", outs={})
+
+class DownloadUnzip(pulumi.Resource):
+    def __init__(self, name, file_url, dest_path, opts=None):
+        super().__init__(DownloadUnzipProvider(), name, {
+            'file_url': file_url,
+            'dest_path': dest_path,
+        }, opts)
