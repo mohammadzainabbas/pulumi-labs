@@ -66,15 +66,12 @@ def download_url(
         else:
             raise e
 
-#------------------
-# Pulumi functions 
-#------------------
-
 import zipfile
-
-# Custom dynamic provider to download and unzip the file.
 class DownloadUnzipProvider(pulumi.ResourceProvider):
+    """
+    Custom dynamic provider to download and unzip the file.
+    """
     def create(self, props):
-        # Download the file
+        
         download_url(props["url"], props["root"], props["filename"])
         return {"status": "Downloaded successfully!"}
