@@ -142,14 +142,14 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         except Exception as e: raise Exception(f"Failed to download and unzip: {str(e)}")
         return pulumi.dynamic.CreateResult(id_="", outs=vars(_outs))
     
-    def update(self, id: str, _olds: DownloadUnzipOutputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.UpdateResult:
+    def update(self, id: str, _olds: DownloadUnzipOutputArgs | dict, _news: DownloadUnzipInputArgs | dict) -> pulumi.dynamic.UpdateResult:
         _outs: DownloadUnzipOutputArgs = _olds
         _props: List[str] = ["url", "output_dir", "filename"]
         for prop in _props:
             if getattr(_olds, prop) != getattr(_news, prop): setattr(_outs, prop, getattr(_news, prop))
         return pulumi.dynamic.UpdateResult(id=id, outs=_outs)
     
-    def delete(self, id: str, _props: DownloadUnzipOutputArgs) -> None:
+    def delete(self, id: str, _props: DownloadUnzipOutputArgs | dict) -> None:
         print(f"Deleting {_props.name}({id}) ...")
         if os.path.exists(_props.extract_dir):
             print(f"Deleting {_props.extract_dir}...")
