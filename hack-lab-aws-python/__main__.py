@@ -68,7 +68,7 @@ hacker_instance = aws.ec2.Instance(
 
 # Create a s3 bucket
 bucket_name = f"{project_name}-bucket"
-bucket = aws.s3.Bucket(
+bucket = aws.s3.BucketV2(
     bucket_name,
     tags={
         "Name": bucket_name,
