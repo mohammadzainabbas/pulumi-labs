@@ -18,6 +18,13 @@ import zipfile
 from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
 from urllib.parse import urlparse
 
+
+def _download_file_from_remote_location(fpath: str, url: str) -> None:
+    pass
+
+def _is_remote_location_available() -> bool:
+    return False
+
 def calculate_md5(fpath: str, chunk_size: int = 1024 * 1024) -> str:
     # Setting the `usedforsecurity` flag does not change anything about the functionality, but indicates that we are
     # not using the MD5 checksum for cryptography. This enables its usage in restricted environments like FIPS. Without
