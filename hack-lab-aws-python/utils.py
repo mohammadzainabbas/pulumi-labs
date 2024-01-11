@@ -3,7 +3,7 @@ import pathlib
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
-from typing import Iterator, Optional, Union
+from typing import Iterator, Optional, Union, List
 import pulumi
 import pulumi_random as random
 import zipfile
@@ -94,7 +94,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     
     def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
         
-        failures: pulumi.dynamic.CheckFailure[] = []
+        failures: List[pulumi.dynamic.CheckFailure] = []
 
         if not _news.url: raise Exception("url is required")
         if not _news.output_dir: raise Exception("output_dir is required")
