@@ -101,7 +101,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     def __init__(self, name: str) -> None:
         self.name = name
     
-    def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
+    def check(self, _olds: DownloadUnzipInputArgs | dict, _news: DownloadUnzipInputArgs | dict) -> pulumi.dynamic.CheckResult:
         print(f"Checking {_news} ...")
         olds = DownloadUnzipInputArgs.from_dict(_olds)
         news = DownloadUnzipInputArgs.from_dict(_news)
@@ -113,7 +113,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         _news = { **_news, **vars(news) }
         return pulumi.dynamic.CheckResult(inputs=_olds if len(failures) else _news, failures=failures)
 
-    def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
+    def create(self, inputs: DownloadUnzipInputArgs | dict) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
         if not filename: filename = os.path.basename(url)
         _outs = DownloadUnzipOutputArgs(
