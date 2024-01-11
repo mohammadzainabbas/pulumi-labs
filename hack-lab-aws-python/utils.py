@@ -142,7 +142,6 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         return pulumi.dynamic.UpdateResult(id=id, outs=_outs)
     
     def delete(self, id: str, _props: DownloadUnzipOutputArgs) -> None:
-         
         print(f"Deleting {_props.name}({id}) ...")
         if os.path.exists(_props.extract_dir):
             print(f"Deleting {_props.extract_dir}...")
