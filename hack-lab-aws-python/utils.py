@@ -18,6 +18,7 @@ import zipfile
 from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
 from urllib.parse import urlparse
 
+USER_AGENT = "pytorch/vision"
 
 def _download_file_from_remote_location(fpath: str, url: str) -> None:
     pass
