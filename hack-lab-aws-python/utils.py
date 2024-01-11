@@ -51,6 +51,18 @@ def download_url(url, root, filename=None):
 
     os.makedirs(root, exist_ok=True)
 
+    # download the file
+    try:
+        print("Downloading " + url + " to " + fpath)
+        _urlretrieve(url, fpath)
+    except (urllib.error.URLError, OSError) as e:  # type: ignore[attr-defined]
+        if url[:5] == "https":
+            url = url.replace("https:", "http:")
+            print("Failed download. Trying https -> http instead. Downloading " + url + " to " + fpath)
+            _urlretrieve(url, fpath)
+        else:
+            raise e
+
     try:
         print('Downloading ' + url + ' to ' + fpath)
         urllib.request.urlretrieve(url, fpath)
