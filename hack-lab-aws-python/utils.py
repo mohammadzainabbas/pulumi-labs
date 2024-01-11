@@ -93,7 +93,7 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
 
         return pulumi.dynamic.CreateResult(id_="", outs={})
 
-class DownloadUnzip(pulumi.Resource):
+class DownloadUnzip(pulumi.dynamic.Resource):
     def __init__(self, name, file_url, dest_path, opts=None):
         super().__init__(DownloadUnzipProvider(), name, {
             'file_url': file_url,
