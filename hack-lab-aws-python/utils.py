@@ -1,5 +1,4 @@
 import os
-import os.path
 import pathlib
 import urllib
 import urllib.error
