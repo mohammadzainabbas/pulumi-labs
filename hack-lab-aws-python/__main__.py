@@ -15,6 +15,35 @@ keypair = config.get("keypair") if config.get("keypair") is not None else "jarvi
 
 user_data_file = f"user_data.sh"
 
+pulumi.dynamic.Resource("user_data", {
+    "create": lambda args: {
+        "result": loads(args["args"]["user_data"]),
+    },
+    "diff": lambda args: False,
+    "delete": lambda args: {},
+    "args": {
+        "user_data": f"""#!/bin/bash
+# Install docker
+sudo apt-get update
+sudo apt-get install -y docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Install docker-compose
+sudo apt-get install -y docker-compose
+
+# Install awscli
+sudo apt-get install -y awscli
+
+# Install kali tools
+sudo apt-get install -y kali-linux-headless
+
+# Install go
+sudo apt-get install -y golang
+""",
+    },
+})
+
 # Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
 ami = aws.ec2.get_ami(
     filters=[
