@@ -87,13 +87,13 @@ public_access_block = aws.s3.BucketPublicAccessBlock(
     bucket=bucket.id,
 )
 
-vuln_os_file = f"Breanch"
+vuln_os_file = f"Breach-1.0.zip"
 vuln_os_url = "https://download.vulnhub.com/metasploitable/Metasploitable2-Linux.ova"
 vuln_os = DownloadUnzip(
     "vuln_os",
-    vuln_os_url,
-    "/tmp",
-    vuln_os_file,
+    url=vuln_os_url,
+    output_dir=".",
+    filename=vuln_os_file,
 )
 
 # Export the instance's publicly accessible IP address and hostname.
