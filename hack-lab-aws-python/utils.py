@@ -53,12 +53,8 @@ def download_url(
     if not filename: filename = os.path.basename(url)
     fpath = os.fspath(os.path.join(root, filename))
     os.makedirs(root, exist_ok=True)
-
-    # expand redirect chain if needed
-    url = _get_redirect_url(url, max_hops=max_redirect_hops)
-
-    # download the file
-    try:
+    url = _get_redirect_url(url, max_hops=max_redirect_hops) # expand redirect chain if needed
+    try: # download the file
         print("Downloading " + url + " to " + fpath)
         _urlretrieve(url, fpath)
     except (urllib.error.URLError, OSError) as e:  # type: ignore[attr-defined]
