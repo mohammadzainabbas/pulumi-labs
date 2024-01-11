@@ -93,7 +93,10 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         self.name = name
     
     def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
+        if not _news.url: raise Exception("url is required")
+        if not _news.output_dir: raise Exception("output_dir is required")
         
+
         return pulumi.dynamic.CheckResult(inputs=_news)
     def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
