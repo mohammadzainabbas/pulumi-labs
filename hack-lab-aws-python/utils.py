@@ -82,7 +82,7 @@ class DownloadUnzipInputArgs:
 class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     id: str = ""
     name: str = ""
-    isOVA: bool = True
+    is_ova: bool = False
     extract_dir: Union[str, pathlib.Path] | None = None
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
@@ -117,6 +117,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
                 for filename in os.listdir(extract_dir):
                     if filename.endswith('.ova'):
                         ova_file_path = os.path.join(extract_dir, filename)
+                        _outs.is_ova = True
                         break
             if ova_file_path:
                 _id = random.RandomId("id", keepers={ "file": ova_file_path }, byte_length=4).hex
