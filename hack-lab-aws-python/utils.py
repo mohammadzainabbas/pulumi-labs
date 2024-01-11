@@ -86,13 +86,3 @@ def download_url(
             _urlretrieve(url, fpath)
         else:
             raise e
-
-    try:
-        print('Downloading ' + url + ' to ' + fpath)
-        urllib.request.urlretrieve(url, fpath)
-    except (urllib.error.URLError, IOError) as e:
-        if url[:5] == 'https':
-            url = url.replace('https:', 'http:')
-            print('Failed download. Trying https -> http instead.'
-                    ' Downloading ' + url + ' to ' + fpath)
-            urllib.request.urlretrieve(url, fpath)
