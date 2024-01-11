@@ -70,10 +70,9 @@ def download_url(
     root = os.path.expanduser(root)
     if not filename: filename = os.path.basename(url)
     fpath = os.fspath(os.path.join(root, filename))
-
     os.makedirs(root, exist_ok=True)
 
-     # expand redirect chain if needed
+    # expand redirect chain if needed
     url = _get_redirect_url(url, max_hops=max_redirect_hops)
 
     # download the file
