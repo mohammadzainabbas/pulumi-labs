@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import Iterator, Optional, Union
 import pulumi
 import pulumi_random as random
+import zipfile
 
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
@@ -101,7 +102,6 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
             # Downloading zip file.
             file_path = f"{output_dir}/{filename}"
             download_url(url, output_dir, filename)
-            import zipfile
             # Unzipping to extract the .ova file.
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
                 zip_ref.extractall(output_dir)
