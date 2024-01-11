@@ -70,27 +70,15 @@ def download_url(
 #----------------------------------------------
 # DownloadUnzip - Pulumi Dynamic Provider
 #----------------------------------------------
+@dataclass
 class DownloadUnzipInputArgs:
-    def __init__(
-            self,
-            url: str,
-            output_dir: Union[str, pathlib.Path],
-            filename: Optional[str] = None,
-        ):
-        self.url = url
-        self.output_dir = output_dir
-        self.filename = filename
+    url: str
+    output_dir: Union[str, pathlib.Path]
+    filename: Optional[str] = None
 
+@dataclass
 class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
-    def __init__(
-            self,
-            name: str,
-            url: str,
-            output_dir: Union[str, pathlib.Path],
-            filename: Optional[str] = None,
-        ):
-        super().__init__(url, output_dir, filename)
-        self.name = name
+    name: str
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     """
