@@ -52,23 +52,23 @@ def _urlretrieve(url: str, filename: str, chunk_size: int = 1024 * 32) -> None:
     with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": USER_AGENT})) as response:
         _save_response_content(iter(lambda: response.read(chunk_size), b""), filename, length=response.length)
 
-
 def download_url(
         url: str,
         root: Union[str, pathlib.Path],
         filename: Optional[str] = None,
         max_redirect_hops: int = 3
     ):
-    """Download a file from a url and place it in root.
+    """
+    Download a file from a url and place it in root.
+
     Args:
         url (str): URL to download file from
         root (str): Directory to place downloaded file in
         filename (str, optional): Name to save the file under. If None, use the basename of the URL
+        max_redirect_hops (int, optional): Maximum number of redirect hops allowed
     """
-
     root = os.path.expanduser(root)
-    if not filename:
-        filename = os.path.basename(url)
+    if not filename: filename = os.path.basename(url)
     fpath = os.fspath(os.path.join(root, filename))
 
     os.makedirs(root, exist_ok=True)
