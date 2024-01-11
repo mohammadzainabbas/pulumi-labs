@@ -47,7 +47,7 @@ def download_url(url, root, filename=None):
     root = os.path.expanduser(root)
     if not filename:
         filename = os.path.basename(url)
-    fpath = os.path.join(root, filename)
+    fpath = os.fspath(os.path.join(root, filename))
 
     os.makedirs(root, exist_ok=True)
 
