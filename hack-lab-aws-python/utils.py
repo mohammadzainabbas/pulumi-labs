@@ -66,7 +66,7 @@ def download_url(
         else:
             raise e
 
-class DownloadUnzipProvider(pulumi.ResourceProvider):
+class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
     """
     Custom dynamic provider to download and unzip the file.
     """
@@ -77,7 +77,6 @@ class DownloadUnzipProvider(pulumi.ResourceProvider):
             # Downloading zip file.
             file_path = f"{output_dir}/{filename}"
             download_url(url, output_dir, filename)
-            # download_url(props["url"], props["output_dir"], props["filename"])
             import zipfile
             # Unzipping to extract the .ova file.
             with zipfile.ZipFile(file_path, 'r') as zip_ref:
