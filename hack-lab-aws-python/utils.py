@@ -27,10 +27,7 @@ def _save_response_content(
 ) -> None:
     with open(destination, "wb") as fh:
         for chunk in content:
-            # filter out keep-alive new chunks
-            if not chunk:
-                continue
-
+            if not chunk: continue # filter out keep-alive new chunks
             fh.write(chunk)
 
 def _urlretrieve(url: str, filename: str, chunk_size: int = 1024 * 32) -> None:
