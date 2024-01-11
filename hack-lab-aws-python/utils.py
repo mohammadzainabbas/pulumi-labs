@@ -167,5 +167,6 @@ class DownloadUnzip(pulumi.dynamic.Resource):
             args: DownloadUnzipInputArgs,
             opts: Optional[pulumi.ResourceOptions] = None,
         ):
+        args.output_dir = os.path.expanduser(args.output_dir)
         full_args = vars(args)
         super().__init__(DownloadUnzipProvider(name), f"download:zip:{name}", full_args, opts)
