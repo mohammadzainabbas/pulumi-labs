@@ -157,7 +157,7 @@ class DownloadUnzip(pulumi.dynamic.Resource):
             self,
             name: str,
             args: DownloadUnzipInputArgs,
-            opts=None
+            opts: Optional[pulumi.ResourceOptions] = None,
         ):
         super().__init__(DownloadUnzipProvider(), name, {
             'url': url,
