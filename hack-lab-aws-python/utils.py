@@ -18,6 +18,8 @@ import zipfile
 from typing import Any, Callable, Dict, IO, Iterable, Iterator, List, Optional, Tuple, TypeVar, Union
 from urllib.parse import urlparse
 
+USER_AGENT = "pytorch/vision"
+
 def _get_redirect_url(url: str, max_hops: int = 3) -> str:
     initial_url = url
     headers = {"Method": "HEAD", "User-Agent": USER_AGENT}
