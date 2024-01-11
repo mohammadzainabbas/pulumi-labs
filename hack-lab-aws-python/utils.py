@@ -93,6 +93,7 @@ class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
         self.name = name
     
     def check(self, _olds: DownloadUnzipInputArgs, _news: DownloadUnzipInputArgs) -> pulumi.dynamic.CheckResult:
+        
         return pulumi.dynamic.CheckResult(inputs=_news)
     def create(self, inputs: DownloadUnzipInputArgs) -> pulumi.dynamic.CreateResult:
         url, output_dir, filename = inputs["url"], inputs["output_dir"], inputs["filename"]
