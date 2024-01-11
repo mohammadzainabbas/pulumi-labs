@@ -82,6 +82,7 @@ class DownloadUnzipInputArgs:
 class DownloadUnzipOutputArgs(DownloadUnzipInputArgs):
     id: str = ""
     name: str = ""
+    valid: bool = True
     extract_dir: Union[str, pathlib.Path] | None = None
 
 class DownloadUnzipProvider(pulumi.dynamic.ResourceProvider):
