@@ -1,8 +1,6 @@
 import os
 import pathlib
 import urllib
-import urllib.error
-import urllib.request
 from typing import Iterator, Optional, Union
 
 USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
