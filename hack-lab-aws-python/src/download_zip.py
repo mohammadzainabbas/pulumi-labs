@@ -35,8 +35,8 @@ class DownloadZip(pulumi.ComponentResource):
             args: DownloadZipArgs,
             opts: pulumi.ResourceOptions = None
         ):
-        _name = f"download:zip"
-        super().__init__(f"{pulumi.get_project()}:{_name}", name, vars(args), opts)
+        cr_name = f"download:zip"
+        super().__init__(f"{pulumi.get_project()}:{cr_name}", name, vars(args), opts)
 
         # self.env = command.local.Command(
         #     f"env", 
@@ -57,7 +57,7 @@ class DownloadZip(pulumi.ComponentResource):
         # )
 
         self.wget = command.local.Command(
-            f"{_name}:wget",
+            f"{cr_name}:wget",
             args=command.local.CommandArgs(
                 create=f"wget {args.url} -O {fpath}",
                 update=f"wget {args.url} -O {fpath}",
