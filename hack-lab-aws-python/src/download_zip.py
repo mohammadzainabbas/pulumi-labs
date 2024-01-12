@@ -16,11 +16,9 @@ class DownloadZipArgs:
         """
         :param pulumi.Input[str] bucket_name: The name of the s3 bucket
         """
-        self.bucket_name = bucket_name
-        self.vuln_os_file = vuln_os_file
-        self.vuln_os_output_dir = vuln_os_output_dir
-        self.vuln_os_url = vuln_os_url
-        self.vuln_os_name = vuln_os_name
+        self.url = url
+        self.output_dir = output_dir
+        self.filename = filename
 
 class DownloadZip(pulumi.ComponentResource):
     """
