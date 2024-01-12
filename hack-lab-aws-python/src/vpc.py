@@ -8,8 +8,8 @@ import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
 
-from iam_helpers import assume_role_policy_for_principal
-from subnet_distributor import SubnetDistributor
+from .iam_helpers import assume_role_policy_for_principal
+from .subnet_distributor import SubnetDistributor
 
 class VpcArgs:
     """

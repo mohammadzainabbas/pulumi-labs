@@ -5,7 +5,6 @@ Link: https://github.com/jen20/pulumi-aws-vpc/blob/master/python/jen20_pulumi_aw
 """
 import json
 
-
 def assume_role_policy_for_principal(principal) -> str:
     """
     Creates a policy allowing the given principal to call the sts:AssumeRole
