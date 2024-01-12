@@ -33,11 +33,11 @@ pulumi new python
 
 ```bash
 source venv/bin/activate
-pip install pulumi-aws pulumi-awsx
+pip install pulumi-aws pulumi-awsx pulumi-random pulumi-command
 ```
 
 > [!CAUTION]
-> Manually, add `pulumi-aws` and `pulumi-awsx` (see below) in `requirements.txt` file, if you want to use `pip install -r requirements.txt` command later.
+> Manually, add `pulumi-aws`, `pulumi-awsx`, `pulumi-random` and `pulumi-command` (see below) in `requirements.txt` file, if you want to use `pip install -r requirements.txt` command later.
 
 ```console
 pulumi>=3.0.0,<4.0.0
