@@ -2,7 +2,7 @@ import pulumi
 import pulumi_command as command
 import pulumi_random as random
 
-class DownloadZipArgs:
+class ZipDownloaderS3UploaderArgs:
     """
     The arguments necessary to construct a `DownloadZip` resource.
     """
