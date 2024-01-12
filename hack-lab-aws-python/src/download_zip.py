@@ -40,12 +40,7 @@ class DownloadZip(pulumi.ComponentResource):
         self.env = command.local.Command(
             f"env", 
             args=command.local.CommandArgs(
-                command=["env"],
-                env={
-                    "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-                    "LANG": "C.UTF-8",
-                    "LC_ALL": "C.UTF-8",
-                },
+                create="env"
             ),
             )
         )
