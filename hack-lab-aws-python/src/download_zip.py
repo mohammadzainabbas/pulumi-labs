@@ -47,7 +47,6 @@ class DownloadZip(pulumi.ComponentResource):
         self.env = command.local.run(
             command="env | grep AWS",
             interpreter="bash",
-            opts=pulumi.ResourceOptions(parent=self)
         )
 
         # # Create a random string to use as a unique id for the zip file.
