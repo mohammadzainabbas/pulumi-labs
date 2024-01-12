@@ -16,7 +16,7 @@ vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") 
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
 scripts_dir = os.path.join(os.path.dirname(__file__), "scripts")
-user_data_file = f"user_data.sh"
+user_data_file = os.path.join(scripts_dir, f"user_data.sh")
 
 # Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
 ami = aws.ec2.get_ami(
