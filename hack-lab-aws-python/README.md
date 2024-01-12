@@ -7,7 +7,7 @@
 A Pulumi IaC program written in Python to deploy a hacking lab in AWS.
 
 > [!TIP]
-> Follow detailed instructions [here](https://github.com/mohammadzainabbas/pulumi-labs/blob/main/hack-lab-aws-python/docs/SETUP.md) to setup similar project yourself.
+> Follow detailed instructions [here](https://github.com/mohammadzainabbas/pulumi-labs/blob/main/hack-lab-aws-python/docs/SETUP.md) to setup this project yourself.
 
 ## Key Concepts
 
