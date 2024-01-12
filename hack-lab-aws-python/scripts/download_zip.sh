@@ -1,12 +1,12 @@
 #!/bin/bash
 
 log() {
-    echo "[ log ] $1" | tee -a "$output_file"
+    echo "[ log ] $1"
 }
 
 main() {
-
-    echo "heelo"
+    log "Downloading zip file ..."
+    wget
 
 }
 
