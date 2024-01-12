@@ -1,2 +1,2 @@
-def print_hello():
-    print("Hello, world!")
+def say_hello() -> str:
+    return "Hello, world!"
