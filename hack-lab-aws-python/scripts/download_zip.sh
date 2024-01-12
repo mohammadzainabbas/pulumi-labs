@@ -5,9 +5,10 @@ log() {
 }
 
 main() {
+    local output_file="$1" 
     log "Downloading zip file ..."
     wget
 
 }
 
-main
+main "$@"
