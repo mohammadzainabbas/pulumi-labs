@@ -17,7 +17,7 @@ class DownloadZipArgs:
             vuln_os_name: pulumi.Input[str],
 
             url: pulumi.Input[str] | None = None,
-            output_dir: pulumi.Input[str | pathlib.Path | None] = None,
+            output_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None,
             filename: Optional[str] = None,
         ):
         """
