@@ -1,7 +1,7 @@
 import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
-import base64
+import os, base64
 from json import loads
 
 from src.vpc import Vpcx, VpcxArgs
@@ -15,6 +15,7 @@ config = pulumi.Config()
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
+scripts_dir = os.path.join(os.path.dirname(__file__), "scripts")
 user_data_file = f"user_data.sh"
 
 # Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
