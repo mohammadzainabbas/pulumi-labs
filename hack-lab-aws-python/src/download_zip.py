@@ -12,10 +12,10 @@ class DownloadZipArgs:
             vuln_os_file: pulumi.Input[str],
             vuln_os_output_dir: pulumi.Input[str],
             vuln_os_url: pulumi.Input[str],
-            vuln_os_name: pulumi.Input[str]
-            url: str = ""
-            output_dir: Union[str, pathlib.Path] | None = None
-            filename: Optional[str] = None
+            vuln_os_name: pulumi.Input[str],
+            url: pulumi.Input[str] | None = None,
+            output_dir: Union[str, pathlib.Path] | None = None,
+            filename: Optional[str] = None,
         ):
         """
         :param pulumi.Input[str] bucket_name: The name of the s3 bucket
