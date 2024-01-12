@@ -52,6 +52,7 @@ class DownloadZip(pulumi.ComponentResource):
         os.makedirs(args.output_dir, exist_ok=True)
 
         if os.path.exists(fpath):
+            
             self.wget = command.local.Command(
                 f"{cr_name}:wget",
                 args=command.local.CommandArgs(
