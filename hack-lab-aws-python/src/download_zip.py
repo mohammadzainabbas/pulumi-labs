@@ -36,7 +36,7 @@ class DownloadZip(pulumi.ComponentResource):
             opts: pulumi.ResourceOptions = None
         ):
         _name = f"download:zip"
-        super().__init__(f"{pulumi.get_project()}:download:zip", name, vars(args), opts)
+        super().__init__(f"{pulumi.get_project()}:{_name}", name, vars(args), opts)
 
         # self.env = command.local.Command(
         #     f"env", 
