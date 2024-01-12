@@ -39,6 +39,7 @@ class DownloadZip(pulumi.ComponentResource):
         ):
         """
         """
+        project_name = name if name else pulumi.get_project()
         super().__init__("hack-lab-aws-python:DownloadZip", name, {}, opts)
 
         # Create a random string to use as a unique id for the zip file.
