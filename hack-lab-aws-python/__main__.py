@@ -92,7 +92,7 @@ public_access_block = aws.s3.BucketPublicAccessBlock(
 vuln_zip_file = f"breach.zip"
 vuln_zip_output_dir = f"~/Desktop/vuln"
 vuln_zip_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
-vuln_zip_name = f"{project_name}-vuln_zip-{vuln_zip_file}"
+vuln_zip_name = f"{project_name}-vuln-zip-{vuln_zip_file}"
 vuln_zip = DownloadZip(
     vuln_zip_name,
     DownloadZipArgs(
