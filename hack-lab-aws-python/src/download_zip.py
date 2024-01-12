@@ -22,7 +22,7 @@ class DownloadZipArgs:
 
 class DownloadZip(pulumi.ComponentResource):
     """
-    A component resource that downloads a zip file from a url and uploads it to an s3 bucket.
+    A component resource that downloads a zip file from a url.
     """
     def __init__(
             self,
