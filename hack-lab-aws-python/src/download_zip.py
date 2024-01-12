@@ -11,8 +11,8 @@ class DownloadZipArgs:
             self,
             url: pulumi.Input[str],
             output_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path],
-            filename: pulumi.Input[str] | None = None,
-            extract_dir: pulumi.Input[str] | None = None,
+            filename: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None,
+            extract_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None,
         ):
         """
         :param pulumi.Input[str] bucket_name: The name of the s3 bucket
