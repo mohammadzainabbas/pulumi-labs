@@ -52,16 +52,14 @@ class DownloadZip(pulumi.ComponentResource):
         os.makedirs(args.output_dir, exist_ok=True)
 
         if os.path.exists(fpath):
-            
-            self.wget = command.local.Command(
-                f"{cr_name}:wget",
-                args=command.local.CommandArgs(
-                    create=f"echo {fpath} already exists",
-                    update=f"echo {fpath} already exists",
-                    delete=f"rm {fpath}",
-                    interpreter=["/bin/bash", "-c"],
-                ),
-            )
+            wget_create_cmd = f"echo {fpath} already exists"
+            wget_update_cmd = f"echo {fpath} already exists"
+            wget_delete_cmd = f"rm {fpath}"
+        else:
+            wget_create_cmd = f"wget {args.url} -O {fpath}"
+            wget_update_cmd = f"wget {args.url} -O {fpath}"
+            wget_delete_cmd = f"rm {fpath}"
+
 
         self.wget = command.local.Command(
             f"{cr_name}:wget",
