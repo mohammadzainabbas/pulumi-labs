@@ -40,7 +40,7 @@ class DownloadZip(pulumi.ComponentResource):
         self.env = command.local.Command(
             f"env", 
             args=command.local.CommandArgs(
-                create="env",
+                create="env | grep AWS",
             ),
         )
 
