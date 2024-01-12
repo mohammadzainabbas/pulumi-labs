@@ -18,6 +18,9 @@ keypair = config.get("keypair") if config.get("keypair") is not None else "jarvi
 scripts_dir = os.path.join(os.path.dirname(__file__), "scripts")
 user_data_file = os.path.join(scripts_dir, f"user_data.sh")
 
+print(f"scripts_dir: {scripts_dir}")
+print(f"user_data_file: {user_data_file}")
+
 # Look up the latest Kali Linux i.e: ami-094d83ad9850c1a43
 ami = aws.ec2.get_ami(
     filters=[
