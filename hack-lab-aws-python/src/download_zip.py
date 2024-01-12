@@ -50,7 +50,7 @@ class DownloadZip(pulumi.ComponentResource):
         fpath = os.fspath(os.path.join(args.output_dir, args.filename))
         os.makedirs(args.output_dir, exist_ok=True)
 
-        self.env = command.local.run(
+        self.wget = command.local.run(
             command=f"wget {args.url} -O {fpath}",
             interpreter=["/bin/bash", "-c"],
         )
