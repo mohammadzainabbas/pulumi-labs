@@ -37,6 +37,8 @@ class DownloadZip(pulumi.ComponentResource):
         project_name = name if name else pulumi.get_project()
         super().__init__(f"{project_name}:download:zip", name, vars(args), opts)
 
+        
+
         # Create a random string to use as a unique id for the zip file.
         random_string = random.RandomString(
             f"{name}-random-string",
