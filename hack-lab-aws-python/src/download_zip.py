@@ -70,8 +70,6 @@ class DownloadZip(pulumi.ComponentResource):
             ),
         )
 
-
-
         # # Create a random string to use as a unique id for the zip file.
         # random_string = random.RandomString(
         #     f"{name}-random-string",
