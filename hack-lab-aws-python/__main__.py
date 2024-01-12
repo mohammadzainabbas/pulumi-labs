@@ -1,10 +1,10 @@
 import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
-from vpc import Vpcx, VpcxArgs
+from src.vpc import Vpcx, VpcxArgs
 import base64
 from json import loads
-from utils import DownloadUnzip, DownloadUnzipInputArgs
+from src.utils import DownloadUnzip, DownloadUnzipInputArgs
 from src.test import say_hello
 from src.test_new import SAY_HELLO
 
