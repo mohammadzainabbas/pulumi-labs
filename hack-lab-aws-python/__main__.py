@@ -6,6 +6,7 @@ import base64
 from json import loads
 from utils import DownloadUnzip, DownloadUnzipInputArgs
 from src.test import say_hello
+from src.test_new import SAY_HELLO
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
