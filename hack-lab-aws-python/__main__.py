@@ -1,10 +1,9 @@
 import os
+import base64
+from json import loads
 import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
-import base64
-from json import loads
-
 from src.vpc import Vpcx, VpcxArgs
 from src.utils import DownloadUnzip, DownloadUnzipInputArgs
 
