@@ -16,9 +16,9 @@ class DownloadZipArgs:
         """
         Constructs a DownloadZipArgs.
 
-        url: 
-        output_dir: The name of the s3 bucket
-        filename: The name of the s3 bucket
+        url: Url to download the zip file from.
+        output_dir: The directory to download the zip file to.
+        filename: The name of the zip file to save as. If not provided, the filename will be extracted from the url.
         """
         self.url = url
         self.output_dir = output_dir
