@@ -12,7 +12,9 @@ main() {
     cd "$output_dir" || exit 1
 
     log "Downloading zip file ..."
-    wget
+    wget -q "$url" -O "$filename" || exit 1
+
+    cd - || exit 1
 
 }
 
