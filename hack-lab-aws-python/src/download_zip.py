@@ -3,6 +3,9 @@ import pulumi_command as command
 import pulumi_random as random
 
 class DownloadZipArgs:
+    """
+    The set of arguments for constructing a DownloadZip resource.
+    """
     def __init__(self,
                  bucket_name: pulumi.Input[str],
                  vuln_os_file: pulumi.Input[str],
