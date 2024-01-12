@@ -16,7 +16,9 @@ class DownloadZipArgs:
         """
         Constructs a DownloadZipArgs.
 
-        bucket_name: The name of the s3 bucket
+        url: 
+        output_dir: The name of the s3 bucket
+        filename: The name of the s3 bucket
         """
         self.url = url
         self.output_dir = output_dir
