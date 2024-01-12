@@ -16,7 +16,7 @@ class DownloadZipArgs:
         """
         Constructs a DownloadZipArgs.
 
-        :param pulumi.Input[str] bucket_name: The name of the s3 bucket
+        :param: bucket_name: The name of the s3 bucket
         """
         self.url = url
         self.output_dir = output_dir
