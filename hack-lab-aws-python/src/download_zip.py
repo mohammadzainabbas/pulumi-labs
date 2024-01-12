@@ -45,8 +45,9 @@ class DownloadZip(pulumi.ComponentResource):
         #         delete="env | grep AWS",
         #     ),
         # )
-        output_dir = os.path.expanduser(args.output_dir)
+        args.output_dir = os.path.expanduser(args.output_dir)
         if not args.filename: args.filename = os.path.basename(args.url)
+        
 
         file_name = os.path.basename(args.url)
         self.env = command.local.run(
