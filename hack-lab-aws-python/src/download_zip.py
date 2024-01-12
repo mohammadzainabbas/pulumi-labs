@@ -50,10 +50,21 @@ class DownloadZip(pulumi.ComponentResource):
         fpath = os.fspath(os.path.join(args.output_dir, args.filename))
         os.makedirs(args.output_dir, exist_ok=True)
 
-        self.wget = command.local.run(
-            command=f"wget {args.url} -O {fpath}",
-            interpreter=["/bin/bash", "-c"],
+        # self.wget = command.local.run(
+        #     command=f"wget {args.url} -O {fpath}",
+        #     interpreter=["/bin/bash", "-c"],
+        # )
+
+        self.wget = command.local.Command(
+            f"wget",
+            args=command.local.CommandArgs(
+                create=f"wget {args.url} -O {fpath}",
+                update=f"wget {args.url} -O {fpath}",
+                delete=f"rm {fpath}",
+            ),
         )
+
+
 
         # # Create a random string to use as a unique id for the zip file.
         # random_string = random.RandomString(
