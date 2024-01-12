@@ -42,7 +42,9 @@ pip install pulumi-aws pulumi-awsx
 ```console
 pulumi>=3.0.0,<4.0.0
 pulumi-aws>=6.0.0,<7.0.0
-pulumi-awsx>=1.0.0,<2.5.0
+pulumi-awsx>=2.0.0,<3.0.0
+pulumi-random>=3.0.0,<5.0.0
+pulumi-command>=0.5.0,<1.0.0
 ```
 
 4. Add configuration variables:
