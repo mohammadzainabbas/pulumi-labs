@@ -60,13 +60,12 @@ class DownloadZip(pulumi.ComponentResource):
             wget_update_cmd = f"wget {args.url} -O {fpath}"
             wget_delete_cmd = f"echo {fpath} does not exist"
 
-
         self.wget = command.local.Command(
             f"{cr_name}:wget",
             args=command.local.CommandArgs(
-                create=f"wget {args.url} -O {fpath}",
-                update=f"wget {args.url} -O {fpath}",
-                delete=f"rm {fpath}",
+                create=wget_create_cmd,
+                update=wget_update_cmd,
+                delete=wget_delete_cmd,
                 interpreter=["/bin/bash", "-c"],
             ),
         )
