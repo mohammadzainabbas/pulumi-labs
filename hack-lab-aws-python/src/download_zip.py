@@ -2,6 +2,7 @@ import pulumi
 import pulumi_command as command
 import pulumi_random as random
 import pathlib
+import os
 
 class DownloadZipArgs:
     """
@@ -44,8 +45,9 @@ class DownloadZip(pulumi.ComponentResource):
         #         delete="env | grep AWS",
         #     ),
         # )
+        file_name = os
         self.env = command.local.run(
-            command=f"wget -O {args.output_dir}/{args.filename} {args.url}",
+            command=f"cd {args.output_dir} && wget {args.filename} {args.url}",
             interpreter=["/bin/bash", "-c"],
         )
 
