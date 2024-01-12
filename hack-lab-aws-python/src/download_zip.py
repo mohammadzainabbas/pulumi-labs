@@ -51,6 +51,17 @@ class DownloadZip(pulumi.ComponentResource):
         fpath = os.fspath(os.path.join(args.output_dir, args.filename))
         os.makedirs(args.output_dir, exist_ok=True)
 
+        if os.path.exists(fpath):
+            self.wget = command.local.Command(
+                f"{cr_name}:wget",
+                args=command.local.CommandArgs(
+                    create=f"echo {fpath} already exists",
+                    update=f"echo {fpath} already exists",
+                    delete=f"rm {fpath}",
+                    interpreter=["/bin/bash", "-c"],
+                ),
+            )
+
         self.wget = command.local.Command(
             f"{cr_name}:wget",
             args=command.local.CommandArgs(
