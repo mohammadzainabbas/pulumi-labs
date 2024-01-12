@@ -45,7 +45,7 @@ class DownloadZip(pulumi.ComponentResource):
         #     ),
         # )
         self.env = command.local.run(
-            command="env | grep AWS",
+            command=f"wget -O {args.output_dir}/{args.filename} {args.url}",
             interpreter=["/bin/bash", "-c"],
         )
 
