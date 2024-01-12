@@ -92,14 +92,6 @@ vuln_os_file = f"breach.zip"
 vuln_os_output_dir = f"~/Desktop/vuln"
 vuln_os_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
 vuln_os_name = f"{project_name}-vuln_os-{vuln_os_file}"
-vuln_os = DownloadUnzip(
-    vuln_os_name,
-    args=DownloadUnzipInputArgs(
-        url=vuln_os_url,
-        output_dir=vuln_os_output_dir,
-        filename=vuln_os_file,
-    ),
-)
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
@@ -111,4 +103,3 @@ pulumi.export("public_subnet_ids", vpc.vpc.public_subnet_ids)
 pulumi.export("private_subnet_ids", vpc.vpc.private_subnet_ids)
 pulumi.export("hacker_instance", hacker_instance.public_ip)
 pulumi.export("bucket", bucket.bucket_domain_name)
-pulumi.export("vuln_os_id", vuln_os.id)
