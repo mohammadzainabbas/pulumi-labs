@@ -19,3 +19,5 @@ class DownloadZipArgs:
         self.vuln_os_output_dir = vuln_os_output_dir
         self.vuln_os_url = vuln_os_url
         self.vuln_os_name = vuln_os_name
+
+class DownloadZip(pulumi.ComponentResource):
