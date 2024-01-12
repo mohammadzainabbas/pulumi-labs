@@ -11,15 +11,10 @@ class DownloadZipArgs:
             self,
             url: pulumi.Input[str],
             output_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path],
-            filename: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None,
-            extract_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None,
+            filename: pulumi.Input[str] | pulumi.Input[pathlib.Path] | None = None
         ):
         """
         :param pulumi.Input[str] bucket_name: The name of the s3 bucket
-        :param pulumi.Input[str] vuln_os_file: The name of the zip file to download
-        :param pulumi.Input[str] vuln_os_output_dir: The output directory to download the zip file to
-        :param pulumi.Input[str] vuln_os_url: The url to download the zip file from
-        :param pulumi.Input[str] vuln_os_name: The name of the zip file to upload to s3
         """
         self.bucket_name = bucket_name
         self.vuln_os_file = vuln_os_file
