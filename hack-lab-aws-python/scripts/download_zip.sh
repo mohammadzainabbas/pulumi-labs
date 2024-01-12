@@ -14,6 +14,9 @@ main() {
     log "Downloading zip file ..."
     wget -q "$url" -O "$filename" || exit 1
 
+    log "Unzipping file ..."
+    unzip -q "$filename" || exit 1
+
     cd - || exit 1
 
 }
