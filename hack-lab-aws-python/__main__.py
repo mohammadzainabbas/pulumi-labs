@@ -99,10 +99,6 @@ vuln_os = DownloadZip(
         url=vuln_os_url,
         output_dir=vuln_os_output_dir,
         filename=vuln_os_file,
-        bucket_name=bucket_name,
-        vuln_os_name=vuln_os_name,
-        vuln_os_file=vuln_os_file,
-        vuln_os_url=vuln_os_url,
     ),
 )
 
