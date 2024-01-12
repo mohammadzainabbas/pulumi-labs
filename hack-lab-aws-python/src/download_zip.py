@@ -57,7 +57,7 @@ class DownloadZip(pulumi.ComponentResource):
         # )
 
         self.wget = command.local.Command(
-            f"download:zip:wget",
+            f"{_name}:wget",
             args=command.local.CommandArgs(
                 create=f"wget {args.url} -O {fpath}",
                 update=f"wget {args.url} -O {fpath}",
