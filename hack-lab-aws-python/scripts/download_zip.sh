@@ -6,6 +6,8 @@ log() {
 
 main() {
 
+    echo "heelo"
+
 }
 
-main "$@"
+main
