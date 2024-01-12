@@ -46,7 +46,8 @@ class DownloadZip(pulumi.ComponentResource):
         #     ),
         # )
         output_dir = os.path.expanduser(args.output_dir)
-        if not filename: filename = os.path.basename(args.url)
+        if not args.filename: args.filename = os.path.basename(args.url)
+
         file_name = os.path.basename(args.url)
         self.env = command.local.run(
             command=f"cd {args.output_dir} && wget {args.filename} {args.url}",
