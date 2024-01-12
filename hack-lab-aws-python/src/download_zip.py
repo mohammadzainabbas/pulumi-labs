@@ -1,7 +1,6 @@
 import pulumi
 import pulumi_command as command
 import pulumi_random as random
-from typing import Iterator, Optional, Union, List
 import pathlib
 
 class DownloadZipArgs:
@@ -10,12 +9,6 @@ class DownloadZipArgs:
     """
     def __init__(
             self,
-            bucket_name: pulumi.Input[str],
-            vuln_os_file: pulumi.Input[str],
-            vuln_os_output_dir: pulumi.Input[str],
-            vuln_os_url: pulumi.Input[str],
-            vuln_os_name: pulumi.Input[str],
-
             url: pulumi.Input[str],
             output_dir: pulumi.Input[str] | pulumi.Input[pathlib.Path],
             filename: pulumi.Input[str] | None = None,
