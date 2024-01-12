@@ -6,6 +6,7 @@ log() {
 
 main() {
     local url="$1"
+    local output_file="$1"
 
     log "Downloading zip file ..."
     wget
