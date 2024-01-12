@@ -46,37 +46,37 @@ class DownloadZip(pulumi.ComponentResource):
             ),
         )
 
-        # Create a random string to use as a unique id for the zip file.
-        random_string = random.RandomString(
-            f"{name}-random-string",
-            length=8,
-            special=False,
-            upper=False,
-            number=False,
-        )
+        # # Create a random string to use as a unique id for the zip file.
+        # random_string = random.RandomString(
+        #     f"{name}-random-string",
+        #     length=8,
+        #     special=False,
+        #     upper=False,
+        #     number=False,
+        # )
 
-        # Create a command to download the zip file.
-        download_zip_command = command.Command(
-            f"{name}-download-zip",
-            command=f"wget -O {args.vuln_os_output_dir}/{args.vuln_os_file} {args.vuln_os_url}",
-            user="root",
-            opts=pulumi.ResourceOptions(parent=self),
-        )
+        # # Create a command to download the zip file.
+        # download_zip_command = command.Command(
+        #     f"{name}-download-zip",
+        #     command=f"wget -O {args.vuln_os_output_dir}/{args.vuln_os_file} {args.vuln_os_url}",
+        #     user="root",
+        #     opts=pulumi.ResourceOptions(parent=self),
+        # )
 
-        # Create a command to upload the zip file to s3.
-        upload_zip_command = command.Command(
-            f"{name}-upload-zip",
-            command=f"aws s3 cp {args.vuln_os_output_dir}/{args.vuln_os_file} s3://{args.bucket_name}/{args.vuln_os_name}",
-            user="root",
-            opts=pulumi.ResourceOptions(parent=self),
-        )
+        # # Create a command to upload the zip file to s3.
+        # upload_zip_command = command.Command(
+        #     f"{name}-upload-zip",
+        #     command=f"aws s3 cp {args.vuln_os_output_dir}/{args.vuln_os_file} s3://{args.bucket_name}/{args.vuln_os_name}",
+        #     user="root",
+        #     opts=pulumi.ResourceOptions(parent=self),
+        # )
 
-        # Export the commands.
-        self.download_zip_command = download_zip_command
-        self.upload_zip_command = upload_zip_command
+        # # Export the commands.
+        # self.download_zip_command = download_zip_command
+        # self.upload_zip_command = upload_zip_command
 
-        # Export the random string.
-        self.random_string = random_string
+        # # Export the random string.
+        # self.random_string = random_string
 
         # Export the component resource.
         self.register_outputs({})
