@@ -6,6 +6,9 @@
 
 A Pulumi IaC program written in Python to deploy a hacking lab in AWS.
 
+> [!NOTE]
+> Follow detailed instructions [here](https://github.com/mohammadzainabbas/pulumi-labs/blob/main/hack-lab-aws-python/docs/SETUP.md) to setup similar project yourself.
+
 ## Key Concepts
 
 - [x] AMI ID (Look up the latest AWS Deep Learning AMI GPU CUDA)
