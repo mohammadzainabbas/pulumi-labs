@@ -50,11 +50,11 @@ hacker_instance_name = f"{project_name}-kali"
 hacker_instance = aws.ec2.Instance(
     hacker_instance_name,
     ami=ami,
-    instance_type="r5dn.4xlarge",
+    instance_type="i3.16xlarge",
     instance_market_options=aws.ec2.InstanceInstanceMarketOptionsArgs(
         market_type="spot",
         spot_options=aws.ec2.InstanceInstanceMarketOptionsSpotOptionsArgs(
-            max_price="0.5",
+            max_price="1.5",
             spot_instance_type="one-time",
         ),
     ),
@@ -89,18 +89,18 @@ public_access_block = aws.s3.BucketPublicAccessBlock(
     bucket=bucket.id,
 )
 
-vuln_zip_file = f"breach.zip"
-vuln_zip_output_dir = f"~/Desktop/vuln"
-vuln_zip_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
-vuln_zip_name = f"{project_name}-vuln-zip-{vuln_zip_file}"
-vuln_zip = DownloadZip(
-    vuln_zip_name,
-    DownloadZipArgs(
-        url=vuln_zip_url,
-        output_dir=vuln_zip_output_dir,
-        filename=vuln_zip_file,
-    ),
-)
+# vuln_zip_file = f"breach.zip"
+# vuln_zip_output_dir = f"~/Desktop/vuln"
+# vuln_zip_url = f"https://download.vulnhub.com/breach/Breach-1.0.zip"
+# vuln_zip_name = f"{project_name}-vuln-zip-{vuln_zip_file}"
+# vuln_zip = DownloadZip(
+#     vuln_zip_name,
+#     DownloadZipArgs(
+#         url=vuln_zip_url,
+#         output_dir=vuln_zip_output_dir,
+#         filename=vuln_zip_file,
+#     ),
+# )
 
 # Export the instance's publicly accessible IP address and hostname.
 pulumi.export("aws_region", aws_region)
@@ -112,4 +112,4 @@ pulumi.export("public_subnet_ids", vpc.vpc.public_subnet_ids)
 pulumi.export("private_subnet_ids", vpc.vpc.private_subnet_ids)
 pulumi.export("hacker_instance", hacker_instance.public_ip)
 pulumi.export("bucket", bucket.bucket_domain_name)
-pulumi.export("vuln_zip.wget.stdout", vuln_zip.wget.stdout)
+# pulumi.export("vuln_zip.wget.stdout", vuln_zip.wget.stdout)
