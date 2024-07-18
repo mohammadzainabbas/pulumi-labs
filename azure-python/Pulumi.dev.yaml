@@ -1,2 +1,5 @@
 config:
   azure-native:location: NorthEurope
+
+environments:
+ - az
