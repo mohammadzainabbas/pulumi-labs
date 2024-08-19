@@ -229,7 +229,8 @@ thing = aws.iot.Thing(
     },
 )
 
-thing_att = aws.iot.ThingPrincipalAttachment("att",
+# Attach the certificate to the thing
+thing_att = aws.iot.ThingPrincipalAttachment(f"{project_name}-thing-att",
     principal=cert.arn,
     thing=thing.name)
 
