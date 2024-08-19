@@ -229,6 +229,10 @@ thing = aws.iot.Thing(
     },
 )
 
+thing_att = aws.iot.ThingPrincipalAttachment("att",
+    principal=cert.arn,
+    thing=thing.name)
+
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(
     f"{project_name}-broker",
