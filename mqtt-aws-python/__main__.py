@@ -190,6 +190,16 @@ vpc = Vpcx(
 policy_actions = ["iot:Connect", "iot:Publish", "iot:Subscribe", "iot:Receive", "iot:UpdateThingShadow", "iot:GetThingShadow", "iot:DeleteThingShadow"]
 statements = [json.dumps({ "Action": action, "Effect": "Allow", "Resource": "*" }) for action in policy_actions]
 
+policy_document = aws.iam.get_policy_document(statements=[{
+    "effect": "Allow",
+    "actions": policy_actions,
+    "resources": ["*"],
+}])
+
+pubsub_policy = aws.iot.Policy("pubsub",
+    name="PubSubToAnyTopic",
+    policy=policy_document.json)
+
 # Create a IoT policy
 policy = aws.iot.Policy(
     f"{project_name}-policy",
@@ -213,14 +223,7 @@ thing = aws.iot.Thing(
     },
 )
 
-pubsub = aws.iam.get_policy_document(statements=[{
-    "effect": "Allow",
-    "actions": policy_actions,
-    "resources": ["*"],
-}])
-pubsub_policy = aws.iot.Policy("pubsub",
-    name="PubSubToAnyTopic",
-    policy=pubsub.json)
+
 cert = aws.iot.Certificate("cert",
     csr=std.file(input="csr.pem").result,
     active=True)
