@@ -203,8 +203,8 @@ pubsub_policy = aws.iot.Policy("pubsub",
 # Create a IoT policy
 policy = aws.iot.Policy(
     f"{project_name}-policy",
-    policy_name="mqtt-policy",
-    policy=policy_document,
+    policy_name="kura-gateway-policy",
+    policy=policy_document.json,
 )
 
 # Create IoT thing
