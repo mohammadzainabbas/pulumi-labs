@@ -222,7 +222,7 @@ vpc = Vpcx(
 #     route_table_id=route_table.id
 # )
 
-
+vpc.security_group.id
 
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(f"{project_name}-broker",
