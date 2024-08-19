@@ -249,4 +249,4 @@ broker = aws.mq.Broker(f"{project_name}-broker",
 pulumi.export("broker_id", broker.id)
 pulumi.export("broker_arn", broker.arn)
 pulumi.export("broker_url", broker.instances[0].endpoints[0])
-pulumi.export("broker_ip_address", broker.ip_address)
+pulumi.export("broker", broker)
