@@ -215,7 +215,7 @@ thing = aws.iot.Thing(
 
 pubsub = aws.iam.get_policy_document(statements=[{
     "effect": "Allow",
-    "actions": ["iot:*"],
+    "actions": policy_actions,
     "resources": ["*"],
 }])
 pubsub_policy = aws.iot.Policy("pubsub",
