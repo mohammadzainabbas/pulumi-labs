@@ -223,7 +223,7 @@ vpc = Vpcx(
 # )
 
 # Define an Amazon MQ Broker
-broker = aws.mq.Broker("simpleActiveMQBroker",
+broker = aws.mq.Broker(f"{project_name}-broker",
     broker_name="simple-activemq-broker",
     engine_type="ActiveMQ",
     engine_version="5.16.7",
