@@ -221,7 +221,7 @@ att = aws.iot.PolicyAttachment(
 # Create IoT thing
 thing = aws.iot.Thing(
     f"{project_name}-thing",
-    thing_name="kura-gateway",
+    name="kura-gateway",
     attributes={
         "project": project_name,
         "environment": "dev",
