@@ -3,6 +3,13 @@ import pulumi_aws as aws
 import pulumi_awsx as awsx
 from typing import Mapping, Sequence, Optional
 
+# Get some configuration values or set default values.
+dir_name = pulumi.get_project()
+aws_region = aws.get_region().name
+project_name = "mqtt-vpc"
+config = pulumi.Config()
+vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
+
 class VpcxArgs:
     """
     The arguments necessary to construct a `Vpcx` resource.
@@ -155,7 +162,7 @@ azs = aws.get_availability_zones(state="available").names[0]
 
 # Create a VPC with a size /16 CIDR block
 vpc = Vpcx(
-    "mqtt-vpc",
+    project_name,
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
         azs=azs,
