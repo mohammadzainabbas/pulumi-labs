@@ -219,14 +219,6 @@ thing = aws.iot.Thing(
     },
 )
 
-
-cert = aws.iot.Certificate("cert",
-    csr=std.file(input="csr.pem").result,
-    active=True)
-att = aws.iot.PolicyAttachment("att",
-    policy=pubsub_policy.name,
-    target=cert.arn)
-
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(
     f"{project_name}-broker",
