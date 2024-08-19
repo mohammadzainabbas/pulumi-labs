@@ -257,6 +257,8 @@ broker = aws.mq.Broker(
     tags={"environment": "dev"},
 )
 
+pulumi.export("vpc", vpc.vpc.vpc_id)
+pulumi.export("thing", thing)
 pulumi.export("broker_id", broker.id)
 pulumi.export("broker_arn", broker.arn)
 pulumi.export("broker_url", broker.instances[0].endpoints[0])
