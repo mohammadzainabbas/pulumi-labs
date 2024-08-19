@@ -223,7 +223,7 @@ vpc = Vpcx(
 # )
 
 # Create IoT thing
-thing = aws.iot.Thing("mqtt-thing",
+thing = aws.iot.Thing(f"{project_name}-thing",
     thing_name="mqtt-thing",
     attributes={
         "project": project_name,
