@@ -232,6 +232,7 @@ broker = aws.mq.Broker(f"{project_name}-broker",
     host_instance_type="mq.t3.micro",
     security_groups=[vpc.security_group.id],  # Add security group IDs if needed
     subnet_ids=vpc.vpc.public_subnet_ids,  # Subnet where the broker should be deployed
+    apply_immediately=True,
     publicly_accessible=True,
     users=[aws.mq.BrokerUserArgs(
         username="admin",
