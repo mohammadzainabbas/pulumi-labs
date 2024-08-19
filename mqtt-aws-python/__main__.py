@@ -9,7 +9,12 @@ dir_name = pulumi.get_project()
 aws_region = aws.get_region().name
 project_name = "mqtt-vpc"
 config = pulumi.Config()
-vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
+vpc_network_cidr = (
+    config.get("vpcNetworkCidr")
+    if config.get("vpcNetworkCidr") is not None
+    else "10.0.0.0/16"
+)
+
 
 class VpcxArgs:
     """
@@ -17,13 +22,18 @@ class VpcxArgs:
     """
 
     def __init__(
-            self,
-            vpc_cidr_block: str | None = "10.0.0.0/16",
-            azs: pulumi.Input[Sequence[pulumi.Input[str]]] | pulumi.Input[str]  = aws.get_availability_zones(state="available").names,
-            aws_region: pulumi.Input[str] = aws.get_region().name,
-            sg_ingress_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = [22, 80, 443],
-            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
-        ):
+        self,
+        vpc_cidr_block: str | None = "10.0.0.0/16",
+        azs: pulumi.Input[Sequence[pulumi.Input[str]]]
+        | pulumi.Input[str] = aws.get_availability_zones(state="available").names,
+        aws_region: pulumi.Input[str] = aws.get_region().name,
+        sg_ingress_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = [
+            22,
+            80,
+            443,
+        ],
+        tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
+    ):
         """
         Constructs a VpcxArgs.
 
@@ -39,6 +49,7 @@ class VpcxArgs:
         self.aws_region = aws_region
         self.sg_ingress_ports = sg_ingress_ports
         self.tags = tags
+
 
 class Vpcx(pulumi.ComponentResource):
     """
@@ -78,10 +89,7 @@ class Vpcx(pulumi.ComponentResource):
 
     """
 
-    def __init__(self,
-                 name: str,
-                 args: VpcxArgs,
-                 opts: pulumi.ResourceOptions = None):
+    def __init__(self, name: str, args: VpcxArgs, opts: pulumi.ResourceOptions = None):
         """
         Constructs a Vpc.
 
@@ -99,7 +107,7 @@ class Vpcx(pulumi.ComponentResource):
         # Create a vpc https://www.pulumi.com/docs/clouds/aws/guides/vpc/
         vpc_name = f"{project_name}-vpc"
         self.vpc = awsx.ec2.Vpc(
-            vpc_name, 
+            vpc_name,
             awsx.ec2.VpcArgs(
                 cidr_block=args.vpc_cidr_block,
                 number_of_availability_zones=len(args.azs),
@@ -115,9 +123,9 @@ class Vpcx(pulumi.ComponentResource):
                     strategy=awsx.ec2.NatGatewayStrategy.NONE,
                 ),
                 subnet_strategy=awsx.ec2.SubnetAllocationStrategy.AUTO,
-                tags={ "Name": vpc_name, **args.tags },
+                tags={"Name": vpc_name, **args.tags},
             ),
-            opts=pulumi.ResourceOptions( parent=self ),
+            opts=pulumi.ResourceOptions(parent=self),
         )
 
         ingress_sg = [
@@ -146,16 +154,18 @@ class Vpcx(pulumi.ComponentResource):
             vpc_id=self.vpc.vpc_id,
             ingress=ingress_sg,
             egress=egress_sg,
-            tags={ "Name": security_group_name, **args.tags },
-            opts=pulumi.ResourceOptions( parent=self ),
+            tags={"Name": security_group_name, **args.tags},
+            opts=pulumi.ResourceOptions(parent=self),
         )
 
-        super().register_outputs({
-            "vpc_id": self.vpc.vpc_id,
-            "security_group_id": self.security_group.id,
-            "public_subnet_ids": self.vpc.public_subnet_ids,
-            "private_subnet_ids": self.vpc.private_subnet_ids,
-        })
+        super().register_outputs(
+            {
+                "vpc_id": self.vpc.vpc_id,
+                "security_group_id": self.security_group.id,
+                "public_subnet_ids": self.vpc.public_subnet_ids,
+                "private_subnet_ids": self.vpc.private_subnet_ids,
+            }
+        )
 
 
 # Get all availability zones
@@ -176,30 +186,37 @@ vpc = Vpcx(
 )
 
 # Create IoT thing
-thing = aws.iot.Thing(f"{project_name}-thing",
+thing = aws.iot.Thing(
+    f"{project_name}-thing",
     thing_name="mqtt-thing",
     attributes={
         "project": project_name,
         "environment": "dev",
-    }
+    },
 )
 
 # Create a policy
-policy = aws.iot.Policy(f"{project_name}-policy",
+policy = aws.iot.Policy(
+    f"{project_name}-policy",
     policy_name="mqtt-policy",
-    policy_document=json.dumps({
-                "Version": "2012-10-17",
-                "Statement": [{
+    policy_document=json.dumps(
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
                     "Action": ["iot:*"],
                     "Effect": "Allow",
                     "Resource": "*",
-                }],
-            })
+                }
+            ],
+        }
+    ),
 )
 
 
 # Define an Amazon MQ Broker
-broker = aws.mq.Broker(f"{project_name}-broker",
+broker = aws.mq.Broker(
+    f"{project_name}-broker",
     broker_name="simple-activemq-broker",
     engine_type="ActiveMQ",
     engine_version="5.16.7",
@@ -208,16 +225,16 @@ broker = aws.mq.Broker(f"{project_name}-broker",
     subnet_ids=vpc.vpc.public_subnet_ids,  # Subnet where the broker should be deployed
     apply_immediately=True,
     publicly_accessible=True,
-    users=[aws.mq.BrokerUserArgs(
-        username="admin",
-        password="ChangeMe123!",  # Change to a secure password
-    )],
+    users=[
+        aws.mq.BrokerUserArgs(
+            username="admin",
+            password="ChangeMe123!",  # Change to a secure password
+        )
+    ],
     logs=aws.mq.BrokerLogsArgs(
         general=True,
     ),
-    tags={
-        "environment": "dev"
-    }
+    tags={"environment": "dev"},
 )
 
 pulumi.export("broker_id", broker.id)
