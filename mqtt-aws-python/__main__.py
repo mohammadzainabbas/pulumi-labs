@@ -1,5 +1,6 @@
 import pulumi
 import pulumi_aws as aws
+import pulumi_awsx as awsx
 
 # Create a new VPC
 vpc = aws.ec2.Vpc("mqtt-vpc",
