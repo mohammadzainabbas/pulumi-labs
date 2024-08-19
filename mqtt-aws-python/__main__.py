@@ -208,6 +208,15 @@ policy = aws.iot.Policy(
     },
 )
 
+# Create a IoT Certificate
+cert = aws.iot.Certificate("cert", active=True)
+
+
+att = aws.iot.PolicyAttachment("att",
+    policy=pubsub_policy.name,
+    target=cert.arn)
+
+
 # Create IoT thing
 thing = aws.iot.Thing(
     f"{project_name}-thing",
