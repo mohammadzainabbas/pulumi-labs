@@ -60,7 +60,7 @@ broker = aws.mq.Broker("simpleActiveMQBroker",
     publicly_accessible=False,
     users=[aws.mq.BrokerUserArgs(
         username="admin",
-        password="admin",  # Change to a secure password
+        password="ChangeMe123!",  # Change to a secure password
     )],
     logs=aws.mq.BrokerLogsArgs(
         general=True,
