@@ -1,0 +1,11 @@
+name: mqtt-aws-python
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+description: A simple ActiveMQ (mqtt) broker via Amazon MQ deployed in a new VPC (follow best practices)
+config:
+  pulumi:tags:
+    value:
+      pulumi:template: https://www.pulumi.com/ai/api/project/e6f12225-ef83-4f76-aee1-ee5150f8f5a6.zip
