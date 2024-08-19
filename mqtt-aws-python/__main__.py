@@ -199,7 +199,7 @@ policy_document = aws.iam.get_policy_document(statements=[{
 # Create a IoT policy
 policy = aws.iot.Policy(
     f"{project_name}-policy",
-    policy_name="kura-gateway-policy",
+    name="kura-gateway-policy",
     policy=policy_document.json,
     tags={
         "project": project_name,
