@@ -222,13 +222,15 @@ vpc = Vpcx(
 #     route_table_id=route_table.id
 # )
 
+
+
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(f"{project_name}-broker",
     broker_name="simple-activemq-broker",
     engine_type="ActiveMQ",
     engine_version="5.16.7",
     host_instance_type="mq.t3.micro",
-    security_groups=[],  # Add security group IDs if needed
+    security_groups=[vpc.vpc.security_group.id],  # Add security group IDs if needed
     subnet_ids=[subnet.id],  # Subnet where the broker should be deployed
     publicly_accessible=False,
     users=[aws.mq.BrokerUserArgs(
