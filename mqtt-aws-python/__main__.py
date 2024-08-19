@@ -1,6 +1,7 @@
 import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
+from typing import Mapping, Sequence, Optional
 
 class VpcxArgs:
     """
@@ -154,7 +155,7 @@ azs = aws.get_availability_zones(state="available").names[0]
 
 # Create a VPC with a size /16 CIDR block
 vpc = Vpcx(
-    project_name,
+    "mqtt-vpc",
     VpcxArgs(
         vpc_cidr_block=vpc_network_cidr,
         azs=azs,
