@@ -53,14 +53,14 @@ route_table_association = aws.ec2.RouteTableAssociation("routeTableAssociation",
 broker = aws.mq.Broker("simpleActiveMQBroker",
     broker_name="simple-activemq-broker",
     engine_type="ActiveMQ",
-    engine_version="5.15.14",
+    engine_version="5.16.7",
     host_instance_type="mq.t3.micro",
     security_groups=[],  # Add security group IDs if needed
     subnet_ids=[subnet.id],  # Subnet where the broker should be deployed
     publicly_accessible=False,
     users=[aws.mq.BrokerUserArgs(
         username="admin",
-        password="ChangeMe123!",  # Change to a secure password
+        password="admin",  # Change to a secure password
     )],
     logs=aws.mq.BrokerLogsArgs(
         general=True,
