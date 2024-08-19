@@ -204,13 +204,7 @@ pubsub_policy = aws.iot.Policy("pubsub",
 policy = aws.iot.Policy(
     f"{project_name}-policy",
     policy_name="mqtt-policy",
-    
-    policy_document=json.dumps(
-        {
-            "Version": "2012-10-17",
-            "Statement": statements,
-        }
-    ),
+    policy=policy_document,
 )
 
 # Create IoT thing
