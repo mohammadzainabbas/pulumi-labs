@@ -209,6 +209,7 @@ thing = aws.iot.Thing(
     attributes={
         "project": project_name,
         "environment": "dev",
+        "thing_name": "kura-gateway",
     },
 )
 
