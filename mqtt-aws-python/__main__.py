@@ -195,7 +195,6 @@ thing = aws.iot.Thing(
     },
 )
 
-
 # https://arc.net/l/quote/oqviixwo
 policy_actions = ["iot:Connect", "iot:Publish", "iot:Subscribe", "iot:Receive", "iot:UpdateThingShadow", "iot:GetThingShadow", "iot:DeleteThingShadow"]
 statements = [json.dumps({ "Action": action, "Effect": "Allow", "Resource": "*" }) for action in policy_actions]
@@ -207,17 +206,10 @@ policy = aws.iot.Policy(
     policy_document=json.dumps(
         {
             "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Action": ["iot:*"],
-                    "Effect": "Allow",
-                    "Resource": "*",
-                }
-            ],
+            "Statement": statements,
         }
     ),
 )
-
 
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(
