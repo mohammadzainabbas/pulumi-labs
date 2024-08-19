@@ -201,6 +201,11 @@ policy = aws.iot.Policy(
     f"{project_name}-policy",
     policy_name="kura-gateway-policy",
     policy=policy_document.json,
+    tags={
+        "project": project_name,
+        "environment": "dev",
+        "policy_name": "kura-gateway-policy",
+    },
 )
 
 # Create IoT thing
