@@ -222,6 +222,14 @@ vpc = Vpcx(
 #     route_table_id=route_table.id
 # )
 
+# Create IoT thing
+thing = aws.iot.Thing("mqtt-thing",
+    thing_name="mqtt-thing",
+    attributes={
+        "project": project_name,
+        "environment": "dev",
+    }
+)
 
 
 # Define an Amazon MQ Broker
