@@ -209,9 +209,9 @@ policy = aws.iot.Policy(
 )
 
 # Create a IoT Certificate
-cert = aws.iot.Certificate("cert", active=True)
+cert = aws.iot.Certificate(f"{project_name}-kura-gateway-cert", active=True)
 
-
+# Create a IoT Policy Attachment
 att = aws.iot.PolicyAttachment("att",
     policy=pubsub_policy.name,
     target=cert.arn)
