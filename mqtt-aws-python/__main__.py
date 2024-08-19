@@ -198,6 +198,7 @@ thing = aws.iot.Thing(
 
 # https://arc.net/l/quote/oqviixwo
 policy_actions = ["iot:Connect", "iot:Publish", "iot:Subscribe", "iot:Receive", "iot:UpdateThingShadow", "iot:GetThingShadow", "iot:DeleteThingShadow"]
+statements = [json.dumps({ "Action": action, "Effect": "Allow", "Resource": "*" }) for action in policy_actions]
 
 # Create a policy
 policy = aws.iot.Policy(
