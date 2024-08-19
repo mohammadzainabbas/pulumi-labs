@@ -218,7 +218,6 @@ att = aws.iot.PolicyAttachment(
     target=cert.arn
 )
 
-
 # Create IoT thing
 thing = aws.iot.Thing(
     f"{project_name}-thing",
