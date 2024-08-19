@@ -231,6 +231,21 @@ thing = aws.iot.Thing("mqtt-thing",
     }
 )
 
+# Create a policy
+policy = aws.iot.Policy(f"{project_name}-policy",
+    policy_name="mqtt-policy",
+    policy_document="""{
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": "iot:*",
+                "Resource": "*"
+            }
+        ]
+    }"""
+)
+
 
 # Define an Amazon MQ Broker
 broker = aws.mq.Broker(f"{project_name}-broker",
