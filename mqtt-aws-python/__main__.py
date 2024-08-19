@@ -2,6 +2,23 @@ import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
 
+# Get all availability zones
+azs = aws.get_availability_zones(state="available").names[0]
+
+# Create a VPC with a size /16 CIDR block
+vpc = Vpcx(
+    project_name,
+    VpcxArgs(
+        vpc_cidr_block=vpc_network_cidr,
+        azs=azs,
+        sg_ingress_ports=[22, 80],
+        tags={
+            "Project": project_name,
+            "Environment": "dev",
+        },
+    ),
+)
+
 # Create a new VPC
 vpc = aws.ec2.Vpc("mqtt-vpc",
     cidr_block="10.0.0.0/16",
