@@ -197,7 +197,7 @@ thing = aws.iot.Thing(
 
 
 # https://arc.net/l/quote/oqviixwo
-policies = ["iot:Connect", "iot:Publish", "iot:Subscribe", "iot:Receive", "iot:UpdateThingShadow", "iot:GetThingShadow", "iot:DeleteThingShadow"]
+policy_actions = ["iot:Connect", "iot:Publish", "iot:Subscribe", "iot:Receive", "iot:UpdateThingShadow", "iot:GetThingShadow", "iot:DeleteThingShadow"]
 
 # Create a policy
 policy = aws.iot.Policy(
