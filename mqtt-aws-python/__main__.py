@@ -2,6 +2,7 @@ import pulumi
 import pulumi_aws as aws
 import pulumi_awsx as awsx
 from typing import Mapping, Sequence, Optional
+import json
 
 # Get some configuration values or set default values.
 dir_name = pulumi.get_project()
@@ -174,54 +175,6 @@ vpc = Vpcx(
     ),
 )
 
-# # Create a new VPC
-# vpc = aws.ec2.Vpc("mqtt-vpc",
-#     cidr_block="10.0.0.0/16",
-#     enable_dns_support=True,
-#     enable_dns_hostnames=True,
-#     tags={
-#         "Name": "mqtt-vpc",
-#     }
-# )
-
-# # Create a public subnet
-# subnet = aws.ec2.Subnet("publicSubnet",
-#     vpc_id=vpc.id,
-#     cidr_block="10.0.1.0/24",
-#     map_public_ip_on_launch=True,
-#     tags={
-#         "Name": "publicSubnet",
-#     }
-# )
-
-# # Create an internet gateway
-# internet_gateway = aws.ec2.InternetGateway("internetGateway",
-#     vpc_id=vpc.id,
-#     tags={
-#         "Name": "internetGateway",
-#     }
-# )
-
-# # Create a route table
-# route_table = aws.ec2.RouteTable("routeTable",
-#     vpc_id=vpc.id,
-#     routes=[
-#         aws.ec2.RouteTableRouteArgs(
-#             cidr_block="0.0.0.0/0",
-#             gateway_id=internet_gateway.id,
-#         ),
-#     ],
-#     tags={
-#         "Name": "routeTable",
-#     }
-# )
-
-# # Associate route table with subnet
-# route_table_association = aws.ec2.RouteTableAssociation("routeTableAssociation",
-#     subnet_id=subnet.id,
-#     route_table_id=route_table.id
-# )
-
 # Create IoT thing
 thing = aws.iot.Thing(f"{project_name}-thing",
     thing_name="mqtt-thing",
@@ -234,16 +187,14 @@ thing = aws.iot.Thing(f"{project_name}-thing",
 # Create a policy
 policy = aws.iot.Policy(f"{project_name}-policy",
     policy_name="mqtt-policy",
-    policy_document="""{
-        "Version": "2012-10-17",
-        "Statement": [
-            {
-                "Effect": "Allow",
-                "Action": "iot:*",
-                "Resource": "*"
-            }
-        ]
-    }"""
+    policy_document=json.dumps({
+                "Version": "2012-10-17",
+                "Statement": [{
+                    "Action": ["iot:*"],
+                    "Effect": "Allow",
+                    "Resource": "*",
+                }],
+            })
 )
 
 
