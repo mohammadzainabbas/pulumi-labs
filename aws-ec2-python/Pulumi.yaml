@@ -1,0 +1,7 @@
+name: aws-ec2-python
+runtime:
+  name: python
+  options:
+    toolchain: pip
+    virtualenv: venv
+description: A python program to provision an ec2 instance on AWS

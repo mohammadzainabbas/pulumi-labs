@@ -13,8 +13,8 @@ config:
     - c5d.large
     - c5n.large
     - inf1.xlarge
-    - t3.micro
-    - t4g.small
+    # - t3.micro
+    # - t4g.small
   aws-fleet-python:keypair: jarvis
   aws-fleet-python:vpcNetworkCidr: 10.0.0.0/16
   aws:region: eu-west-3
