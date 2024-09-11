@@ -81,7 +81,6 @@ class Vpc(pulumi.ComponentResource):
     export("privateSubnetIds", [subnet.id for subnet in vpc.private_subnets])
     ```
 
-
     """
 
     def __init__(self,
