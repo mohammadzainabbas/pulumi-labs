@@ -14,6 +14,9 @@ instance_type = config.get("instanceType") if config.get("instanceType") is not 
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 
+scripts_dir = os.path.join(os.path.dirname(__file__), "scripts")
+user_data_file = os.path.join(scripts_dir, f"user_data.sh")
+
 # Create the VPC
 vpc = aws_native.ec2.Vpc("my-vpc",
     cidr_block="10.0.0.0/16",
