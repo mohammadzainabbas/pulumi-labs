@@ -1,5 +1,5 @@
 config:
-  aws-ec2-python:instanceType: c7gd.8xlarge
+  aws-ec2-python:instanceType: c6g.16xlarge
   aws-ec2-python:keyPair: jarvis
   aws-ec2-python:vpcNetworkCidr: 10.0.0.0/16
   aws:region: eu-central-1
