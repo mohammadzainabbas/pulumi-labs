@@ -3,7 +3,7 @@ config:
   aws-ec2-python:keyPair: jarvis
   aws-ec2-python:vpcNetworkCidr: 10.0.0.0/16
   aws:region: eu-central-1
-  aws-ec2-python:ami: ami-0a8da46354e76997e
+  aws-ec2-python:ami: ami-0b5d361cdc51acdbe
   aws-ec2-python:useSpotInstance: true
 environment:
   - aws-jarvis
