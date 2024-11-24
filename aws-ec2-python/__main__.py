@@ -6,13 +6,13 @@ import pulumi_awsx as awsx
 from src.vpc import Vpcx, VpcxArgs
 import base64
 from json import loads
-from random import choice
+from random import choice, randrange
 
 # Get some configuration values or set default values.
 project_name = pulumi.get_project()
 aws_region = aws.get_region().name
 config = pulumi.Config()
-instance_type = config.get("instanceType") if config.get("instanceType") is not None else 'c7gd.8xlarge'
+instance_type = config.get("instanceType") if config.get("instanceType") is not None else 'c6g.16xlarge'
 vpc_network_cidr = config.get("vpcNetworkCidr") if config.get("vpcNetworkCidr") is not None else "10.0.0.0/16"
 keypair = config.get("keypair") if config.get("keypair") is not None else "jarvis"
 useSpotInstance = config.get("useSpotInstance") if config.get("useSpotInstance") is not None else True
@@ -35,6 +35,7 @@ vpc = Vpcx(f"{project_name}-vpc", VpcxArgs(
     },
 ))
 
+# If the AMI ID is not provided, look up the latest Amazon Linux 2 AMI ID for the chosen region
 if ami is None:
     ami = aws.ec2.get_ami(
         filters=[
@@ -47,14 +48,25 @@ if ami is None:
         include_deprecated=False,
         owners=["amazon"],
         most_recent=True).id
+    
+# Create a keypair, if it does not exist
+ssh_keys_path = os.path.expanduser("~/.ssh/keys/")
+keypair_file = os.path.join(ssh_keys_path, f"{keypair}.pem")
+if not os.path.exists(keypair_file):
+    id_rsa_pub_file = os.path.join(os.path.expanduser("~/.ssh/"), "id_rsa.pub")
+    with open(keypair_file, "r") as f:
+        public_key = f.read()
+    keypair = aws.ec2.KeyPair(f"{project_name}-keypair", key_name=f"{keypair}-id_rsa.pub", public_key=public_key)
+    pulumi.export("keypair", keypair)
 
 # Launch an EC2 instance
+rand_az = randrange(len(aws.get_availability_zones().names))
 instance = aws.ec2.Instance(
     f"{project_name}-instance",
     ami=ami,
-    availability_zone=choice(aws.get_availability_zones().names),
+    availability_zone=aws.get_availability_zones().names[rand_az],
     instance_type=instance_type,
-    subnet_id=vpc.vpc.public_subnet_ids.apply(lambda ids: choice(ids)),
+    subnet_id=vpc.vpc.public_subnet_ids[rand_az],
     vpc_security_group_ids=[vpc.security_group.id],
     key_name=keypair,
     user_data=user_data,
