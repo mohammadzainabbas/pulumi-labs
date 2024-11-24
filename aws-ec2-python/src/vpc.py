@@ -15,7 +15,7 @@ class VpcxArgs:
     def __init__(
             self,
             vpc_cidr_block: str | None = "10.0.0.0/16",
-            azs: pulumi.Input[Sequence[pulumi.Input[str]]] | pulumi.Input[str]  = aws.get_availability_zones(state="available").names,
+            # azs: pulumi.Input[Sequence[pulumi.Input[str]]] | pulumi.Input[str]  = aws.get_availability_zones(state="available").names,
             aws_region: pulumi.Input[str] = aws.get_region().name,
             sg_ingress_ports: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = [22, 80, 443],
             tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = {},
@@ -30,8 +30,8 @@ class VpcxArgs:
         :param tags: Tags which are applied to all taggable resources.
         """
         self.vpc_cidr_block = vpc_cidr_block
-        self.azs = [azs] if isinstance(azs, pulumi.Input[str]) else azs
-        # self.azs = azs
+        # self.azs = [azs] if isinstance(azs, pulumi.Input) else azs
+        self.azs = aws.get_availability_zones(state="available").names
         self.aws_region = aws_region
         self.sg_ingress_ports = sg_ingress_ports
         self.tags = tags
