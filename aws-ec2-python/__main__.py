@@ -19,72 +19,53 @@ scripts_dir = os.path.join(os.path.dirname(__file__), "scripts")
 user_data_file = os.path.join(scripts_dir, f"user_data.sh")
 
 # Create the VPC
-vpc = aws_native.ec2.Vpc("my-vpc",
-    cidr_block="10.0.0.0/16",
-    enable_dns_support=True,
-    enable_dns_hostnames=True,
-    tags=[{
-        "key": "Name",
-        "value": "my-vpc"
-    }])
+vpc = Vpcx(f"{project_name}-vpc", VpcxArgs(
+    vpc_cidr_block=vpc_network_cidr,
+    azs=aws.get_availability_zones().names,
+    aws_region=aws_region,
+    sg_ingress_ports=[22],
+    tags={
+        "Project": project_name,
+        "Stack": pulumi.get_stack(),
+        "AWS Region": aws_region,
+    },
+))
 
-# Create a subnet
-subnet = aws_native.ec2.Subnet("my-subnet",
-    vpc_id=vpc.id,
-    cidr_block="10.0.1.0/24",
-    availability_zone="us-west-2a",
-    map_public_ip_on_launch=True,
-    tags=[{
-        "key": "Name",
-        "value": "my-subnet"
-    }])
-
-# Create an internet gateway
-gateway = aws_native.ec2.InternetGateway("my-gateway",
-    vpc_id=vpc.id)
-
-# Create a route table
-route_table = aws_native.ec2.RouteTable("my-route-table",
-    vpc_id=vpc.id,
-    routes=[{
-        "destination_cidr_block": "0.0.0.0/0",
-        "gateway_id": gateway.id
-    }],
-    tags=[{
-        "key": "Name",
-        "value": "my-route-table"
-    }])
-
-# Associate the route table with the subnet
-route_table_association = aws_native.ec2.RouteTableAssociation("my-route-table-association",
-    subnet_id=subnet.id,
-    route_table_id=route_table.id)
-
-# Create a security group
-security_group = aws_native.ec2.SecurityGroup("web-secgrp",
-    vpc_id=vpc.id,
-    group_description="Enable HTTP access",
-    security_group_ingress=[{
-        "ip_protocol": "tcp",
-        "from_port": 80,
-        "to_port": 80,
-        "cidr_ip": "0.0.0.0/0"
-    }],
-    tags=[{
-        "key": "Name",
-        "value": "web-secgrp"
-    }])
-
-# Create a key pair
-key_pair = aws_native.ec2.KeyPair("jarvis-key",
-    key_name="jarvis")
+# Look up the latest AWS Deep Learning AMI GPU CUDA i.e: ami-0a8da46354e76997e
+ami = aws.ec2.get_ami(
+    filters=[
+        aws.ec2.GetAmiFilterArgs(name="name", values=["AWS Deep Learning*AMI GPU CUDA*"]),
+        aws.ec2.GetAmiFilterArgs(name="owner-alias", values=["amazon"]),
+    ],
+    include_deprecated=False,
+    owners=["amazon"],
+    most_recent=True).id
 
 # Launch an EC2 instance
+ec2_instance = aws.ec2.Instance(
+    f"{project_name}-instance",
+    ami=ami,  # Example Amazon Linux 2 AMI ID for the chosen region
+    instance_type=instance_type,
+    subnet_id=vpc.vpc.public_subnet_ids[0],
+    vpc_security_group_ids=[vpc.security_group.id],
+    tags={"Name": f"{project_name}-instance"},
+)
+
+server = aws.ec2.Instance("web-server-www",
+    instance_type=instance_type,
+    key_name=keypair,
+    ami="ami-0c55b159cbfafe1f0",  # Update this AMI as needed
+    vpc_security_group_ids=[vpc.security_group.id],
+    subnet_id=vpc.public_subnet_ids[0],
+    user_data=base64.b64encode(open(user_data_file, "rb").read()).decode("ascii"),
+    tags={
+        "Name": "web-server-www",
+    })
+
+
 instance = aws_native.ec2.Instance("web-server-www",
-    instance_type=pulumi.Config('aws').require('instanceType'),
-    subnet_id=subnet.id,
-    key_name=key_pair.key_name,
-    security_group_ids=[security_group.id],
+    instance_type=instance_type,
+    key_name=keypair,
     ami="ami-0c55b159cbfafe1f0",  # Update this AMI as needed
     tags=[{
         "key": "Name",
